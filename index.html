@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScoreSensei - See the story behind every throw</title>
+    <meta name="description" content="ScoreSensei delivers pro-level form analysis and deep round insights that help disc golfers actually improve.">
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+    <link rel="apple-touch-icon" href="assets/images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles-new.css?v=18">
+</head>
+<body id="top">
+    <!-- Gradient Mesh Background -->
+    <div class="gradient-bg">
+        <div class="gradient-sphere sphere-1"></div>
+        <div class="gradient-sphere sphere-2"></div>
+        <div class="gradient-sphere sphere-3"></div>
+        <div class="noise-overlay"></div>
+    </div>
+
+    <!-- Mouse Glow Effect -->
+    <div class="mouse-glow" id="mouseGlow"></div>
+
+    <!-- Mode Toggle Button -->
+    <button id="modeToggle" class="mode-toggle" onclick="toggleMode()">
+        <span id="modeLabel">Form Focus Mode</span>
+    </button>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="#top" class="nav-logo">
+                <img src="assets/images/logo.png" alt="ScoreSensei" class="nav-logo-img">
+                <span class="nav-logo-text">ScoreSensei</span>
+            </a>
+            <div class="nav-links">
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#analysis" class="nav-link">Form Analysis</a>
+                <a href="#rounds" class="nav-link">Round Analysis</a>
+                <a href="#download" class="nav-link">Download</a>
+            </div>
+            <div class="nav-auth">
+                <a href="login.html" class="nav-signin" id="login-btn">Sign in</a>
+                <div id="user-info" class="nav-user" style="display: none;"></div>
+                <button id="logout-btn" class="nav-signout" onclick="handleLogout()" style="display: none;">Sign out</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <!-- Default Mode Content -->
+            <div class="mode-default">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    Pro-Level Form & Round Analysis
+                </div>
+                <h1 class="hero-title">
+                    See the story behind
+                    <span class="gradient-text">every throw</span>
+                </h1>
+                <p class="hero-subtitle">
+                    The only app with real biomechanical form analysis. Deep round insights.
+                    Brutally honest feedback. Built for players who actually want to improve.
+                </p>
+            </div>
+            <!-- Form Analysis Focus Mode Content -->
+            <div class="mode-form-focus" style="display: none;">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    Live AI Coaching
+                </div>
+                <h1 class="hero-title">
+                    Your AI coach is
+                    <span class="gradient-text">always watching</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Set up your phone, hit record, and throw. Get instant coaching feedback on every rep
+                    during your field session—no stopping, no reviewing, just continuous improvement.
+                </p>
+            </div>
+            <div class="hero-cta">
+                <a href="https://testflight.apple.com/join/ySPcHGJA" class="btn btn-primary">
+                    <span>Try the Beta</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+                <a href="#features" class="btn btn-secondary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                    <span>See it in action</span>
+                </a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-phone hero-phone-main">
+                <div class="phone-glow"></div>
+                <img src="assets/screenshots/hero-secondary.png" alt="Form Analysis">
+            </div>
+            <div class="hero-phone hero-phone-secondary">
+                <img src="assets/screenshots/hero-main.png" alt="ScoreSensei App">
+            </div>
+        </div>
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <span>Scroll to explore</span>
+            <div class="scroll-arrow">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 5v14M5 12l7 7 7-7"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Logos/Trust Bar -->
+    <section class="trust-bar">
+        <p class="trust-text">Trusted by disc golfers worldwide</p>
+        <div class="trust-logos">
+            <span class="trust-item">PDGA Members</span>
+            <span class="trust-item">Tournament Players</span>
+            <span class="trust-item">Coaches</span>
+            <span class="trust-item">Weekend Warriors</span>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="section-header mode-default">
+            <span class="section-tag">Features</span>
+            <h2 class="section-title">Everything you need to <span class="gradient-text">level up</span></h2>
+            <p class="section-subtitle">Powerful tools designed for disc golfers who want to improve</p>
+        </div>
+        <div class="section-header mode-form-focus" style="display: none;">
+            <span class="section-tag">Live Form Analysis</span>
+            <h2 class="section-title">Coach yourself with <span class="gradient-text">real-time AI</span></h2>
+            <p class="section-subtitle">Keep the camera rolling and get instant feedback on every throw</p>
+        </div>
+
+        <!-- Form Focus Mode: Featured Card -->
+        <div class="mode-form-focus" style="display: none;">
+            <div class="featured-card glass-card" data-aos="fade-up">
+                <div class="featured-icon" style="--accent: #9b59b6;">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="23 7 16 12 23 17 23 7"/>
+                        <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+                    </svg>
+                </div>
+                <div class="featured-content">
+                    <h3 class="featured-title">Continuous Field Session Analysis</h3>
+                    <p class="featured-desc">
+                        Keep the camera rolling during your entire practice session. Our AI watches every throw in real-time,
+                        analyzing your form and delivering instant audio coaching cues. No need to stop and review footage—just
+                        throw, listen to feedback, and immediately apply corrections. It's like having a pro coach standing
+                        right behind you.
+                    </p>
+                    <div class="featured-tags">
+                        <span class="feature-tag">Real-time</span>
+                        <span class="feature-tag">Audio Cues</span>
+                        <span class="feature-tag">Continuous</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="features-grid mode-form-focus" style="display: none;">
+            <div class="feature-card glass-card" data-aos="fade-up">
+                <div class="feature-icon" style="--accent: #5B7EFF;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Instant Coaching</h3>
+                <p class="feature-desc">Get real-time audio feedback as you throw. Your AI coach never misses a rep and tells you exactly what to fix.</p>
+                <div class="feature-tag">Real-time</div>
+            </div>
+
+            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-icon" style="--accent: #4ECDC4;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                        <polyline points="22 4 12 14.01 9 11.01"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Form Checkpoints</h3>
+                <p class="feature-desc">Track the critical moments: reach-back position, power pocket, release point, and follow-through timing.</p>
+                <div class="feature-tag">Precision</div>
+            </div>
+
+            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-icon" style="--accent: #B8E986;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="20" x2="18" y2="10"/>
+                        <line x1="12" y1="20" x2="12" y2="4"/>
+                        <line x1="6" y1="20" x2="6" y2="14"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Progress Tracking</h3>
+                <p class="feature-desc">See your form scores improve over time. Identify which corrections are sticking and where you're backsliding.</p>
+                <div class="feature-tag">Analytics</div>
+            </div>
+
+            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="feature-icon" style="--accent: #FF6B6B;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"/>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                        <line x1="8" y1="11" x2="14" y2="11"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Deviation Detection</h3>
+                <p class="feature-desc">AI compares your mechanics to pro-level form and highlights exactly where you're losing power or accuracy.</p>
+                <div class="feature-tag">Pro Comparison</div>
+            </div>
+
+            <div class="feature-card glass-card secondary-feature" data-aos="fade-up" data-aos-delay="400">
+                <div class="feature-icon" style="--accent: #e67e22;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                        <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                        <line x1="12" y1="19" x2="12" y2="23"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Round Tracking</h3>
+                <p class="feature-desc">Voice-scored rounds with AI stories and stats when you're on the course. Track your game everywhere.</p>
+                <div class="feature-tag">Also included</div>
+            </div>
+        </div>
+
+        <div class="features-grid mode-default">
+            <div class="feature-card glass-card" data-aos="fade-up">
+                <div class="feature-icon" style="--accent: #4ECDC4;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                        <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                        <line x1="12" y1="19" x2="12" y2="23"/>
+                        <line x1="8" y1="23" x2="16" y2="23"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Voice Scoring</h3>
+                <p class="feature-desc">Record rounds hands-free. Just speak your scores and focus on your game, not the scorecard.</p>
+                <div class="feature-tag">Hands-free</div>
+            </div>
+
+            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-icon" style="--accent: #5B7EFF;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <circle cx="12" cy="12" r="6"/>
+                        <circle cx="12" cy="12" r="2"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">C1X Putting Stats</h3>
+                <p class="feature-desc">Track your putting performance in Circle 1 Extended (11-33 feet). Know exactly where you're losing strokes.</p>
+                <div class="feature-tag">Analytics</div>
+            </div>
+
+            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-icon" style="--accent: #B8E986;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Round Stories</h3>
+                <p class="feature-desc">Detailed narratives of your rounds. Relive key moments, turning points, and clutch putts like never before.</p>
+                <div class="feature-tag">Storytelling</div>
+            </div>
+
+            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="feature-icon" style="--accent: #FF6B6B;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        <path d="M12 8v4M12 16h.01"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">The Judge</h3>
+                <p class="feature-desc">Brutally honest feedback on your performance. No sugar-coating. Can you handle the truth?</p>
+                <div class="feature-tag">Savage Mode</div>
+            </div>
+
+            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="feature-icon" style="--accent: #9b59b6;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="23 7 16 12 23 17 23 7"/>
+                        <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Form Analysis</h3>
+                <p class="feature-desc">Upload throwing videos for frame-by-frame biomechanical analysis. See exactly what the pros do differently.</p>
+                <div class="feature-tag">Pro-Level</div>
+            </div>
+
+            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="500">
+                <div class="feature-icon" style="--accent: #e67e22;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="20" x2="18" y2="10"/>
+                        <line x1="12" y1="20" x2="12" y2="4"/>
+                        <line x1="6" y1="20" x2="6" y2="14"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Shot Patterns</h3>
+                <p class="feature-desc">Discover your throwing tendencies. Identify strengths, weaknesses, and opportunities to gain strokes.</p>
+                <div class="feature-tag">Insights</div>
+            </div>
+        </div><!-- End mode-default features-grid -->
+    </section>
+
+    <!-- Form Analysis Deep Dive -->
+    <section id="analysis" class="analysis-section">
+        <div class="analysis-container">
+            <div class="analysis-content" data-aos="fade-right">
+                <span class="section-tag">Form Analysis</span>
+                <h2 class="section-title">See what you've been missing</h2>
+                <p class="analysis-desc">
+                    Advanced motion tracking captures your entire body with precision accuracy, analyzing
+                    every millisecond of your throw. Compare your form side-by-side with touring pros
+                    and get actionable coaching tips.
+                </p>
+                <ul class="analysis-features">
+                    <li>
+                        <span class="check-icon">✓</span>
+                        <span>Skeletal motion tracking</span>
+                    </li>
+                    <li>
+                        <span class="check-icon">✓</span>
+                        <span>Pro comparison overlays</span>
+                    </li>
+                    <li>
+                        <span class="check-icon">✓</span>
+                        <span>Timing & tempo analysis</span>
+                    </li>
+                    <li>
+                        <span class="check-icon">✓</span>
+                        <span>Personalized drill suggestions</span>
+                    </li>
+                </ul>
+                <a href="#download" class="btn btn-primary">
+                    Try Form Analysis
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="analysis-visual" data-aos="fade-left">
+                <div class="analysis-phone-showcase">
+                    <div class="phone-glow"></div>
+                    <img src="assets/screenshots/form-analysis.png" alt="Form Analysis" class="analysis-screenshot">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Before/After Comparison -->
+    <section class="comparison-section">
+        <div class="section-header">
+            <span class="section-tag">See the Difference</span>
+            <h2 class="section-title">Your throw vs <span class="gradient-text">the pros</span></h2>
+        </div>
+        <div class="comparison-container">
+            <div class="comparison-card amateur">
+                <div class="comparison-label">Your Form</div>
+                <div class="comparison-visual">
+                    <div class="form-indicator bad">
+                        <svg viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="70"/>
+                        </svg>
+                        <span>72%</span>
+                    </div>
+                </div>
+                <div class="comparison-issues">
+                    <span class="issue">Early release</span>
+                    <span class="issue">Hip stall</span>
+                    <span class="issue">Rounding</span>
+                </div>
+            </div>
+            <div class="comparison-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </div>
+            <div class="comparison-card pro">
+                <div class="comparison-label">Pro Level</div>
+                <div class="comparison-visual">
+                    <div class="form-indicator good">
+                        <svg viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="15"/>
+                        </svg>
+                        <span>95%</span>
+                    </div>
+                </div>
+                <div class="comparison-fixes">
+                    <span class="fix">Delayed release</span>
+                    <span class="fix">Full hip turn</span>
+                    <span class="fix">Straight pull</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Judge Section -->
+    <section class="judge-section">
+        <div class="judge-container">
+            <div class="judge-visual" data-aos="fade-right">
+                <div class="judge-phone-showcase">
+                    <div class="phone-glow judge-glow"></div>
+                    <img src="assets/screenshots/the-judge.png" alt="The Judge" class="judge-screenshot">
+                </div>
+            </div>
+            <div class="judge-content" data-aos="fade-left">
+                <span class="section-tag tag-red">The Judge</span>
+                <h2 class="section-title">Feedback that <span class="gradient-text-red">doesn't hold back</span></h2>
+                <p class="judge-desc">
+                    Tired of apps that tell you everything is great? The Judge analyzes your round
+                    and delivers the cold, hard truth. It's not mean—it's honest. And sometimes
+                    the truth hurts.
+                </p>
+                <div class="judge-rating">
+                    <div class="stars">★★★★★</div>
+                    <p class="rating-quote">"I've never been so motivated to prove an app wrong."</p>
+                    <span class="rating-author">— Every user, probably</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Analysis Showcase -->
+    <section class="analysis-showcase">
+        <div class="section-header">
+            <span class="section-tag">Precision Analysis</span>
+            <h2 class="section-title">Every detail, <span class="gradient-text">measured</span></h2>
+            <p class="section-subtitle">Frame-by-frame annotations show exactly what's happening in your throw</p>
+        </div>
+        <div class="showcase-grid">
+            <div class="showcase-item" data-aos="fade-up">
+                <div class="showcase-phone">
+                    <img src="assets/screenshots/form-observations.png" alt="Form Observations">
+                </div>
+                <div class="showcase-label">
+                    <h3>Form Observations</h3>
+                    <p>Detected issues with severity ratings and fix suggestions</p>
+                </div>
+            </div>
+            <div class="showcase-item" data-aos="fade-up" data-aos-delay="100">
+                <div class="showcase-phone">
+                    <img src="assets/screenshots/backn-knee-annotation.png" alt="Back Knee Annotation">
+                </div>
+                <div class="showcase-label">
+                    <h3>Back Knee Analysis</h3>
+                    <p>Precise angle measurements at key checkpoints</p>
+                </div>
+            </div>
+            <div class="showcase-item" data-aos="fade-up" data-aos-delay="200">
+                <div class="showcase-phone">
+                    <img src="assets/screenshots/extension-annotation.png" alt="Extension Annotation">
+                </div>
+                <div class="showcase-label">
+                    <h3>Extension Timing</h3>
+                    <p>Millisecond-accurate timing relative to plant</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Round Analysis Showcase -->
+    <section id="rounds" class="round-showcase">
+        <div class="section-header">
+            <span class="section-tag">Round Analysis</span>
+            <h2 class="section-title">Every round, <span class="gradient-text">dissected</span></h2>
+            <p class="section-subtitle">Deep insights into your driving, putting, and the story of how it all unfolded</p>
+        </div>
+        <div class="showcase-grid">
+            <div class="showcase-item" data-aos="fade-up">
+                <div class="showcase-phone">
+                    <img src="assets/screenshots/drive-analysis.png" alt="Drive Analysis">
+                </div>
+                <div class="showcase-label">
+                    <h3>Drive Analysis</h3>
+                    <p>Fairway hits, C1 in regulation, OB rate and more</p>
+                </div>
+            </div>
+            <div class="showcase-item" data-aos="fade-up" data-aos-delay="100">
+                <div class="showcase-phone">
+                    <img src="assets/screenshots/putt-analysis.png" alt="Putt Analysis">
+                </div>
+                <div class="showcase-label">
+                    <h3>Putt Analysis</h3>
+                    <p>C1, C1X, and C2 percentages broken down</p>
+                </div>
+            </div>
+            <div class="showcase-item" data-aos="fade-up" data-aos-delay="200">
+                <div class="showcase-phone">
+                    <img src="assets/screenshots/round-story.png" alt="Round Story">
+                </div>
+                <div class="showcase-label">
+                    <h3>Round Story</h3>
+                    <p>The narrative of your highs, lows, and clutch moments</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Screenshots Carousel -->
+    <section class="screenshots-section">
+        <div class="section-header">
+            <span class="section-tag">App Preview</span>
+            <h2 class="section-title">See ScoreSensei in action</h2>
+        </div>
+        <div class="screenshots-carousel">
+            <div class="carousel-track">
+                <div class="carousel-slide">
+                    <img src="assets/screenshots/hero-main.png" alt="Home Screen">
+                </div>
+                <div class="carousel-slide">
+                    <img src="assets/screenshots/form-analysis.png" alt="Form Analysis">
+                </div>
+                <div class="carousel-slide">
+                    <img src="assets/screenshots/the-judge.png" alt="The Judge">
+                </div>
+                <div class="carousel-slide">
+                    <img src="assets/screenshots/putt-analysis.png" alt="Putt Analysis">
+                </div>
+                <div class="carousel-slide">
+                    <img src="assets/screenshots/round-story.png" alt="Round Story">
+                </div>
+                <div class="carousel-slide">
+                    <img src="assets/screenshots/drive-analysis.png" alt="Drive Analysis">
+                </div>
+                <div class="carousel-slide">
+                    <img src="assets/screenshots/form-observations.png" alt="Form Observations">
+                </div>
+                <!-- Duplicate for infinite scroll -->
+                <div class="carousel-slide">
+                    <img src="assets/screenshots/hero-main.png" alt="Home Screen">
+                </div>
+                <div class="carousel-slide">
+                    <img src="assets/screenshots/form-analysis.png" alt="Form Analysis">
+                </div>
+                <div class="carousel-slide">
+                    <img src="assets/screenshots/the-judge.png" alt="The Judge">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download CTA Section -->
+    <section id="download" class="download-section">
+        <div class="download-container">
+            <div class="download-content" data-aos="fade-up">
+                <h2 class="download-title mode-default">Ready to transform your game?</h2>
+                <h2 class="download-title mode-form-focus" style="display: none;">Your next field session just got smarter</h2>
+                <p class="download-subtitle mode-default">Join thousands of disc golfers who are already improving with ScoreSensei</p>
+                <p class="download-subtitle mode-form-focus" style="display: none;">Set up your phone, hit record, and let AI coaching guide every throw</p>
+                <div class="download-buttons">
+                    <a href="https://testflight.apple.com/join/ySPcHGJA" class="store-btn app-store">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                        </svg>
+                        <div class="store-btn-text">
+                            <span class="store-btn-small">Try the Beta on</span>
+                            <span class="store-btn-large">TestFlight</span>
+                        </div>
+                    </a>
+                </div>
+                <p class="download-note">Free beta for iOS. Android coming soon.</p>
+            </div>
+            <div class="download-visual">
+                <div class="download-phone">
+                    <div class="phone-glow"></div>
+                    <img src="assets/screenshots/download-cta.png" alt="Download ScoreSensei">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="assets/images/logo.png" alt="ScoreSensei" class="footer-logo">
+                <span class="footer-name">ScoreSensei</span>
+                <p class="footer-tagline">See the story behind every throw</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Product</h4>
+                    <a href="#features">Features</a>
+                    <a href="#analysis">Form Analysis</a>
+                    <a href="#download">Download</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <a href="#">About</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Contact</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 ScoreSensei. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="firebase-config.js?v=2"></script>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Navbar background on scroll
+        const nav = document.querySelector('.nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('nav-scrolled');
+            } else {
+                nav.classList.remove('nav-scrolled');
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('aos-animate');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('[data-aos]').forEach(el => observer.observe(el));
+
+        // Parallax effect for hero visual
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const heroVisual = document.querySelector('.hero-visual');
+            if (heroVisual && scrollY < 800) {
+                heroVisual.style.transform = `translateY(${scrollY * 0.1}px)`;
+            }
+        });
+
+        
+        // Logout handler
+        async function handleLogout() {
+            if (confirm('Are you sure you want to sign out?')) {
+                try {
+                    await signOut();
+                } catch (error) {
+                    console.error('Logout error:', error);
+                    alert('Error signing out. Please try again.');
+                }
+            }
+        }
+
+        // Mouse glow effect
+        const mouseGlow = document.getElementById('mouseGlow');
+        let mouseX = 0, mouseY = 0;
+        let glowX = 0, glowY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateGlow() {
+            glowX += (mouseX - glowX) * 0.1;
+            glowY += (mouseY - glowY) * 0.1;
+            mouseGlow.style.left = glowX + 'px';
+            mouseGlow.style.top = glowY + 'px';
+            requestAnimationFrame(animateGlow);
+        }
+        animateGlow();
+
+        // 3D tilt effect on feature cards
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+            });
+        });
+
+        // Typewriter effect for hero title
+        const heroTitle = document.querySelector('.hero-title');
+        if (heroTitle) {
+            const text = heroTitle.innerHTML;
+            heroTitle.style.opacity = '1';
+        }
+
+        // Mode Toggle - switch between default and form-focus modes
+        let isFormFocusMode = false;
+
+        function toggleMode() {
+            isFormFocusMode = !isFormFocusMode;
+
+            const defaultElements = document.querySelectorAll('.mode-default');
+            const formFocusElements = document.querySelectorAll('.mode-form-focus');
+            const modeLabel = document.getElementById('modeLabel');
+            const modeToggle = document.getElementById('modeToggle');
+
+            if (isFormFocusMode) {
+                defaultElements.forEach(el => el.style.display = 'none');
+                formFocusElements.forEach(el => {
+                    // Restore appropriate display value
+                    if (el.classList.contains('features-grid')) {
+                        el.style.display = 'grid';
+                    } else if (el.classList.contains('section-header')) {
+                        el.style.display = 'block';
+                    } else {
+                        el.style.display = 'block';
+                    }
+                });
+                modeLabel.textContent = 'Full Features Mode';
+                modeToggle.style.background = 'linear-gradient(135deg, #9b59b6, #8e44ad)';
+            } else {
+                formFocusElements.forEach(el => el.style.display = 'none');
+                defaultElements.forEach(el => {
+                    if (el.classList.contains('features-grid')) {
+                        el.style.display = 'grid';
+                    } else if (el.classList.contains('section-header')) {
+                        el.style.display = 'block';
+                    } else {
+                        el.style.display = 'block';
+                    }
+                });
+                modeLabel.textContent = 'Form Focus Mode';
+                modeToggle.style.background = 'linear-gradient(135deg, #4ECDC4, #44CF9C)';
+            }
+        }
+    </script>
+
+    <style>
+        /* Mode Toggle Button */
+        .mode-toggle {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 1000;
+            padding: 12px 20px;
+            border-radius: 50px;
+            border: none;
+            background: linear-gradient(135deg, #4ECDC4, #44CF9C);
+            color: white;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .mode-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
+        }
+
+        .mode-toggle:active {
+            transform: translateY(0);
+        }
+
+        /* Featured Card for Form Focus Mode */
+        .featured-card {
+            display: flex;
+            gap: 32px;
+            padding: 40px;
+            margin-bottom: 32px;
+            background: rgba(155, 89, 182, 0.08);
+            border: 1px solid rgba(155, 89, 182, 0.3);
+            border-radius: 24px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .featured-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(155, 89, 182, 0.2), rgba(91, 126, 255, 0.2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .featured-icon svg {
+            stroke: #9b59b6;
+        }
+
+        .featured-content {
+            flex: 1;
+        }
+
+        .featured-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #9b59b6, #5B7EFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .featured-desc {
+            font-size: 16px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 16px;
+        }
+
+        .featured-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .featured-tags .feature-tag {
+            background: rgba(155, 89, 182, 0.2);
+            border: 1px solid rgba(155, 89, 182, 0.4);
+        }
+
+        /* Secondary feature styling */
+        .secondary-feature {
+            opacity: 0.85;
+        }
+
+        @media (max-width: 768px) {
+            .featured-card {
+                flex-direction: column;
+                padding: 24px;
+                gap: 20px;
+            }
+
+            .featured-icon {
+                width: 60px;
+                height: 60px;
+            }
+
+            .featured-title {
+                font-size: 20px;
+            }
+
+            .mode-toggle {
+                bottom: 16px;
+                right: 16px;
+                padding: 10px 16px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</body>
+</html>
