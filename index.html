@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles-new.css?v=18">
+    <link rel="stylesheet" href="styles-new.css?v=26">
 </head>
 <body id="top">
     <!-- Gradient Mesh Background -->
@@ -21,12 +21,11 @@
         <div class="noise-overlay"></div>
     </div>
 
-    <!-- Mouse Glow Effect -->
-    <div class="mouse-glow" id="mouseGlow"></div>
 
-    <!-- Mode Toggle Button -->
-    <button id="modeToggle" class="mode-toggle" onclick="toggleMode()">
-        <span id="modeLabel">Form Focus Mode</span>
+    <!-- Mode Toggle Button (only visible on localhost) -->
+    <button id="modeToggle" class="mode-toggle" onclick="toggleMode()" style="display: none;">
+        <span id="currentModeLabel">Default</span>
+        <span class="mode-toggle-arrow">→</span>
     </button>
 
     <!-- Navigation -->
@@ -37,7 +36,6 @@
                 <span class="nav-logo-text">ScoreSensei</span>
             </a>
             <div class="nav-links">
-                <a href="#features" class="nav-link">Features</a>
                 <a href="#analysis" class="nav-link">Form Analysis</a>
                 <a href="#rounds" class="nav-link">Round Analysis</a>
                 <a href="#download" class="nav-link">Download</a>
@@ -72,15 +70,30 @@
             <div class="mode-form-focus" style="display: none;">
                 <div class="hero-badge">
                     <span class="badge-dot"></span>
-                    Live AI Coaching
+                    Live Form Coaching
                 </div>
                 <h1 class="hero-title">
-                    Your AI coach is
-                    <span class="gradient-text">always watching</span>
+                    Instant feedback on
+                    <span class="gradient-text">every throw</span>
                 </h1>
                 <p class="hero-subtitle">
-                    Set up your phone, hit record, and throw. Get instant coaching feedback on every rep
-                    during your field session—no stopping, no reviewing, just continuous improvement.
+                    Pick a skill to work on, hit record, and throw. Get real-time coaching cues
+                    focused on exactly what you're trying to fix—no stopping, no reviewing, just reps and results.
+                </p>
+            </div>
+            <!-- Instant Form Analysis Mode Content -->
+            <div class="mode-proskeleton" style="display: none;">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    Instant Form Coaching
+                </div>
+                <h1 class="hero-title">
+                    Instant feedback on
+                    <span class="gradient-text">every throw</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Record your throw and get immediate coaching cues. See how your mechanics compare
+                    to optimal pro form—visual overlays and actionable feedback help you fix what matters most.
                 </p>
             </div>
             <div class="hero-cta">
@@ -118,200 +131,6 @@
         </div>
     </section>
 
-    <!-- Logos/Trust Bar -->
-    <section class="trust-bar">
-        <p class="trust-text">Trusted by disc golfers worldwide</p>
-        <div class="trust-logos">
-            <span class="trust-item">PDGA Members</span>
-            <span class="trust-item">Tournament Players</span>
-            <span class="trust-item">Coaches</span>
-            <span class="trust-item">Weekend Warriors</span>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section id="features" class="features-section">
-        <div class="section-header mode-default">
-            <span class="section-tag">Features</span>
-            <h2 class="section-title">Everything you need to <span class="gradient-text">level up</span></h2>
-            <p class="section-subtitle">Powerful tools designed for disc golfers who want to improve</p>
-        </div>
-        <div class="section-header mode-form-focus" style="display: none;">
-            <span class="section-tag">Live Form Analysis</span>
-            <h2 class="section-title">Coach yourself with <span class="gradient-text">real-time AI</span></h2>
-            <p class="section-subtitle">Keep the camera rolling and get instant feedback on every throw</p>
-        </div>
-
-        <!-- Form Focus Mode: Featured Card -->
-        <div class="mode-form-focus" style="display: none;">
-            <div class="featured-card glass-card" data-aos="fade-up">
-                <div class="featured-icon" style="--accent: #9b59b6;">
-                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polygon points="23 7 16 12 23 17 23 7"/>
-                        <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
-                    </svg>
-                </div>
-                <div class="featured-content">
-                    <h3 class="featured-title">Continuous Field Session Analysis</h3>
-                    <p class="featured-desc">
-                        Keep the camera rolling during your entire practice session. Our AI watches every throw in real-time,
-                        analyzing your form and delivering instant audio coaching cues. No need to stop and review footage—just
-                        throw, listen to feedback, and immediately apply corrections. It's like having a pro coach standing
-                        right behind you.
-                    </p>
-                    <div class="featured-tags">
-                        <span class="feature-tag">Real-time</span>
-                        <span class="feature-tag">Audio Cues</span>
-                        <span class="feature-tag">Continuous</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="features-grid mode-form-focus" style="display: none;">
-            <div class="feature-card glass-card" data-aos="fade-up">
-                <div class="feature-icon" style="--accent: #5B7EFF;">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10"/>
-                        <polyline points="12 6 12 12 16 14"/>
-                    </svg>
-                </div>
-                <h3 class="feature-title">Instant Coaching</h3>
-                <p class="feature-desc">Get real-time audio feedback as you throw. Your AI coach never misses a rep and tells you exactly what to fix.</p>
-                <div class="feature-tag">Real-time</div>
-            </div>
-
-            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="feature-icon" style="--accent: #4ECDC4;">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                        <polyline points="22 4 12 14.01 9 11.01"/>
-                    </svg>
-                </div>
-                <h3 class="feature-title">Form Checkpoints</h3>
-                <p class="feature-desc">Track the critical moments: reach-back position, power pocket, release point, and follow-through timing.</p>
-                <div class="feature-tag">Precision</div>
-            </div>
-
-            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="feature-icon" style="--accent: #B8E986;">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="18" y1="20" x2="18" y2="10"/>
-                        <line x1="12" y1="20" x2="12" y2="4"/>
-                        <line x1="6" y1="20" x2="6" y2="14"/>
-                    </svg>
-                </div>
-                <h3 class="feature-title">Progress Tracking</h3>
-                <p class="feature-desc">See your form scores improve over time. Identify which corrections are sticking and where you're backsliding.</p>
-                <div class="feature-tag">Analytics</div>
-            </div>
-
-            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="300">
-                <div class="feature-icon" style="--accent: #FF6B6B;">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="11" cy="11" r="8"/>
-                        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-                        <line x1="8" y1="11" x2="14" y2="11"/>
-                    </svg>
-                </div>
-                <h3 class="feature-title">Deviation Detection</h3>
-                <p class="feature-desc">AI compares your mechanics to pro-level form and highlights exactly where you're losing power or accuracy.</p>
-                <div class="feature-tag">Pro Comparison</div>
-            </div>
-
-            <div class="feature-card glass-card secondary-feature" data-aos="fade-up" data-aos-delay="400">
-                <div class="feature-icon" style="--accent: #e67e22;">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
-                        <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
-                        <line x1="12" y1="19" x2="12" y2="23"/>
-                    </svg>
-                </div>
-                <h3 class="feature-title">Round Tracking</h3>
-                <p class="feature-desc">Voice-scored rounds with AI stories and stats when you're on the course. Track your game everywhere.</p>
-                <div class="feature-tag">Also included</div>
-            </div>
-        </div>
-
-        <div class="features-grid mode-default">
-            <div class="feature-card glass-card" data-aos="fade-up">
-                <div class="feature-icon" style="--accent: #4ECDC4;">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
-                        <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
-                        <line x1="12" y1="19" x2="12" y2="23"/>
-                        <line x1="8" y1="23" x2="16" y2="23"/>
-                    </svg>
-                </div>
-                <h3 class="feature-title">Voice Scoring</h3>
-                <p class="feature-desc">Record rounds hands-free. Just speak your scores and focus on your game, not the scorecard.</p>
-                <div class="feature-tag">Hands-free</div>
-            </div>
-
-            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="feature-icon" style="--accent: #5B7EFF;">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10"/>
-                        <circle cx="12" cy="12" r="6"/>
-                        <circle cx="12" cy="12" r="2"/>
-                    </svg>
-                </div>
-                <h3 class="feature-title">C1X Putting Stats</h3>
-                <p class="feature-desc">Track your putting performance in Circle 1 Extended (11-33 feet). Know exactly where you're losing strokes.</p>
-                <div class="feature-tag">Analytics</div>
-            </div>
-
-            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="feature-icon" style="--accent: #B8E986;">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
-                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
-                    </svg>
-                </div>
-                <h3 class="feature-title">Round Stories</h3>
-                <p class="feature-desc">Detailed narratives of your rounds. Relive key moments, turning points, and clutch putts like never before.</p>
-                <div class="feature-tag">Storytelling</div>
-            </div>
-
-            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="300">
-                <div class="feature-icon" style="--accent: #FF6B6B;">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                        <path d="M12 8v4M12 16h.01"/>
-                    </svg>
-                </div>
-                <h3 class="feature-title">The Judge</h3>
-                <p class="feature-desc">Brutally honest feedback on your performance. No sugar-coating. Can you handle the truth?</p>
-                <div class="feature-tag">Savage Mode</div>
-            </div>
-
-            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="400">
-                <div class="feature-icon" style="--accent: #9b59b6;">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polygon points="23 7 16 12 23 17 23 7"/>
-                        <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
-                    </svg>
-                </div>
-                <h3 class="feature-title">Form Analysis</h3>
-                <p class="feature-desc">Upload throwing videos for frame-by-frame biomechanical analysis. See exactly what the pros do differently.</p>
-                <div class="feature-tag">Pro-Level</div>
-            </div>
-
-            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="500">
-                <div class="feature-icon" style="--accent: #e67e22;">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="18" y1="20" x2="18" y2="10"/>
-                        <line x1="12" y1="20" x2="12" y2="4"/>
-                        <line x1="6" y1="20" x2="6" y2="14"/>
-                    </svg>
-                </div>
-                <h3 class="feature-title">Shot Patterns</h3>
-                <p class="feature-desc">Discover your throwing tendencies. Identify strengths, weaknesses, and opportunities to gain strokes.</p>
-                <div class="feature-tag">Insights</div>
-            </div>
-        </div><!-- End mode-default features-grid -->
-    </section>
-
     <!-- Form Analysis Deep Dive -->
     <section id="analysis" class="analysis-section">
         <div class="analysis-container">
@@ -320,7 +139,7 @@
                 <h2 class="section-title">See what you've been missing</h2>
                 <p class="analysis-desc">
                     Advanced motion tracking captures your entire body with precision accuracy, analyzing
-                    every millisecond of your throw. Compare your form side-by-side with touring pros
+                    every millisecond of your throw. Compare your form side-by-side with optimal pro form
                     and get actionable coaching tips.
                 </p>
                 <ul class="analysis-features">
@@ -330,7 +149,7 @@
                     </li>
                     <li>
                         <span class="check-icon">✓</span>
-                        <span>Pro comparison overlays</span>
+                        <span>Elite form comparison</span>
                     </li>
                     <li>
                         <span class="check-icon">✓</span>
@@ -361,10 +180,10 @@
     <section class="comparison-section">
         <div class="section-header">
             <span class="section-tag">See the Difference</span>
-            <h2 class="section-title">Your throw vs <span class="gradient-text">the pros</span></h2>
+            <h2 class="section-title">Your throw vs <span class="gradient-text">optimal form</span></h2>
         </div>
         <div class="comparison-container">
-            <div class="comparison-card amateur">
+            <div class="comparison-card amateur" data-aos="fade-right">
                 <div class="comparison-label">Your Form</div>
                 <div class="comparison-visual">
                     <div class="form-indicator bad">
@@ -375,9 +194,9 @@
                     </div>
                 </div>
                 <div class="comparison-issues">
-                    <span class="issue">Early release</span>
-                    <span class="issue">Hip stall</span>
-                    <span class="issue">Rounding</span>
+                    <span class="issue">Poor back knee angle</span>
+                    <span class="issue">Late extension timing</span>
+                    <span class="issue">Excess drift</span>
                 </div>
             </div>
             <div class="comparison-arrow">
@@ -385,8 +204,8 @@
                     <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
             </div>
-            <div class="comparison-card pro">
-                <div class="comparison-label">Pro Level</div>
+            <div class="comparison-card pro" data-aos="fade-left">
+                <div class="comparison-label">Optimal Form</div>
                 <div class="comparison-visual">
                     <div class="form-indicator good">
                         <svg viewBox="0 0 100 100">
@@ -396,35 +215,9 @@
                     </div>
                 </div>
                 <div class="comparison-fixes">
-                    <span class="fix">Delayed release</span>
-                    <span class="fix">Full hip turn</span>
-                    <span class="fix">Straight pull</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- The Judge Section -->
-    <section class="judge-section">
-        <div class="judge-container">
-            <div class="judge-visual" data-aos="fade-right">
-                <div class="judge-phone-showcase">
-                    <div class="phone-glow judge-glow"></div>
-                    <img src="assets/screenshots/the-judge.png" alt="The Judge" class="judge-screenshot">
-                </div>
-            </div>
-            <div class="judge-content" data-aos="fade-left">
-                <span class="section-tag tag-red">The Judge</span>
-                <h2 class="section-title">Feedback that <span class="gradient-text-red">doesn't hold back</span></h2>
-                <p class="judge-desc">
-                    Tired of apps that tell you everything is great? The Judge analyzes your round
-                    and delivers the cold, hard truth. It's not mean—it's honest. And sometimes
-                    the truth hurts.
-                </p>
-                <div class="judge-rating">
-                    <div class="stars">★★★★★</div>
-                    <p class="rating-quote">"I've never been so motivated to prove an app wrong."</p>
-                    <span class="rating-author">— Every user, probably</span>
+                    <span class="fix">Optimal knee angle</span>
+                    <span class="fix">Good timing</span>
+                    <span class="fix">Quick arm twitch</span>
                 </div>
             </div>
         </div>
@@ -468,6 +261,310 @@
         </div>
     </section>
 
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="section-header mode-default">
+            <span class="section-tag">Features</span>
+            <h2 class="section-title">Everything you need to <span class="gradient-text">level up</span></h2>
+            <p class="section-subtitle">Powerful tools designed for disc golfers who want to improve</p>
+        </div>
+        <div class="section-header mode-form-focus" style="display: none;">
+            <span class="section-tag">Live Form Analysis</span>
+            <h2 class="section-title">Coach yourself in <span class="gradient-text">real-time</span></h2>
+            <p class="section-subtitle">Keep the camera rolling and get instant feedback on every throw</p>
+        </div>
+        <div class="section-header mode-proskeleton" style="display: none;">
+            <span class="section-tag">Instant Form Analysis</span>
+            <h2 class="section-title">Get coached on <span class="gradient-text">every throw</span></h2>
+            <p class="section-subtitle">Record a throw and get instant feedback on your form</p>
+        </div>
+
+        <!-- Form Focus Mode: Featured Card -->
+        <div class="mode-form-focus" style="display: none;">
+            <div class="featured-card glass-card" data-aos="fade-up">
+                <div class="featured-icon" style="--accent: #9b59b6;">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="23 7 16 12 23 17 23 7"/>
+                        <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+                    </svg>
+                </div>
+                <div class="featured-content">
+                    <h3 class="featured-title">Continuous Field Session Coaching</h3>
+                    <p class="featured-desc">
+                        Keep the camera rolling during your entire practice session. Every throw gets analyzed in real-time—the
+                        moment your disc leaves your hand, you see the breakdown on screen and hear exactly what to fix.
+                        Visual overlays and voice coaching work together so you never have to stop and review footage.
+                        Just throw, listen, adjust, repeat.
+                    </p>
+                    <div class="featured-tags">
+                        <span class="feature-tag">Real-time</span>
+                        <span class="feature-tag">Visual + Voice</span>
+                        <span class="feature-tag">Continuous</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="features-grid mode-form-focus" style="display: none;">
+            <div class="feature-card glass-card" data-aos="fade-up">
+                <div class="feature-icon" style="--accent: #5B7EFF;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">See It, Hear It, Fix It</h3>
+                <p class="feature-desc">On-screen highlights show where your form broke down while spoken cues tell you exactly how to correct it—all within seconds of each throw.</p>
+                <div class="feature-tag">Real-time</div>
+            </div>
+
+            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-icon" style="--accent: #4ECDC4;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                        <polyline points="22 4 12 14.01 9 11.01"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Form Checkpoints</h3>
+                <p class="feature-desc">Track the critical moments: reach-back position, power pocket, release point, and follow-through timing.</p>
+                <div class="feature-tag">Precision</div>
+            </div>
+
+            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-icon" style="--accent: #B8E986;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="20" x2="18" y2="10"/>
+                        <line x1="12" y1="20" x2="12" y2="4"/>
+                        <line x1="6" y1="20" x2="6" y2="14"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Progress Tracking</h3>
+                <p class="feature-desc">See your form scores improve over time. Identify which corrections are sticking and where you're backsliding.</p>
+                <div class="feature-tag">Analytics</div>
+            </div>
+
+            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="feature-icon" style="--accent: #FF6B6B;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"/>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                        <line x1="8" y1="11" x2="14" y2="11"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Pro Comparison</h3>
+                <p class="feature-desc">See exactly how your mechanics differ from touring pros. Know where you're losing power or accuracy.</p>
+                <div class="feature-tag">Side-by-side</div>
+            </div>
+
+            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="feature-icon" style="--accent: #9b59b6;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                        <path d="M2 17l10 5 10-5"/>
+                        <path d="M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Skill Focus Mode</h3>
+                <p class="feature-desc">Pick one thing to work on—rounding, timing, footwork—and every rep gets scored on that specific skill.</p>
+                <div class="feature-tag">Targeted</div>
+            </div>
+
+            <div class="feature-card glass-card secondary-feature" data-aos="fade-up" data-aos-delay="500">
+                <div class="feature-icon" style="--accent: #e67e22;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                        <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                        <line x1="12" y1="19" x2="12" y2="23"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Round Tracking</h3>
+                <p class="feature-desc">Voice-scored rounds with deep stats and round stories when you're on the course.</p>
+                <div class="feature-tag">Also included</div>
+            </div>
+        </div>
+
+        <!-- Instant Form Analysis Mode: Featured Card -->
+        <div class="mode-proskeleton" style="display: none;">
+            <div class="featured-card glass-card proskeleton-card" data-aos="fade-up">
+                <div class="featured-icon" style="--accent: #FF6B6B;">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="23 7 16 12 23 17 23 7"/>
+                        <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+                    </svg>
+                </div>
+                <div class="featured-content">
+                    <h3 class="featured-title proskeleton-title">Instant Field Session Coaching</h3>
+                    <p class="featured-desc">
+                        Record each throw during your practice session and get your analysis within seconds. Every throw
+                        gets a full biomechanical breakdown—visual overlays show your form compared to optimal pro
+                        mechanics with clear feedback on what to fix. Capture, analyze, adjust, repeat.
+                    </p>
+                    <div class="featured-tags">
+                        <span class="feature-tag proskeleton-tag">Instant</span>
+                        <span class="feature-tag proskeleton-tag">Visual Overlays</span>
+                        <span class="feature-tag proskeleton-tag">Pro Comparison</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="features-grid mode-proskeleton" style="display: none;">
+            <div class="feature-card glass-card" data-aos="fade-up">
+                <div class="feature-icon" style="--accent: #5B7EFF;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">See It, Understand It, Fix It</h3>
+                <p class="feature-desc">On-screen highlights show exactly where your form broke down with clear feedback on how to correct it—all within seconds of recording.</p>
+                <div class="feature-tag">Instant</div>
+            </div>
+
+            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-icon" style="--accent: #4ECDC4;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                        <polyline points="22 4 12 14.01 9 11.01"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Form Checkpoints</h3>
+                <p class="feature-desc">Track the critical moments: reach-back position, power pocket, release point, and follow-through timing.</p>
+                <div class="feature-tag">Precision</div>
+            </div>
+
+            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-icon" style="--accent: #B8E986;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="20" x2="18" y2="10"/>
+                        <line x1="12" y1="20" x2="12" y2="4"/>
+                        <line x1="6" y1="20" x2="6" y2="14"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Progress Tracking</h3>
+                <p class="feature-desc">See your form scores improve over time. Identify which corrections are sticking and where you're backsliding.</p>
+                <div class="feature-tag">Analytics</div>
+            </div>
+
+            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="feature-icon" style="--accent: #FF6B6B;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="5" r="3"/>
+                        <line x1="12" y1="8" x2="12" y2="16"/>
+                        <line x1="8" y1="12" x2="16" y2="12"/>
+                        <line x1="12" y1="16" x2="8" y2="22"/>
+                        <line x1="12" y1="16" x2="16" y2="22"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Pro Form Comparison</h3>
+                <p class="feature-desc">See exactly how your mechanics differ from optimal pro form—an aggregate model built from the best players' techniques.</p>
+                <div class="feature-tag">Side-by-side</div>
+            </div>
+
+            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="feature-icon" style="--accent: #9b59b6;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Actionable Coaching</h3>
+                <p class="feature-desc">Not just numbers—personalized drill suggestions and corrections based on the specific ways your form differs from optimal.</p>
+                <div class="feature-tag">Coaching</div>
+            </div>
+
+            <div class="feature-card glass-card secondary-feature" data-aos="fade-up" data-aos-delay="500">
+                <div class="feature-icon" style="--accent: #e67e22;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Round Tracking</h3>
+                <p class="feature-desc">Track your rounds with deep stats and round stories when you're on the course.</p>
+                <div class="feature-tag">Also included</div>
+            </div>
+        </div>
+
+        <div class="features-grid mode-default">
+            <div class="feature-card glass-card" data-aos="fade-up">
+                <div class="feature-icon" style="--accent: #4ECDC4;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                        <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                        <line x1="12" y1="19" x2="12" y2="23"/>
+                        <line x1="8" y1="23" x2="16" y2="23"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Voice Scoring</h3>
+                <p class="feature-desc">Record rounds hands-free. Just speak your scores and focus on your game, not the scorecard.</p>
+                <div class="feature-tag">Hands-free</div>
+            </div>
+
+            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-icon" style="--accent: #5B7EFF;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <circle cx="12" cy="12" r="6"/>
+                        <circle cx="12" cy="12" r="2"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Deep Round Insights</h3>
+                <p class="feature-desc">Stats you won't find anywhere else—mistake tracking, landing zones, shot shapes, C1X putting, and more.</p>
+                <div class="feature-tag">Analytics</div>
+            </div>
+
+            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-icon" style="--accent: #B8E986;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Round Stories</h3>
+                <p class="feature-desc">Detailed narratives of your rounds. Relive key moments, turning points, and clutch putts like never before.</p>
+                <div class="feature-tag">Storytelling</div>
+            </div>
+
+            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="feature-icon" style="--accent: #FF6B6B;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        <path d="M12 8v4M12 16h.01"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">The Judge</h3>
+                <p class="feature-desc">Get hilariously roasted after every round. Perfect for sharing with friends or posting to socials.</p>
+                <div class="feature-tag">Viral Content</div>
+            </div>
+
+            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="feature-icon" style="--accent: #9b59b6;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="23 7 16 12 23 17 23 7"/>
+                        <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Form Analysis</h3>
+                <p class="feature-desc">Upload throwing videos for frame-by-frame biomechanical analysis. See exactly what the pros do differently.</p>
+                <div class="feature-tag">Pro-Level</div>
+            </div>
+
+            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="500">
+                <div class="feature-icon" style="--accent: #e67e22;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="20" x2="18" y2="10"/>
+                        <line x1="12" y1="20" x2="12" y2="4"/>
+                        <line x1="6" y1="20" x2="6" y2="14"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Shot Patterns</h3>
+                <p class="feature-desc">Discover your throwing tendencies. Identify strengths, weaknesses, and opportunities to gain strokes.</p>
+                <div class="feature-tag">Insights</div>
+            </div>
+        </div><!-- End mode-default features-grid -->
+    </section>
+
     <!-- Round Analysis Showcase -->
     <section id="rounds" class="round-showcase">
         <div class="section-header">
@@ -501,6 +598,46 @@
                 <div class="showcase-label">
                     <h3>Round Story</h3>
                     <p>The narrative of your highs, lows, and clutch moments</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Judge & Glaze Section -->
+    <section class="roast-glaze-section">
+        <div class="section-header">
+            <span class="section-tag">Share-Worthy Content</span>
+            <h2 class="section-title">Get <span class="gradient-text-red">roasted</span> or <span class="gradient-text">glazed</span></h2>
+            <p class="section-subtitle">Every round ends with viral content for your Instagram story</p>
+        </div>
+
+        <!-- Result Cards -->
+        <div class="result-examples">
+            <div class="result-card roast-result" data-aos="fade-right">
+                <div class="card-glow-border"></div>
+                <div class="result-header roast-header">
+                    <span class="result-icon">🔥</span>
+                    <span class="result-label">THE ROAST</span>
+                </div>
+                <div class="result-content">
+                    <p class="roast-text">"Shot +8 at your home course? That's not a round, that's a cry for help. Your C1 putting was 45%—a coin flip has better odds. The only consistent thing about your game is finding every tree on the course."</p>
+                </div>
+                <div class="result-footer">
+                    <span class="share-hint">Perfect for the group chat</span>
+                </div>
+            </div>
+
+            <div class="result-card glaze-result" data-aos="fade-left">
+                <div class="card-glow-border"></div>
+                <div class="result-header glaze-header">
+                    <span class="result-icon">🍩</span>
+                    <span class="result-label">THE GLAZE</span>
+                </div>
+                <div class="result-content">
+                    <p class="glaze-text">"What an absolutely LEGENDARY performance today! Your drives were painting lines like Picasso with that 85% fairway hit rate. C1 putting at 92%? Ice cold. You didn't just play disc golf—you put on a MASTERCLASS."</p>
+                </div>
+                <div class="result-footer">
+                    <span class="share-hint">Hype yourself up</span>
                 </div>
             </div>
         </div>
@@ -555,8 +692,10 @@
             <div class="download-content" data-aos="fade-up">
                 <h2 class="download-title mode-default">Ready to transform your game?</h2>
                 <h2 class="download-title mode-form-focus" style="display: none;">Your next field session just got smarter</h2>
+                <h2 class="download-title mode-proskeleton" style="display: none;">Your next field session just got smarter</h2>
                 <p class="download-subtitle mode-default">Join thousands of disc golfers who are already improving with ScoreSensei</p>
-                <p class="download-subtitle mode-form-focus" style="display: none;">Set up your phone, hit record, and let AI coaching guide every throw</p>
+                <p class="download-subtitle mode-form-focus" style="display: none;">Set up your phone, hit record, and get coached on every throw</p>
+                <p class="download-subtitle mode-proskeleton" style="display: none;">Record your throws, get instant feedback, and see how your form compares to optimal pro mechanics</p>
                 <div class="download-buttons">
                     <a href="https://testflight.apple.com/join/ySPcHGJA" class="store-btn app-store">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
@@ -673,24 +812,6 @@
             }
         }
 
-        // Mouse glow effect
-        const mouseGlow = document.getElementById('mouseGlow');
-        let mouseX = 0, mouseY = 0;
-        let glowX = 0, glowY = 0;
-
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        });
-
-        function animateGlow() {
-            glowX += (mouseX - glowX) * 0.1;
-            glowY += (mouseY - glowY) * 0.1;
-            mouseGlow.style.left = glowX + 'px';
-            mouseGlow.style.top = glowY + 'px';
-            requestAnimationFrame(animateGlow);
-        }
-        animateGlow();
 
         // 3D tilt effect on feature cards
         document.querySelectorAll('.feature-card').forEach(card => {
@@ -717,46 +838,69 @@
             heroTitle.style.opacity = '1';
         }
 
-        // Mode Toggle - switch between default and form-focus modes
-        let isFormFocusMode = false;
+        // Mode Toggle - cycle through three modes: default, form-focus, instant-form
+        // Modes: 0 = default, 1 = form-focus, 2 = instant-form
+        const INITIAL_MODE = 0;
 
-        function toggleMode() {
-            isFormFocusMode = !isFormFocusMode;
+        let currentMode = INITIAL_MODE;
+        const MODE_NAMES = ['Default', 'Form Focus', 'Instant Form'];
+        const MODE_COLORS = [
+            'linear-gradient(135deg, #5B7EFF, #4834d4)',   // Default - blue
+            'linear-gradient(135deg, #9b59b6, #8e44ad)',   // Form Focus - purple
+            'linear-gradient(135deg, #FF6B6B, #e74c3c)'    // Instant Form - coral
+        ];
 
+        // Show toggle button only on localhost for testing
+        const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+        if (isLocalhost) {
+            document.getElementById('modeToggle').style.display = 'flex';
+        }
+
+        function applyMode(mode) {
             const defaultElements = document.querySelectorAll('.mode-default');
             const formFocusElements = document.querySelectorAll('.mode-form-focus');
-            const modeLabel = document.getElementById('modeLabel');
+            const proskeletonElements = document.querySelectorAll('.mode-proskeleton');
+            const currentModeLabel = document.getElementById('currentModeLabel');
             const modeToggle = document.getElementById('modeToggle');
 
-            if (isFormFocusMode) {
-                defaultElements.forEach(el => el.style.display = 'none');
-                formFocusElements.forEach(el => {
-                    // Restore appropriate display value
-                    if (el.classList.contains('features-grid')) {
-                        el.style.display = 'grid';
-                    } else if (el.classList.contains('section-header')) {
-                        el.style.display = 'block';
-                    } else {
-                        el.style.display = 'block';
-                    }
-                });
-                modeLabel.textContent = 'Full Features Mode';
-                modeToggle.style.background = 'linear-gradient(135deg, #9b59b6, #8e44ad)';
+            // Hide all mode elements first
+            defaultElements.forEach(el => el.style.display = 'none');
+            formFocusElements.forEach(el => el.style.display = 'none');
+            proskeletonElements.forEach(el => el.style.display = 'none');
+
+            // Show elements for current mode
+            let elementsToShow;
+            if (mode === 0) {
+                elementsToShow = defaultElements;
+            } else if (mode === 1) {
+                elementsToShow = formFocusElements;
             } else {
-                formFocusElements.forEach(el => el.style.display = 'none');
-                defaultElements.forEach(el => {
-                    if (el.classList.contains('features-grid')) {
-                        el.style.display = 'grid';
-                    } else if (el.classList.contains('section-header')) {
-                        el.style.display = 'block';
-                    } else {
-                        el.style.display = 'block';
-                    }
-                });
-                modeLabel.textContent = 'Form Focus Mode';
-                modeToggle.style.background = 'linear-gradient(135deg, #4ECDC4, #44CF9C)';
+                elementsToShow = proskeletonElements;
             }
+
+            elementsToShow.forEach(el => {
+                if (el.classList.contains('features-grid')) {
+                    el.style.display = 'grid';
+                } else {
+                    el.style.display = 'block';
+                }
+            });
+
+            // Update button to show current mode
+            if (currentModeLabel) currentModeLabel.textContent = MODE_NAMES[mode];
+            if (modeToggle) modeToggle.style.background = MODE_COLORS[mode];
         }
+
+        // Apply initial mode
+        document.addEventListener('DOMContentLoaded', () => {
+            applyMode(INITIAL_MODE);
+        });
+
+        function toggleMode() {
+            currentMode = (currentMode + 1) % 3;
+            applyMode(currentMode);
+        }
+
     </script>
 
     <style>
@@ -788,6 +932,11 @@
 
         .mode-toggle:active {
             transform: translateY(0);
+        }
+
+        .mode-toggle-arrow {
+            opacity: 0.7;
+            font-size: 14px;
         }
 
         /* Featured Card for Form Focus Mode */
@@ -854,6 +1003,32 @@
         /* Secondary feature styling */
         .secondary-feature {
             opacity: 0.85;
+        }
+
+        /* ProSkeleton Mode Styles */
+        .proskeleton-card {
+            background: rgba(255, 107, 107, 0.08);
+            border: 1px solid rgba(255, 107, 107, 0.3);
+        }
+
+        .proskeleton-card .featured-icon {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.2), rgba(231, 76, 60, 0.2));
+        }
+
+        .proskeleton-card .featured-icon svg {
+            stroke: #FF6B6B;
+        }
+
+        .proskeleton-title {
+            background: linear-gradient(135deg, #FF6B6B, #e74c3c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .proskeleton-tag {
+            background: rgba(255, 107, 107, 0.2);
+            border: 1px solid rgba(255, 107, 107, 0.4);
         }
 
         @media (max-width: 768px) {
