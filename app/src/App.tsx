@@ -6,6 +6,8 @@ import { Login } from './routes/Login';
 import { Signup } from './routes/Signup';
 import { MainWrapper } from './routes/MainWrapper';
 import { FormAnalysisDetail } from './routes/FormAnalysisDetail';
+import { CheckoutSuccess } from './routes/CheckoutSuccess';
+import { CheckoutCancel } from './routes/CheckoutCancel';
 
 function App() {
   return (
@@ -16,6 +18,10 @@ function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+
+          {/* Checkout routes (public - users come from Stripe redirect) */}
+          <Route path="/checkout/success" element={<CheckoutSuccess />} />
+          <Route path="/checkout/cancel" element={<CheckoutCancel />} />
 
           {/* Protected routes */}
           <Route

@@ -91,7 +91,7 @@ export function Landing() {
 
           {formAnalysisFocus ? (
             <>
-              <p className="tagline">Your AI coach is always watching</p>
+              <p className="tagline">Instant feedback on every throw</p>
               <p style={{
                 color: '#6B7280',
                 fontSize: '1.1rem',
@@ -99,8 +99,8 @@ export function Landing() {
                 margin: '0 auto 1.5rem',
                 lineHeight: 1.6
               }}>
-                Set up your phone, start recording, and throw. Get instant coaching feedback
-                on every throw during your field session—no stopping, no reviewing, just continuous improvement.
+                Pick a skill to work on, hit record, and throw. Get real-time coaching cues
+                focused on exactly what you're trying to fix—no stopping, no reviewing, just reps and results.
               </p>
             </>
           ) : (
@@ -136,18 +136,19 @@ export function Landing() {
             {/* Primary Feature - Live Form Analysis */}
             <div className="feature-card featured" style={{ ['--accent-color' as any]: '#9b59b6', gridColumn: 'span 2' }}>
               <div className="card-icon">🎥</div>
-              <h3>Live Form Analysis</h3>
+              <h3>Continuous Field Session Coaching</h3>
               <p>
-                Keep the camera rolling during your entire field session. Our AI analyzes every throw in real-time,
-                giving you instant coaching feedback without breaking your flow. No need to stop and review—just throw,
-                listen, and improve.
+                Keep the camera rolling during your entire practice session. Every throw gets analyzed in real-time—the
+                moment your disc leaves your hand, you see the breakdown on screen and hear exactly what to fix.
+                Visual overlays and voice coaching work together so you never have to stop and review footage.
+                Just throw, listen, adjust, repeat.
               </p>
             </div>
 
             <div className="feature-card" style={{ ['--accent-color' as any]: '#5B7EFF' }}>
               <div className="card-icon">🎯</div>
-              <h3>Instant Coaching</h3>
-              <p>Get real-time audio cues and tips as you practice. Your personal AI coach never misses a rep.</p>
+              <h3>See It, Hear It, Fix It</h3>
+              <p>On-screen highlights show where your form broke down while spoken cues tell you exactly how to correct it—all within seconds of each throw.</p>
             </div>
 
             <div className="feature-card" style={{ ['--accent-color' as any]: '#4ECDC4' }}>
@@ -164,15 +165,15 @@ export function Landing() {
 
             <div className="feature-card" style={{ ['--accent-color' as any]: '#FF7F7F' }}>
               <div className="card-icon">🔍</div>
-              <h3>Deviation Detection</h3>
-              <p>AI compares your form to pro-level mechanics and highlights exactly where you're losing power or accuracy.</p>
+              <h3>Pro Comparison</h3>
+              <p>See exactly how your mechanics differ from touring pros. Know where you're losing power or accuracy.</p>
             </div>
 
             {/* Secondary Feature - Round Analysis */}
             <div className="feature-card" style={{ ['--accent-color' as any]: '#e67e22', opacity: 0.9 }}>
               <div className="card-icon">📊</div>
-              <h3>Round Analysis</h3>
-              <p>Voice-scored rounds with AI-generated stories and stats. Track your game when you're on the course too.</p>
+              <h3>Round Tracking</h3>
+              <p>Voice-scored rounds with deep stats and round stories when you're on the course.</p>
             </div>
           </div>
         ) : (
@@ -221,7 +222,7 @@ export function Landing() {
             <>
               <h2>Your next field session just got smarter</h2>
               <p className="cta-description">
-                Set up your phone, hit record, and let AI coaching guide every throw
+                Set up your phone, hit record, and get coached on every throw
               </p>
             </>
           ) : (

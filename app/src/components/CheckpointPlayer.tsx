@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import type { FormAnalysis, CheckpointDataV2 } from '../types/formAnalysis';
+import type { FormAnalysis } from '../types/formAnalysis';
 import { SenseiColors } from '../utils/colors';
 
 interface CheckpointPlayerProps {
