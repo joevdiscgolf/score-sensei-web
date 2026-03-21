@@ -5,3 +5,9 @@ dist/
 
 # Local Netlify folder
 .netlify
+
+# Firebase cache
+.firebase
+
+# CHANGELOG hash tracking (used by pre-commit hook)
+.changelog-hash

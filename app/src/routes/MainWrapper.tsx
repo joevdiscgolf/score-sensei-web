@@ -2,18 +2,12 @@ import { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { FormAnalysisHistory } from './FormAnalysisHistory';
 import { Rounds } from './Rounds';
+import { SettingsModal } from '../components/SettingsModal';
 
 export function MainWrapper() {
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const { currentUser, signOut } = useAuth();
-
-  const handleLogout = async () => {
-    try {
-      await signOut();
-    } catch (error) {
-      console.error('Error signing out:', error);
-    }
-  };
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const { currentUser } = useAuth();
 
   return (
     <div className="main-wrapper">
@@ -28,7 +22,7 @@ export function MainWrapper() {
       {/* Custom App Bar */}
       <div className="custom-app-bar">
         <div className="app-bar-left">
-          <button className="settings-btn" onClick={handleLogout}>
+          <button className="settings-btn" onClick={() => setIsSettingsOpen(true)}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
             </svg>
@@ -68,6 +62,12 @@ export function MainWrapper() {
           <span className="nav-label">Form coach</span>
         </button>
       </div>
+
+      {/* Settings Modal */}
+      <SettingsModal
+        isOpen={isSettingsOpen}
+        onClose={() => setIsSettingsOpen(false)}
+      />
     </div>
   );
 }

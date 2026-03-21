@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - ScoreSensei</title>
+    <meta name="description" content="Your ScoreSensei dashboard - track your disc golf stats and progress.">
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+    <link rel="apple-touch-icon" href="assets/images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+    <link rel="apple-touch-icon" href="assets/images/logo.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,400;0,600;0,700;0,800;1,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .dashboard-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--dark-text);
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--white);
+            padding: 12px 20px;
+            border-radius: 12px;
+            border: 2px solid var(--gray-300);
+        }
+
+        .user-info-text p {
+            font-size: 14px;
+            color: var(--gray-600);
+        }
+
+        .logout-btn {
+            padding: 8px 16px;
+            background: transparent;
+            border: 2px solid var(--gray-300);
+            border-radius: 8px;
+            color: var(--gray-600);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            border-color: var(--coral);
+            color: var(--coral);
+        }
+
+        .dashboard-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .info-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 32px;
+            border: 2px solid var(--gray-300);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .info-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin: 0 0 16px 0;
+        }
+
+        .info-card p {
+            color: var(--gray-600);
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .info-card a.primary-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, var(--accent-teal), var(--accent-green));
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 8px;
+        }
+
+        .info-card a.primary-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .delete-account-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: var(--coral);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 8px;
+        }
+
+        .delete-account-btn:hover {
+            background: #e55a50;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .app-download-section {
+            text-align: center;
+            background: linear-gradient(135deg, var(--accent-teal), var(--accent-green));
+            color: var(--white);
+            border-radius: 16px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .app-download-section h2 {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        .app-download-section p {
+            font-size: 16px;
+            margin-bottom: 24px;
+            opacity: 0.9;
+        }
+
+        .store-buttons-dashboard {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .store-button-dashboard {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 24px;
+            background: var(--white);
+            color: var(--dark-text);
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .store-button-dashboard:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Support Requests Section */
+        .support-section {
+            margin-top: 40px;
+        }
+
+        .support-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .support-header h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin: 0;
+        }
+
+        .support-controls {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .search-input {
+            padding: 10px 16px;
+            border: 2px solid var(--gray-300);
+            border-radius: 8px;
+            font-size: 14px;
+            min-width: 250px;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent-teal);
+        }
+
+        .filter-select {
+            padding: 10px 16px;
+            border: 2px solid var(--gray-300);
+            border-radius: 8px;
+            font-size: 14px;
+            background: var(--white);
+            cursor: pointer;
+        }
+
+        .filter-select:focus {
+            outline: none;
+            border-color: var(--accent-teal);
+        }
+
+        .refresh-btn {
+            padding: 10px 16px;
+            background: linear-gradient(135deg, var(--accent-teal), var(--accent-green));
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .refresh-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .support-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .stat-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 20px;
+            border: 2px solid var(--gray-300);
+            text-align: center;
+        }
+
+        .stat-card .stat-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--accent-teal);
+        }
+
+        .stat-card .stat-label {
+            font-size: 14px;
+            color: var(--gray-600);
+            margin-top: 4px;
+        }
+
+        .stat-card.new .stat-value {
+            color: var(--coral);
+        }
+
+        .support-table-container {
+            background: var(--white);
+            border-radius: 16px;
+            border: 2px solid var(--gray-300);
+            overflow: hidden;
+        }
+
+        .support-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .support-table th,
+        .support-table td {
+            padding: 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--gray-300);
+        }
+
+        .support-table th {
+            background: var(--gray-100);
+            font-weight: 600;
+            color: var(--dark-text);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .support-table tr:hover {
+            background: var(--gray-100);
+        }
+
+        .support-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-badge.new {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .status-badge.in-progress {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .status-badge.resolved {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        /* Tier badges */
+        .tier-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .tier-badge.elite {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            color: #78350f;
+        }
+
+        .tier-badge.pro {
+            background: linear-gradient(135deg, var(--accent-teal), var(--accent-green));
+            color: white;
+        }
+
+        .tier-badge.free {
+            background: var(--gray-200);
+            color: var(--gray-600);
+        }
+
+        .provider-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .provider-badge.apple {
+            background: #1d1d1f;
+            color: white;
+        }
+
+        .provider-badge.google {
+            background: #4285f4;
+            color: white;
+        }
+
+        .provider-badge.stripe {
+            background: #635bff;
+            color: white;
+        }
+
+        .active-badge {
+            color: #065f46;
+        }
+
+        .inactive-badge {
+            color: #dc2626;
+        }
+
+        .cancel-warning {
+            color: #f59e0b;
+            font-weight: 600;
+        }
+
+        .history-item {
+            padding: 12px;
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .history-item:last-child {
+            border-bottom: none;
+        }
+
+        .history-event {
+            font-weight: 600;
+            text-transform: capitalize;
+        }
+
+        .history-meta {
+            font-size: 12px;
+            color: var(--gray-500);
+        }
+
+        .category-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 500;
+            background: var(--gray-200);
+            color: var(--gray-700);
+        }
+
+        .message-preview {
+            max-width: 300px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: var(--gray-600);
+        }
+
+        .message-full {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--white);
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+
+        .message-full.active {
+            display: block;
+        }
+
+        .message-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        .message-overlay.active {
+            display: block;
+        }
+
+        .message-full h3 {
+            margin: 0 0 16px 0;
+            color: var(--dark-text);
+        }
+
+        .message-full .meta {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .message-full .meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .message-full .meta-label {
+            color: var(--gray-500);
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+
+        .message-full .meta-value {
+            color: var(--dark-text);
+            font-weight: 500;
+        }
+
+        .message-full .message-content {
+            background: var(--gray-100);
+            padding: 16px;
+            border-radius: 8px;
+            line-height: 1.6;
+            color: var(--gray-700);
+            white-space: pre-wrap;
+        }
+
+        .message-full .close-btn {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--gray-500);
+        }
+
+        .message-full .close-btn:hover {
+            color: var(--dark-text);
+        }
+
+        .message-full .status-actions {
+            margin-top: 20px;
+            display: flex;
+            gap: 12px;
+        }
+
+        .status-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .status-btn.progress {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .status-btn.resolved {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .status-btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .view-btn {
+            padding: 6px 12px;
+            background: var(--accent-teal);
+            color: var(--white);
+            border: none;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .view-btn:hover {
+            background: var(--accent-green);
+        }
+
+        .loading-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--gray-500);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--gray-500);
+        }
+
+        .empty-state svg {
+            width: 64px;
+            height: 64px;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .user-profile {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .dashboard-title {
+                font-size: 24px;
+            }
+
+            .support-table {
+                font-size: 14px;
+            }
+
+            .support-table th,
+            .support-table td {
+                padding: 12px 8px;
+            }
+
+            .message-preview {
+                max-width: 150px;
+            }
+
+            .support-controls {
+                width: 100%;
+            }
+
+            .search-input {
+                width: 100%;
+                min-width: unset;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-background">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-container">
+        <!-- Header -->
+        <div class="dashboard-header">
+            <a href="/" class="dashboard-title" style="text-decoration: none; color: inherit;">← ScoreSensei</a>
+            <div class="user-profile">
+                <div class="user-info-text">
+                    <p id="user-email" style="margin: 0;">Loading...</p>
+                </div>
+                <button class="logout-btn" onclick="handleLogout()">Sign out</button>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="dashboard-content">
+            <div class="info-card">
+                <h3>Account Settings</h3>
+                <p>If you're unable to access the ScoreSensei mobile app and need to delete your account, you can do so below. This action is permanent and cannot be undone.</p>
+                <button class="delete-account-btn" onclick="handleDeleteAccount()">Delete My Account</button>
+            </div>
+        </div>
+
+        <!-- App Download Section -->
+        <div class="app-download-section">
+            <h2>Download ScoreSensei</h2>
+            <p>Get the full experience on iOS and Android</p>
+            <div class="store-buttons-dashboard">
+                <a href="#" class="store-button-dashboard">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                    </svg>
+                    App Store
+                </a>
+                <a href="#" class="store-button-dashboard">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
+                    </svg>
+                    Google Play
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-functions-compat.js"></script>
+
+    <!-- Firebase Config -->
+    <script src="firebase-config.js"></script>
+    <script src="script.js"></script>
+
+    <script>
+        // Update user info when auth state changes
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                document.getElementById('user-email').textContent = user.email;
+            } else {
+                // Redirect to login if not authenticated
+                window.location.replace('/login');
+            }
+        });
+
+        async function handleLogout() {
+            if (confirm('Are you sure you want to sign out?')) {
+                try {
+                    await signOut();
+                    window.location.replace('/');
+                } catch (error) {
+                    console.error('Logout error:', error);
+                    alert('Error signing out. Please try again.');
+                }
+            }
+        }
+
+        async function handleDeleteAccount() {
+            // First confirmation
+            const confirmed = confirm('Are you sure you want to delete your account?\n\nThis will permanently delete:\n• Your user profile\n• All recorded rounds\n• All form analysis videos and data\n• All putt practice sessions\n\nThis action cannot be undone.');
+            if (!confirmed) return;
+
+            // Second confirmation
+            const doubleConfirmed = confirm('FINAL WARNING\n\nYou are about to permanently delete your account and ALL your data.\n\nClick OK and type "DELETE" to confirm.');
+            if (!doubleConfirmed) return;
+
+            const typed = prompt('Type DELETE to confirm account deletion:');
+            if (typed !== 'DELETE') {
+                alert('Account deletion cancelled.');
+                return;
+            }
+
+            // Show loading state
+            const deleteBtn = document.querySelector('.delete-account-btn');
+            const originalText = deleteBtn.textContent;
+            deleteBtn.textContent = 'Deleting...';
+            deleteBtn.disabled = true;
+
+            try {
+                const user = auth.currentUser;
+                if (!user) {
+                    throw new Error('Not authenticated');
+                }
+
+                // Call the Cloud Function to delete all user data
+                const functions = firebase.functions();
+                const deleteUserAccount = functions.httpsCallable('deleteUserAccount');
+                const result = await deleteUserAccount();
+
+                if (result.data.success) {
+                    const counts = result.data.deletedCounts;
+                    console.log('Account deleted:', counts);
+                    alert('Your account has been successfully deleted.\n\nDeleted:\n• ' + counts.rounds + ' rounds\n• ' + counts.formAnalyses + ' form analyses\n• ' + counts.storageFiles + ' files');
+                    window.location.replace('/');
+                } else {
+                    throw new Error('Deletion failed');
+                }
+            } catch (error) {
+                console.error('Delete account error:', error);
+                deleteBtn.textContent = originalText;
+                deleteBtn.disabled = false;
+
+                if (error.code === 'functions/unauthenticated') {
+                    alert('For security reasons, please sign out and sign back in, then try again.');
+                } else {
+                    alert('Error deleting account: ' + (error.message || 'Unknown error'));
+                }
+            }
+        }
+
+        // Prevent clicks on store buttons (placeholder)
+        document.querySelectorAll('.store-button-dashboard').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                alert('Coming soon! The app will be available on the App Store and Google Play.');
+            });
+        });
+
+    </script>
+</body>
+</html>

@@ -48,14 +48,14 @@ function updateAuthUI(user) {
     if (userInfo) {
       userInfo.style.display = 'flex';
       userInfo.innerHTML = `
-        <a href="dashboard.html" class="nav-user-email" title="Manage account">${user.email}</a>
+        <a href="/account" class="nav-user-email" title="Manage account">${user.email}</a>
       `;
     }
     if (logoutBtn) logoutBtn.style.display = 'block';
 
-    // Redirect to dashboard if on login page
-    if (window.location.pathname.includes('login.html')) {
-      window.location.href = 'dashboard.html';
+    // Redirect to account if on login page
+    if (window.location.pathname.includes('login')) {
+      window.location.replace('/account');
     }
   } else {
     // User is signed out
@@ -64,8 +64,8 @@ function updateAuthUI(user) {
     if (logoutBtn) logoutBtn.style.display = 'none';
 
     // Redirect to login if on protected page
-    if (window.location.pathname.includes('dashboard.html')) {
-      window.location.href = 'login.html';
+    if (window.location.pathname.includes('account')) {
+      window.location.replace('/login');
     }
   }
 }

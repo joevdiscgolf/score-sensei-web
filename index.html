@@ -40,10 +40,9 @@
                 <a href="#rounds" class="nav-link">Round Analysis</a>
                 <a href="#download" class="nav-link">Download</a>
             </div>
-            <div class="nav-auth">
-                <a href="login.html" class="nav-signin" id="login-btn">Sign in</a>
-                <div id="user-info" class="nav-user" style="display: none;"></div>
-                <button id="logout-btn" class="nav-signout" onclick="handleLogout()" style="display: none;">Sign out</button>
+            <!-- Sign in temporarily disabled - placeholder keeps nav centered -->
+            <div class="nav-auth" style="visibility: hidden;">
+                <a href="#" class="nav-signin">Sign in</a>
             </div>
         </div>
     </nav>
@@ -103,7 +102,7 @@
                         <path d="M5 12h14M12 5l7 7-7 7"/>
                     </svg>
                 </a>
-                <a href="#features" class="btn btn-secondary">
+                <a href="#action" class="btn btn-secondary">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M8 5v14l11-7z"/>
                     </svg>
@@ -644,7 +643,7 @@
     </section>
 
     <!-- App Screenshots Carousel -->
-    <section class="screenshots-section">
+    <section id="action" class="screenshots-section">
         <div class="section-header">
             <span class="section-tag">App Preview</span>
             <h2 class="section-title">See ScoreSensei in action</h2>
@@ -736,13 +735,12 @@
                 <div class="footer-column">
                     <h4>Company</h4>
                     <a href="#">About</a>
-                    <a href="#">Blog</a>
                     <a href="#">Contact</a>
                 </div>
                 <div class="footer-column">
                     <h4>Legal</h4>
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
                 </div>
             </div>
         </div>
@@ -840,7 +838,7 @@
 
         // Mode Toggle - cycle through three modes: default, form-focus, instant-form
         // Modes: 0 = default, 1 = form-focus, 2 = instant-form
-        const INITIAL_MODE = 0;
+        const INITIAL_MODE = 2;
 
         let currentMode = INITIAL_MODE;
         const MODE_NAMES = ['Default', 'Form Focus', 'Instant Form'];

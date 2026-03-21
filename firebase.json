@@ -1,0 +1,40 @@
+{
+  "hosting": {
+    "public": ".",
+    "cleanUrls": true,
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**",
+      "app/**",
+      "dist/**",
+      "deploy.sh",
+      "*.md",
+      "package.json",
+      "vercel.json"
+    ],
+    "redirects": [
+      {
+        "source": "/dashboard{,/**}",
+        "destination": "/",
+        "type": 301
+      },
+      {
+        "source": "/dashboard.html",
+        "destination": "/",
+        "type": 301
+      }
+    ],
+    "headers": [
+      {
+        "source": "**/*.@(js|css)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=31536000"
+          }
+        ]
+      }
+    ]
+  }
+}
