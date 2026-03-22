@@ -5,92 +5,115 @@ Save images as PNG in this folder with the exact filenames below.
 
 ---
 
-## Website Screenshots
+## Current Website Screenshot Mapping
 
 ### Hero Section
-- [ ] `hero-main.png` (280x600)
-  - **What:** Form analysis results with skeleton overlay on video
-  - **Why:** Most visually impressive, shows AI in action
-  - **Tips:** Pick a frame where skeleton lines are clearly visible
+| Element | Image Path | Status |
+|---------|-----------|--------|
+| Main phone (right) | `v2/kalan-loaded-comparison.png` | [x] |
+| Secondary phone (left) | `hero-secondary.png` (v1) | [x] |
 
-- [ ] `hero-secondary.png` (280x600)
-  - **What:** Round summary or stats dashboard
-  - **Why:** Shows the data/analytics side of the app
+### "See what you've been missing" Section
+| Element | Image Path | Status |
+|---------|-----------|--------|
+| Form Analysis showcase | `v2/trent-loaded-comparison.png` | [x] |
 
-### Feature Sections
-- [ ] `form-analysis.png` (320x680)
-  - **What:** Mid-analysis view showing skeleton tracking
-  - **Why:** Demonstrates the computer vision AI
-  - **Tips:** Capture during playback with skeleton animating
+### "Every detail, measured" Section
+| Label | Image Path | Status |
+|-------|-----------|--------|
+| Get Your Form Graded | `v2/joe-analysis-score.png` | [x] |
+| Back Knee Analysis | `v2/kalan-knee-angle.png` | [x] |
+| Powered Rotation | `v2/trent-powered-rotation.png` | [x] |
 
-- [ ] `the-judge.png` (280x600)
-  - **What:** A savage Judge verdict
-  - **Why:** This is memorable and shareable
-  - **Tips:** Pick one that's brutal but funny, not mean
+### Round Showcase Section
+| Element | Image Path | Status |
+|---------|-----------|--------|
+| Drive Analysis | `drive-analysis.png` (v1) | [x] |
+| Putt Analysis | `putt-analysis.png` (v1) | [x] |
+| Round Story | `round-story.png` (v1) | [x] |
 
-### Carousel Screenshots
-- [ ] `screen-1.png` (280x600)
-  - **What:** Voice scoring in action (recording state)
-  - **Tips:** Show the mic UI, maybe mid-hole
-
-- [ ] `screen-2.png` (280x600)
-  - **What:** C1X putting stats chart
-  - **Tips:** Use a round with varied putting data
-
-- [ ] `screen-3.png` (280x600)
-  - **What:** Round story AI narrative
-  - **Tips:** Pick a story with dramatic moments
-
-- [ ] `screen-4.png` (280x600)
-  - **What:** Shot patterns visualization
-  - **Tips:** Show clear tendencies in the data
-
-- [ ] `screen-5.png` (280x600)
-  - **What:** Form checkpoint comparison (you vs pro)
-  - **Tips:** Side-by-side or overlay view
-
-### Download CTA
-- [ ] `download-cta.png` (280x600)
-  - **What:** Clean home screen or first onboarding screen
-  - **Why:** Shows the entry point to the app
+### "See ScoreSensei in action" Carousel
+| Image Path | Alt Text | Status |
+|-----------|----------|--------|
+| `v2/kalan-loaded-comparison.png` | Form Comparison | [x] |
+| `v2/trent-loaded-comparison.png` | Form Analysis | [x] |
+| `the-judge.png` (v1) | The Judge | [x] |
+| `putt-analysis.png` (v1) | Putt Analysis | [x] |
+| `round-story.png` (v1) | Round Story | [x] |
+| `drive-analysis.png` (v1) | Drive Analysis | [x] |
+| `skills_assessment.png` | Skills Assessment | [x] |
+| `mental-game.png` | Mental Game | [x] |
+| `top-discs.png` | Top Discs | [x] |
+| `hole-throws-panel.png` | Hole Throws | [x] |
 
 ---
 
-## App Store Screenshots (in priority order)
+## Folder Structure
 
-Apple allows 10, Google allows 8. These are the most important:
+```
+assets/screenshots/
+├── SCREENSHOT_CHECKLIST.md     (this file)
+│
+├── v1 images (kept for reference)
+│   ├── hero-main.png
+│   ├── hero-secondary.png      ← still used in hero
+│   ├── form-analysis.png
+│   ├── form-observations.png
+│   ├── back-knee-annotation.png
+│   ├── extension-annotation.png
+│   ├── download-cta.png
+│   └── backn-knee-annotation.png (old typo version)
+│
+├── v1 round analysis (still in use)
+│   ├── drive-analysis.png
+│   ├── putt-analysis.png
+│   ├── round-story.png
+│   └── the-judge.png
+│
+├── new round analysis
+│   ├── skills_assessment.png
+│   ├── mental-game.png
+│   ├── top-discs.png
+│   └── hole-throws-panel.png
+│
+└── v2/
+    ├── kalan-loaded-comparison.png   ← hero main
+    ├── trent-loaded-comparison.png   ← form analysis section
+    ├── joe-analysis-score.png        ← "Get Your Form Graded"
+    ├── kalan-knee-angle.png          ← "Back Knee Analysis"
+    ├── trent-powered-rotation.png    ← "Powered Rotation"
+    ├── joe-extension-angle.png       (available, not used)
+    └── joe-powered-rotation.png      (available, not used)
+```
 
-1. [ ] **Form Analysis Results**
-   - Skeleton overlay with scores/metrics visible
-   - This is your biggest differentiator
+---
 
-2. [ ] **The Judge Verdict**
-   - Brutal but funny feedback
-   - Makes people laugh and want to try it
+## V2 Form Analysis Images
 
-3. [ ] **Voice Scoring Active**
-   - Mic UI during round recording
-   - Emphasizes hands-free unique feature
+| Filename | Used For | Notes |
+|----------|----------|-------|
+| `kalan-loaded-comparison.png` | Hero main phone | Pro comparison view |
+| `trent-loaded-comparison.png` | "See what you've been missing" | Loaded position analysis |
+| `joe-analysis-score.png` | "Get Your Form Graded" | Overall form score |
+| `kalan-knee-angle.png` | "Back Knee Analysis" | Knee angle measurement |
+| `trent-powered-rotation.png` | "Powered Rotation" | Core rotation mechanics |
+| `joe-extension-angle.png` | Not currently used | Extension angle detail |
+| `joe-powered-rotation.png` | Not currently used | Alternative rotation view |
 
-4. [ ] **Round Story**
-   - AI-generated narrative text
-   - "See the story behind every throw"
+---
 
-5. [ ] **C1X Putting Stats**
-   - Chart showing percentages by distance
-   - Data visualization appeal
+## Round Analysis Images
 
-6. [ ] **Pro Comparison**
-   - User vs pro form overlay or side-by-side
-   - Shows the coaching value
-
-7. [ ] **Shot Patterns**
-   - Spray chart or tendency visualization
-   - Appeals to data nerds
-
-8. [ ] **Checkpoint Breakdown**
-   - Frame-by-frame form positions
-   - Shows depth of analysis
+| Filename | Used In | Notes |
+|----------|---------|-------|
+| `drive-analysis.png` | Round Showcase, Carousel | Drive stats |
+| `putt-analysis.png` | Round Showcase, Carousel | Putting stats |
+| `round-story.png` | Round Showcase, Carousel | AI narrative |
+| `the-judge.png` | Carousel | Roast verdict |
+| `skills_assessment.png` | Carousel | Skills breakdown |
+| `mental-game.png` | Carousel | Mental game stats |
+| `top-discs.png` | Carousel | Most used discs |
+| `hole-throws-panel.png` | Carousel | Hole-by-hole throws |
 
 ---
 
@@ -111,41 +134,21 @@ Apple allows 10, Google allows 8. These are the most important:
 After capturing full-res screenshots, resize for web:
 
 ```bash
-# Resize all to web dimensions (maintains aspect ratio)
 cd /Users/joevanderveen/Development/score-sensei/score-sensei-web/assets/screenshots
 
-# For hero/carousel (280px wide)
-sips -Z 600 hero-main.png hero-secondary.png screen-*.png the-judge.png download-cta.png
+# Resize v2 images
+sips -Z 680 v2/*.png
 
-# For form analysis (320px wide)
-sips -Z 680 form-analysis.png
-```
-
----
-
-## File Checklist
-
-```
-assets/screenshots/
-├── SCREENSHOT_CHECKLIST.md  (this file)
-├── hero-main.png            [ ]
-├── hero-secondary.png       [ ]
-├── form-analysis.png        [ ]
-├── the-judge.png            [ ]
-├── screen-1.png             [ ]
-├── screen-2.png             [ ]
-├── screen-3.png             [ ]
-├── screen-4.png             [ ]
-├── screen-5.png             [ ]
-└── download-cta.png         [ ]
+# Resize new round analysis images
+sips -Z 600 skills_assessment.png mental-game.png top-discs.png hole-throws-panel.png
 ```
 
 ---
 
 ## Notes
 
-_Use this space to track which screenshots you've captured:_
+_Use this space to track changes:_
 
--
--
--
+- 2025-03-21: Added v2 folder structure, updated form analysis to v2 images
+- 2025-03-21: Added 4 new round analysis screenshots to carousel
+- 2025-03-21: Fixed back-knee-annotation.png spelling (was backn-knee)
