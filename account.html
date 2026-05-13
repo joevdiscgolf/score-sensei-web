@@ -699,8 +699,8 @@
         auth.onAuthStateChanged((user) => {
             if (user) {
                 document.getElementById('user-email').textContent = user.email;
-            } else {
-                // Redirect to login if not authenticated
+            } else if (!window.deletionInProgress) {
+                // Redirect to login if not authenticated (but not during account deletion)
                 window.location.replace('/login');
             }
         });
@@ -752,6 +752,10 @@
                 if (result.data.success) {
                     const counts = result.data.deletedCounts;
                     console.log('Account deleted:', counts);
+                    // Set flag so onAuthStateChanged listeners don't redirect to /login
+                    window.deletionInProgress = true;
+                    // Sign out locally now that the server-side auth record is gone
+                    await auth.signOut();
                     alert('Your account has been successfully deleted.\n\nDeleted:\n• ' + counts.rounds + ' rounds\n• ' + counts.formAnalyses + ' form analyses\n• ' + counts.storageFiles + ' files');
                     window.location.replace('/');
                 } else {

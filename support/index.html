@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - ScoreSensei</title>
+    <meta name="description" content="Get help with ScoreSensei. Contact our support team or browse frequently asked questions.">
+    <link rel="icon" type="image/png" href="../assets/images/logo.png">
+    <link rel="apple-touch-icon" href="../assets/images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles-new.css?v=26">
+    <style>
+        .support-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 120px 24px 80px;
+        }
+
+        .support-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .support-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(78, 205, 196, 0.1);
+            border: 1px solid rgba(78, 205, 196, 0.3);
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--accent-teal);
+            margin-bottom: 24px;
+        }
+
+        .support-title {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .support-subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .support-section {
+            background: var(--bg-glass);
+            border: 1px solid var(--border-glass);
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 32px;
+            backdrop-filter: blur(10px);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-description {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .contact-email {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 20px;
+            background: rgba(78, 205, 196, 0.08);
+            border: 1px solid rgba(78, 205, 196, 0.3);
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--accent-teal);
+            margin-bottom: 32px;
+        }
+
+        .contact-email svg {
+            flex-shrink: 0;
+        }
+
+        .contact-email a {
+            color: var(--accent-teal);
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        .contact-email a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 14px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            transition: all 0.2s ease;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--accent-teal);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-submit {
+            padding: 16px 32px;
+            background: var(--gradient-primary);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(78, 205, 196, 0.3);
+        }
+
+        .form-submit:active {
+            transform: translateY(0);
+        }
+
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .faq-item {
+            padding-bottom: 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .faq-question {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .faq-answer {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .faq-answer a {
+            color: var(--accent-teal);
+            text-decoration: none;
+        }
+
+        .faq-answer a:hover {
+            text-decoration: underline;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent-teal);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            margin-bottom: 24px;
+            transition: all 0.2s ease;
+        }
+
+        .back-link:hover {
+            gap: 12px;
+        }
+
+        .form-success {
+            display: none;
+            padding: 16px 20px;
+            background: rgba(184, 233, 134, 0.1);
+            border: 1px solid rgba(184, 233, 134, 0.3);
+            border-radius: 12px;
+            color: var(--accent-green);
+            margin-bottom: 20px;
+        }
+
+        .form-success.show {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .support-container {
+                padding: 100px 20px 60px;
+            }
+
+            .support-title {
+                font-size: 36px;
+            }
+
+            .support-section {
+                padding: 28px 20px;
+            }
+
+            .contact-email {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Gradient Mesh Background -->
+    <div class="gradient-bg">
+        <div class="gradient-sphere sphere-1"></div>
+        <div class="gradient-sphere sphere-2"></div>
+        <div class="gradient-sphere sphere-3"></div>
+        <div class="noise-overlay"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav nav-scrolled">
+        <div class="nav-container">
+            <a href="/" class="nav-logo">
+                <img src="../assets/images/logo.png" alt="ScoreSensei" class="nav-logo-img">
+                <span class="nav-logo-text">ScoreSensei</span>
+            </a>
+            <div class="nav-links">
+                <a href="/#analysis" class="nav-link">Form Analysis</a>
+                <a href="/#rounds" class="nav-link">Round Analysis</a>
+                <a href="/#download" class="nav-link">Download</a>
+            </div>
+            <div class="nav-auth" style="visibility: hidden;">
+                <a href="#" class="nav-signin">Sign in</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Support Content -->
+    <div class="support-container">
+        <a href="/" class="back-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Back to Home
+        </a>
+
+        <div class="support-header">
+            <div class="support-badge">
+                <span>💬</span>
+                Support
+            </div>
+            <h1 class="support-title">How can we help?</h1>
+            <p class="support-subtitle">
+                Get in touch with our team or browse frequently asked questions
+            </p>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="support-section">
+            <h2 class="section-title">Contact Us</h2>
+            <p class="section-description">
+                Have a question or need help? Send us an email and we'll get back to you as soon as possible.
+            </p>
+
+            <div class="contact-email">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <polyline points="22,6 12,13 2,6"/>
+                </svg>
+                <a href="mailto:scoresenseifeedback@gmail.com">scoresenseifeedback@gmail.com</a>
+            </div>
+
+            <!-- FORMSPREE CONTACT FORM - DISABLED FOR NOW -->
+            <!-- To enable: Create a Formspree account and update the action URL below -->
+            <!--
+            <div id="formSuccess" class="form-success">
+                ✓ Message sent successfully! We'll get back to you soon.
+            </div>
+
+            <form id="contactForm" class="contact-form" action="https://formspree.io/f/xvgovwnj" method="POST">
+                <div class="form-group">
+                    <label class="form-label" for="name">Name</label>
+                    <input type="text" id="name" name="name" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="email">Email</label>
+                    <input type="email" id="email" name="email" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="message">Message</label>
+                    <textarea id="message" name="message" class="form-textarea" required></textarea>
+                </div>
+
+                <button type="submit" class="form-submit">Send Message</button>
+            </form>
+            -->
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="support-section">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-description">
+                Quick answers to common questions about ScoreSensei
+            </p>
+
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3 class="faq-question">What devices are supported?</h3>
+                    <p class="faq-answer">
+                        ScoreSensei is available on iOS devices running iOS 17 or later. Download it from the App Store. Android support is planned for the future.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">Is ScoreSensei free?</h3>
+                    <p class="faq-answer">
+                        ScoreSensei is available on the App Store with a free trial. You can analyze your first round and form video at no cost to experience the full feature set. After that, a subscription unlocks unlimited access to all features including form analysis, round tracking, advanced stats, and more.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">How does form analysis work?</h3>
+                    <p class="faq-answer">
+                        Record your throw from a side angle using your phone. You'll see skeletal tracking overlaid on your video, side-by-side comparison with optimal pro form, timing breakdowns at key checkpoints, and personalized coaching tips to improve your technique.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">How do I track my rounds?</h3>
+                    <p class="faq-answer">
+                        Use hands-free voice scoring while you play—just speak your score after each hole. ScoreSensei automatically tracks advanced stats like fairway hit percentage, circle 1 putting, scramble rate, and more. After your round, you'll get detailed insights, visual breakdowns, and shareable round stories.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">Can I delete my account and data?</h3>
+                    <p class="faq-answer">
+                        Yes. Contact us at <a href="mailto:scoresenseifeedback@gmail.com">scoresenseifeedback@gmail.com</a> to request account deletion, and we'll permanently remove all your data within 30 days.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">How do I report bugs or suggest features?</h3>
+                    <p class="faq-answer">
+                        We'd love to hear from you! Email us at <a href="mailto:scoresenseifeedback@gmail.com">scoresenseifeedback@gmail.com</a> with any feedback, bug reports, or feature requests. Your input helps make ScoreSensei better for everyone.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="../assets/images/logo.png" alt="ScoreSensei" class="footer-logo">
+                <span class="footer-name">ScoreSensei</span>
+                <p class="footer-tagline">See the story behind every throw</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Product</h4>
+                    <a href="/#features">Features</a>
+                    <a href="/#analysis">Form Analysis</a>
+                    <a href="/#download">Download</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <a href="/#">About</a>
+                    <a href="/support">Support</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <a href="/privacy.html">Privacy Policy</a>
+                    <a href="/terms.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 ScoreSensei. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar is always scrolled on support page
+        const nav = document.querySelector('.nav');
+        nav.classList.add('nav-scrolled');
+
+        /* FORM SUBMISSION HANDLER - DISABLED UNTIL FORMSPREE IS CONFIGURED
+        // Handle form submission
+        const form = document.getElementById('contactForm');
+        const successMessage = document.getElementById('formSuccess');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    successMessage.classList.add('show');
+                    form.reset();
+
+                    // Scroll to success message
+                    successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+                    // Hide success message after 5 seconds
+                    setTimeout(() => {
+                        successMessage.classList.remove('show');
+                    }, 5000);
+                } else {
+                    alert('There was a problem sending your message. Please try emailing us directly.');
+                }
+            } catch (error) {
+                alert('There was a problem sending your message. Please try emailing us directly.');
+            }
+        });
+        */
+    </script>
+</body>
+</html>

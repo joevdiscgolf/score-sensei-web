@@ -63,8 +63,8 @@ function updateAuthUI(user) {
     if (userInfo) userInfo.style.display = 'none';
     if (logoutBtn) logoutBtn.style.display = 'none';
 
-    // Redirect to login if on protected page
-    if (window.location.pathname.includes('account')) {
+    // Redirect to login if on protected page (but not during account deletion)
+    if (window.location.pathname.includes('account') && !window.deletionInProgress) {
       window.location.replace('/login');
     }
   }
