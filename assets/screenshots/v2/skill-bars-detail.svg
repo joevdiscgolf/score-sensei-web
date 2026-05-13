@@ -1,0 +1,25 @@
+<svg width="400" height="780" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="780" rx="24" fill="#0a0e1a"/>
+  <text x="200" y="170" text-anchor="middle" fill="white" font-size="18" font-weight="600" font-family="Inter,sans-serif">Skill Bars</text>
+  <text x="200" y="195" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-size="12" font-family="Inter,sans-serif">PLACEHOLDER - Replace with screenshot</text>
+  <text x="50" y="280" fill="rgba(255,255,255,0.7)" font-size="14" font-family="Inter,sans-serif">Backhand</text>
+  <rect x="50" y="290" width="300" height="16" rx="8" fill="rgba(255,255,255,0.08)"/>
+  <rect x="50" y="290" width="225" height="16" rx="8" fill="#34D399"/>
+  <text x="355" y="303" fill="white" font-size="14" font-weight="bold" font-family="Inter,sans-serif">75</text>
+  <text x="50" y="340" fill="rgba(255,255,255,0.7)" font-size="14" font-family="Inter,sans-serif">Forehand</text>
+  <rect x="50" y="350" width="300" height="16" rx="8" fill="rgba(255,255,255,0.08)"/>
+  <rect x="50" y="350" width="180" height="16" rx="8" fill="#FBBF24"/>
+  <text x="355" y="363" fill="white" font-size="14" font-weight="bold" font-family="Inter,sans-serif">60</text>
+  <text x="50" y="400" fill="rgba(255,255,255,0.7)" font-size="14" font-family="Inter,sans-serif">Putting</text>
+  <rect x="50" y="410" width="300" height="16" rx="8" fill="rgba(255,255,255,0.08)"/>
+  <rect x="50" y="410" width="240" height="16" rx="8" fill="#A78BFA"/>
+  <text x="355" y="423" fill="white" font-size="14" font-weight="bold" font-family="Inter,sans-serif">80</text>
+  <text x="50" y="460" fill="rgba(255,255,255,0.7)" font-size="14" font-family="Inter,sans-serif">Distance</text>
+  <rect x="50" y="470" width="300" height="16" rx="8" fill="rgba(255,255,255,0.08)"/>
+  <rect x="50" y="470" width="195" height="16" rx="8" fill="#60A5FA"/>
+  <text x="355" y="483" fill="white" font-size="14" font-weight="bold" font-family="Inter,sans-serif">65</text>
+  <text x="50" y="520" fill="rgba(255,255,255,0.7)" font-size="14" font-family="Inter,sans-serif">Accuracy</text>
+  <rect x="50" y="530" width="300" height="16" rx="8" fill="rgba(255,255,255,0.08)"/>
+  <rect x="50" y="530" width="210" height="16" rx="8" fill="#F472B6"/>
+  <text x="355" y="543" fill="white" font-size="14" font-weight="bold" font-family="Inter,sans-serif">70</text>
+</svg>

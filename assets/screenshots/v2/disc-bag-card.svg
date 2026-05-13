@@ -1,0 +1,27 @@
+<svg width="400" height="500" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="500" rx="20" fill="#0f1320" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <text x="200" y="50" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-size="11" font-family="Inter,sans-serif">PLACEHOLDER</text>
+  <rect x="20" y="70" width="360" height="1" fill="rgba(255,255,255,0.06)"/>
+  <text x="40" y="100" fill="rgba(255,255,255,0.5)" font-size="13" font-family="Inter,sans-serif">Disc Bag</text>
+  <circle cx="60" cy="160" r="20" fill="rgba(96,165,250,0.15)" stroke="#60A5FA" stroke-width="2"/>
+  <text x="60" y="165" text-anchor="middle" fill="#60A5FA" font-size="10" font-weight="bold" font-family="Inter,sans-serif">1</text>
+  <text x="95" y="155" fill="white" font-size="14" font-weight="600" font-family="Inter,sans-serif">Buzzz</text>
+  <text x="95" y="173" fill="rgba(255,255,255,0.4)" font-size="11" font-family="Inter,sans-serif">312 throws - Midrange</text>
+  <circle cx="60" cy="220" r="20" fill="rgba(52,211,153,0.15)" stroke="#34D399" stroke-width="2"/>
+  <text x="60" y="225" text-anchor="middle" fill="#34D399" font-size="10" font-weight="bold" font-family="Inter,sans-serif">2</text>
+  <text x="95" y="215" fill="white" font-size="14" font-weight="600" font-family="Inter,sans-serif">Destroyer</text>
+  <text x="95" y="233" fill="rgba(255,255,255,0.4)" font-size="11" font-family="Inter,sans-serif">287 throws - Distance Driver</text>
+  <circle cx="60" cy="280" r="20" fill="rgba(167,139,250,0.15)" stroke="#A78BFA" stroke-width="2"/>
+  <text x="60" y="285" text-anchor="middle" fill="#A78BFA" font-size="10" font-weight="bold" font-family="Inter,sans-serif">3</text>
+  <text x="95" y="275" fill="white" font-size="14" font-weight="600" font-family="Inter,sans-serif">Zone</text>
+  <text x="95" y="293" fill="rgba(255,255,255,0.4)" font-size="11" font-family="Inter,sans-serif">198 throws - Putter</text>
+  <circle cx="60" cy="340" r="20" fill="rgba(251,191,36,0.15)" stroke="#FBBF24" stroke-width="2"/>
+  <text x="60" y="345" text-anchor="middle" fill="#FBBF24" font-size="10" font-weight="bold" font-family="Inter,sans-serif">4</text>
+  <text x="95" y="335" fill="white" font-size="14" font-weight="600" font-family="Inter,sans-serif">Teebird</text>
+  <text x="95" y="353" fill="rgba(255,255,255,0.4)" font-size="11" font-family="Inter,sans-serif">156 throws - Fairway Driver</text>
+  <rect x="40" y="400" width="320" height="1" fill="rgba(255,255,255,0.06)"/>
+  <text x="40" y="430" fill="rgba(255,255,255,0.4)" font-size="11" font-family="Inter,sans-serif">Discs Tracked</text>
+  <text x="350" y="430" text-anchor="end" fill="white" font-size="14" font-weight="600" font-family="Inter,sans-serif">12</text>
+  <text x="40" y="460" fill="rgba(255,255,255,0.4)" font-size="11" font-family="Inter,sans-serif">Total Throws</text>
+  <text x="350" y="460" text-anchor="end" fill="white" font-size="14" font-weight="600" font-family="Inter,sans-serif">1,247</text>
+</svg>
