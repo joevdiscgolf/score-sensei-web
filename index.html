@@ -113,17 +113,21 @@
                 </p>
             </div>
             <div class="hero-cta">
-                <a href="https://apps.apple.com/ca/app/scoresensei-disc-golf/id6758869856" class="btn btn-primary">
-                    <svg class="hero-cta-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <a href="https://apps.apple.com/ca/app/scoresensei-disc-golf/id6758869856" class="store-btn app-store">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
                     </svg>
-                    <span>Get on App Store</span>
+                    <div class="store-btn-text">
+                        <span class="store-btn-small">Download on</span>
+                        <span class="store-btn-large">App Store</span>
+                    </div>
                 </a>
-                <a href="#action" class="btn btn-secondary">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M8 5v14l11-7z"/>
-                    </svg>
-                    <span>See it in action</span>
+                <a href="https://play.google.com/store/apps/details?id=com.joevanderveenllc.scoresensei" class="store-btn google-play">
+                    <img src="assets/images/google-play-logo.svg" alt="Google Play" width="28" height="28">
+                    <div class="store-btn-text">
+                        <span class="store-btn-small">Get it on</span>
+                        <span class="store-btn-large">Google Play</span>
+                    </div>
                 </a>
             </div>
         </div>
@@ -819,12 +823,104 @@
         </div><!-- End mode-sensei-info features-grid -->
     </section>
 
+    <!-- Player Profile Section (Instant Form Mode - toggle via SHOW_PROFILE_IN_INSTANT_FORM) -->
+    <section class="analysis-section mode-proskeleton profile-in-instant-form" style="display: none;">
+        <div class="analysis-container">
+            <div class="analysis-content" data-aos="fade-right">
+                <span class="section-tag">Player Profile</span>
+                <h2 class="section-title">Your skills, <span class="gradient-text">visualized</span></h2>
+                <p class="analysis-desc">
+                    A detailed skill profile built from your rounds. Concentric skill rings show your
+                    Backhand, Forehand, Putting, Distance, and Accuracy at a glance, while detailed
+                    skill bars break down exactly where you stand across every category.
+                </p>
+                <ul class="analysis-features">
+                    <li>
+                        <span class="check-icon">&#10003;</span>
+                        <span>Overall skill score (0-100) with proficiency tier</span>
+                    </li>
+                    <li>
+                        <span class="check-icon">&#10003;</span>
+                        <span>Skill breakdown across 5+ categories</span>
+                    </li>
+                    <li>
+                        <span class="check-icon">&#10003;</span>
+                        <span>Player archetype detection</span>
+                    </li>
+                    <li>
+                        <span class="check-icon">&#10003;</span>
+                        <span>Track skill evolution round over round</span>
+                    </li>
+                </ul>
+                <a href="#download" class="btn btn-primary">
+                    See Your Profile
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="analysis-visual" data-aos="fade-left">
+                <div class="analysis-phone-showcase">
+                    <div class="phone-glow"></div>
+                    <!-- TODO: Replace with actual screenshot -->
+                    <div class="screenshot-placeholder" style="width: 280px; height: 500px; background: linear-gradient(135deg, rgba(96,165,250,0.15), rgba(37,99,235,0.15)); border: 2px dashed rgba(96,165,250,0.4); border-radius: 24px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 14px; text-align: center; padding: 20px;">Player Profile<br>Screenshot</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skill Breakdown Showcase (Instant Form Mode - toggle via SHOW_PROFILE_IN_INSTANT_FORM) -->
+    <section class="analysis-showcase mode-proskeleton profile-in-instant-form" style="display: none;">
+        <div class="section-header">
+            <span class="section-tag">Skill Breakdown</span>
+            <h2 class="section-title">Every skill, <span class="gradient-text">measured</span></h2>
+            <p class="section-subtitle">See exactly where you're strong and where to focus your practice</p>
+        </div>
+        <div class="showcase-grid">
+            <div class="showcase-item" data-aos="fade-up">
+                <div class="showcase-phone">
+                    <!-- TODO: Replace with actual screenshot -->
+                    <div class="screenshot-placeholder" style="width: 220px; height: 400px; background: linear-gradient(135deg, rgba(96,165,250,0.15), rgba(37,99,235,0.15)); border: 2px dashed rgba(96,165,250,0.4); border-radius: 24px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 14px; text-align: center; padding: 20px;">Skill Rings<br>Screenshot</div>
+                </div>
+                <div class="showcase-label">
+                    <h3>Your Skill Rings</h3>
+                    <p>Concentric rings visualize Backhand, Forehand, Putting, Distance, and Accuracy at a glance</p>
+                </div>
+            </div>
+            <div class="showcase-item" data-aos="fade-up" data-aos-delay="100">
+                <div class="showcase-phone">
+                    <!-- TODO: Replace with actual screenshot -->
+                    <div class="screenshot-placeholder" style="width: 220px; height: 400px; background: linear-gradient(135deg, rgba(96,165,250,0.15), rgba(37,99,235,0.15)); border: 2px dashed rgba(96,165,250,0.4); border-radius: 24px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 14px; text-align: center; padding: 20px;">Skill Bars<br>Screenshot</div>
+                </div>
+                <div class="showcase-label">
+                    <h3>Skill Bars</h3>
+                    <p>Each skill scored 0-100 with progress bars showing exactly where you stand</p>
+                </div>
+            </div>
+            <div class="showcase-item" data-aos="fade-up" data-aos-delay="200">
+                <div class="showcase-phone">
+                    <!-- TODO: Replace with actual screenshot -->
+                    <div class="screenshot-placeholder" style="width: 220px; height: 400px; background: linear-gradient(135deg, rgba(96,165,250,0.15), rgba(37,99,235,0.15)); border: 2px dashed rgba(96,165,250,0.4); border-radius: 24px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 14px; text-align: center; padding: 20px;">Proficiency Tier<br>Screenshot</div>
+                </div>
+                <div class="showcase-label">
+                    <h3>Proficiency Tier</h3>
+                    <p>From Developing to Elite — see your tier and track what it takes to level up</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Round Analysis Showcase -->
     <section id="rounds" class="round-showcase">
-        <div class="section-header">
+        <div class="section-header mode-default mode-form-focus mode-proskeleton">
             <span class="section-tag">Round Analysis</span>
             <h2 class="section-title">Every round, <span class="gradient-text">dissected</span></h2>
             <p class="section-subtitle">Deep insights into your driving, putting, and the story of how it all unfolded</p>
+        </div>
+        <div class="section-header mode-sensei-info" style="display: none;">
+            <span class="section-tag sensei-tag">Round Analysis</span>
+            <h2 class="section-title">Your rounds <span class="gradient-text">fuel your profile</span></h2>
+            <p class="section-subtitle">Every round you play feeds into your skill profile — driving stats, putting breakdowns, and round stories all shape your evolving player identity</p>
         </div>
         <div class="showcase-grid">
             <div class="showcase-item" data-aos="fade-up">
@@ -977,17 +1073,15 @@
                             <span class="store-btn-large">App Store</span>
                         </div>
                     </a>
-                    <div class="store-btn android-coming-soon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M17.6 9.48l1.84-3.18c.16-.31.04-.67-.26-.83-.3-.16-.66-.04-.82.26l-1.88 3.24c-2.86-1.21-6.08-1.21-8.94 0L5.65 5.93c-.16-.3-.52-.42-.82-.26-.3.16-.42.52-.26.83l1.84 3.18C7.16 11.48 4.69 15.22 4 18.85h16c-.69-3.63-3.16-7.37-6.4-9.37zM9 13.75c-.59 0-1.08-.475-1.08-1.065 0-.59.49-1.065 1.08-1.065s1.08.475 1.08 1.065c0 .59-.49 1.065-1.08 1.065zm6 0c-.59 0-1.08-.475-1.08-1.065 0-.59.49-1.065 1.08-1.065s1.08.475 1.08 1.065c0 .59-.49 1.065-1.08 1.065z"/>
-                        </svg>
+                    <a href="https://play.google.com/store/apps/details?id=com.joevanderveenllc.scoresensei" class="store-btn google-play">
+                        <img src="assets/images/google-play-logo.svg" alt="Google Play" width="32" height="32">
                         <div class="store-btn-text">
-                            <span class="store-btn-small">Coming Soon on</span>
+                            <span class="store-btn-small">Get it on</span>
                             <span class="store-btn-large">Google Play</span>
                         </div>
-                    </div>
+                    </a>
                 </div>
-                <p class="download-note">Available now on iOS. Android coming soon.</p>
+                <p class="download-note">Available now on iOS and Android.</p>
             </div>
             <div class="download-visual">
                 <div class="download-phone">
@@ -1117,6 +1211,9 @@
             heroTitle.style.opacity = '1';
         }
 
+        // Feature flags
+        const SHOW_PROFILE_IN_INSTANT_FORM = false; // Toggle player profile sections in Instant Form mode
+
         // Mode Toggle - cycle through four modes: default, form-focus, instant-form, sensei-info
         // Modes: 0 = default, 1 = form-focus, 2 = instant-form, 3 = sensei-info
         const INITIAL_MODE = 2;
@@ -1165,6 +1262,11 @@
                     el.style.display = 'block';
                 }
             });
+
+            // Hide profile-in-instant-form sections if flag is off
+            if (!SHOW_PROFILE_IN_INSTANT_FORM) {
+                document.querySelectorAll('.profile-in-instant-form').forEach(el => el.style.display = 'none');
+            }
 
             // Update button to show current mode
             if (currentModeLabel) currentModeLabel.textContent = MODE_NAMES[mode];

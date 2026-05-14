@@ -381,6 +381,7 @@ body {
     transition: all var(--transition-medium);
     cursor: pointer;
     border: none;
+    white-space: nowrap;
 }
 
 .btn-primary {
