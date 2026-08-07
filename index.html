@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles-new.css?v=28">
+    <link rel="stylesheet" href="styles-new.css?v=29">
 </head>
 <body id="top">
     <!-- Gradient Mesh Background -->
@@ -1124,6 +1124,57 @@
         </div>
     </footer>
 
+    <!-- In-app browser escape hint (shown when the App Store handoff is blocked) -->
+    <div id="inAppHint">
+        <div class="in-app-hint-card">
+            <p class="in-app-hint-title">Instagram's browser can't open the App&nbsp;Store</p>
+            <p>Tap the <strong>&bull;&bull;&bull;</strong> menu in the top-right corner and choose <strong>&ldquo;Open in external browser&rdquo;</strong>, then tap Download again.</p>
+            <button id="inAppHintClose">Got it</button>
+        </div>
+    </div>
+    <style>
+        #inAppHint {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background: rgba(0, 0, 0, 0.65);
+        }
+        .in-app-hint-card {
+            max-width: 360px;
+            background: #14141c;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 20px;
+            padding: 28px 24px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 15px;
+            line-height: 1.5;
+        }
+        .in-app-hint-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            margin: 0 0 12px;
+        }
+        .in-app-hint-card p {
+            margin: 0 0 16px;
+        }
+        #inAppHintClose {
+            border: none;
+            border-radius: 12px;
+            padding: 12px 32px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #fff;
+            background: linear-gradient(135deg, #4ECDC4, #44CF9C);
+            cursor: pointer;
+        }
+    </style>
+
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
@@ -1141,17 +1192,41 @@
             });
         });
 
-        // In-app browsers (Instagram/Facebook/Messenger) swallow the
-        // apps.apple.com universal-link handoff, so tapping the App Store
-        // button appears to do nothing. Rewrite to the itms-apps:// scheme
-        // there so the OS opens the native App Store directly.
+        // In-app browsers (Instagram/Facebook/Messenger) can't hand off
+        // apps.apple.com links to the App Store (Apple redirects them to the
+        // itms-appss:// scheme, which the WebView blocks), so taps appear to
+        // do nothing. On tap: try the itms-apps:// scheme; if we're still in
+        // the page after a moment, show "open in external browser" steps.
         (function () {
             const ua = navigator.userAgent || '';
             const isInAppBrowser = /Instagram|FBAN|FBAV|FB_IAB|Line\/|Snapchat/i.test(ua);
             const isIOS = /iPhone|iPad|iPod/i.test(ua);
-            if (isInAppBrowser && isIOS) {
-                document.querySelectorAll('a.app-store').forEach(a => {
-                    a.href = a.href.replace(/^https:\/\//, 'itms-apps://');
+            if (!isInAppBrowser || !isIOS) return;
+
+            let escaped = false;
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) escaped = true;
+            });
+            window.addEventListener('pagehide', () => { escaped = true; });
+
+            const hint = document.getElementById('inAppHint');
+            document.querySelectorAll('a.app-store').forEach(a => {
+                a.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    escaped = false;
+                    window.location.href = a.href.replace(/^https:\/\//, 'itms-apps://');
+                    setTimeout(() => {
+                        if (!escaped && !document.hidden && hint) {
+                            hint.style.display = 'flex';
+                        }
+                    }, 1500);
+                });
+            });
+
+            const closeBtn = document.getElementById('inAppHintClose');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', () => {
+                    hint.style.display = 'none';
                 });
             }
         })();

@@ -1729,6 +1729,10 @@ body {
     .nav-links {
         display: none;
     }
+
+    .nav-auth {
+        display: none;
+    }
 }
 
 @media (max-width: 768px) {
