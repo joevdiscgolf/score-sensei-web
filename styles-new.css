@@ -1462,11 +1462,15 @@ body {
     transition: all var(--transition-medium);
 }
 
-.store-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.2);
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+/* Hover-capable devices only: on touch screens a hover transform can make
+   the first tap apply :hover instead of following the link */
+@media (hover: hover) {
+    .store-btn:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.2);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
 }
 
 .store-btn.android-coming-soon {

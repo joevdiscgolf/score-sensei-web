@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles-new.css?v=27">
+    <link rel="stylesheet" href="styles-new.css?v=28">
 </head>
 <body id="top">
     <!-- Gradient Mesh Background -->
@@ -1141,6 +1141,21 @@
             });
         });
 
+        // In-app browsers (Instagram/Facebook/Messenger) swallow the
+        // apps.apple.com universal-link handoff, so tapping the App Store
+        // button appears to do nothing. Rewrite to the itms-apps:// scheme
+        // there so the OS opens the native App Store directly.
+        (function () {
+            const ua = navigator.userAgent || '';
+            const isInAppBrowser = /Instagram|FBAN|FBAV|FB_IAB|Line\/|Snapchat/i.test(ua);
+            const isIOS = /iPhone|iPad|iPod/i.test(ua);
+            if (isInAppBrowser && isIOS) {
+                document.querySelectorAll('a.app-store').forEach(a => {
+                    a.href = a.href.replace(/^https:\/\//, 'itms-apps://');
+                });
+            }
+        })();
+
         // Navbar background on scroll
         const nav = document.querySelector('.nav');
         window.addEventListener('scroll', () => {
@@ -1255,7 +1270,9 @@
                 if (el.classList.contains('features-grid')) {
                     el.style.display = 'grid';
                 } else if (el.classList.contains('nav-links')) {
-                    el.style.display = 'flex';
+                    // Clear inline style so the stylesheet controls display
+                    // (mobile media query hides nav links at <=900px)
+                    el.style.display = '';
                 } else if (el.classList.contains('stats-cards-row')) {
                     el.style.display = 'flex';
                 } else {
