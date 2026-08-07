@@ -1203,23 +1203,18 @@
             const isIOS = /iPhone|iPad|iPod/i.test(ua);
             if (!isInAppBrowser || !isIOS) return;
 
-            let escaped = false;
-            document.addEventListener('visibilitychange', () => {
-                if (document.hidden) escaped = true;
-            });
-            window.addEventListener('pagehide', () => { escaped = true; });
-
             const hint = document.getElementById('inAppHint');
+            // Hide the hint if the handoff succeeds (page gets backgrounded)
+            // so it isn't left showing when the user returns.
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden && hint) hint.style.display = 'none';
+            });
+
             document.querySelectorAll('a.app-store').forEach(a => {
                 a.addEventListener('click', (e) => {
                     e.preventDefault();
-                    escaped = false;
+                    if (hint) hint.style.display = 'flex';
                     window.location.href = a.href.replace(/^https:\/\//, 'itms-apps://');
-                    setTimeout(() => {
-                        if (!escaped && !document.hidden && hint) {
-                            hint.style.display = 'flex';
-                        }
-                    }, 1500);
                 });
             });
 
