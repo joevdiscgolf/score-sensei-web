@@ -2,6 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BD8J2BPQ0X"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-BD8J2BPQ0X');
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest('a[href*="apps.apple.com"], a[href*="play.google.com"]');
+        if (!a) return;
+        var isApple = a.href.indexOf('apps.apple.com') !== -1;
+        gtag('event', isApple ? 'app_store_click' : 'play_store_click', {
+          store: isApple ? 'app_store' : 'play_store',
+          link_url: a.href
+        });
+      });
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up - ScoreSensei</title>
     <meta name="description" content="Create your ScoreSensei account to start tracking your disc golf journey.">
