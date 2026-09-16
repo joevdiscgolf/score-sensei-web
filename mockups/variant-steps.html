@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FormSensei — Mockup C: 3-step hero</title>
+    <link rel="icon" href="../assets/images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles-new.css">
+    <style>
+        /* ============ Mockup C overrides ============ */
+        .mockup-pill {
+            position: fixed;
+            top: 84px;
+            left: 20px;
+            z-index: 1100;
+            background: rgba(14, 14, 22, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-glass);
+            border-radius: 100px;
+            padding: 8px 16px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        .mockup-pill a {
+            color: var(--accent-teal);
+            text-decoration: none;
+        }
+        .mockup-pill a:hover { text-decoration: underline; }
+
+        /* Hero becomes a single centered column */
+        .steps-hero {
+            min-height: auto;
+            flex-direction: column;
+            justify-content: flex-start;
+            text-align: center;
+            padding: 140px 40px 60px;
+            gap: 0;
+        }
+        .steps-hero .hero-content {
+            max-width: 720px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .steps-hero .hero-subtitle { margin-bottom: 0; }
+
+        /* ============ 3-step strip ============ */
+        .steps-strip {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 12px;
+            max-width: 1100px;
+            margin: 56px auto 0;
+            padding: 0 40px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .step-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 0 1 260px;
+            min-width: 0;
+            opacity: 0;
+            animation: fadeInUp 0.7s ease forwards;
+        }
+        .step-item:nth-child(1) { animation-delay: 0.35s; }
+        .step-item:nth-child(3) { animation-delay: 0.55s; }
+        .step-item:nth-child(5) { animation-delay: 0.75s; }
+
+        .step-badge {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            color: #0a0a0f;
+            font-size: 18px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            box-shadow: 0 6px 20px rgba(78, 205, 196, 0.35);
+        }
+        .step-name {
+            font-size: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+        .step-phone {
+            position: relative;
+            margin-bottom: 18px;
+        }
+        .step-phone .phone-glow {
+            width: 280px;
+            height: 280px;
+            opacity: 0.8;
+        }
+        .step-phone img {
+            width: 240px;
+            max-width: 100%;
+            display: block;
+            border-radius: 28px;
+            border: 2px solid var(--border-glass);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+            transition: all var(--transition-medium);
+        }
+        @media (hover: hover) {
+            .step-item:hover .step-phone img {
+                transform: translateY(-6px);
+                border-color: rgba(78, 205, 196, 0.4);
+                box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+            }
+        }
+        .step-caption {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            max-width: 220px;
+        }
+
+        .step-arrow {
+            align-self: center;
+            margin-top: 140px;
+            color: var(--text-muted);
+            flex-shrink: 0;
+            opacity: 0;
+            animation: fadeInUp 0.7s ease forwards;
+        }
+        .step-arrow:nth-child(2) { animation-delay: 0.5s; }
+        .step-arrow:nth-child(4) { animation-delay: 0.7s; }
+        .step-arrow svg { display: block; }
+        .step-arrow .arrow-down { display: none; }
+
+        /* ============ Store CTA ============ */
+        .steps-download {
+            text-align: center;
+            padding: 64px 40px 40px;
+        }
+        .steps-download .download-buttons {
+            margin-bottom: 16px;
+        }
+        .steps-download,
+        .steps-download .download-buttons {
+            opacity: 0;
+            animation: fadeInUp 0.7s ease 0.95s forwards;
+        }
+        .steps-download .download-buttons { animation: none; opacity: 1; }
+
+        /* ============ Social proof ============ */
+        .quotes-section {
+            padding: 80px 40px 120px;
+            max-width: var(--container-width);
+            margin: 0 auto;
+        }
+        .quotes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .quote-card {
+            padding: 28px;
+        }
+        .quote-mark {
+            font-size: 40px;
+            line-height: 1;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .quote-text {
+            font-size: 15px;
+            font-style: italic;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        .quote-author {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        /* ============ Responsive ============ */
+        @media (max-width: 900px) {
+            .steps-hero { padding: 120px 20px 40px; }
+            .steps-hero .hero-badge { display: inline-flex; }
+
+            .steps-strip {
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+                margin-top: 40px;
+                padding: 0 20px;
+            }
+            .step-item { flex-basis: auto; }
+            .step-arrow {
+                margin-top: 0;
+                padding: 8px 0;
+            }
+            .step-arrow .arrow-right { display: none; }
+            .step-arrow .arrow-down { display: block; }
+            .step-phone img { width: 210px; }
+
+            .quotes-section { padding: 60px 20px 100px; }
+            .quotes-grid { grid-template-columns: 1fr; }
+
+            .mockup-pill {
+                top: auto;
+                bottom: 16px;
+                left: 16px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Gradient background -->
+    <div class="gradient-bg">
+        <div class="gradient-sphere sphere-1"></div>
+        <div class="gradient-sphere sphere-2"></div>
+        <div class="gradient-sphere sphere-3"></div>
+        <div class="noise-overlay"></div>
+    </div>
+
+    <!-- Mockup label pill -->
+    <div class="mockup-pill">Mockup C — 3-step hero · <a href="index.html">all variants</a></div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <img src="../assets/images/logo.png" alt="FormSensei" class="nav-logo-img">
+                <span class="nav-logo-text">FormSensei</span>
+            </a>
+            <div class="nav-auth">
+                <a href="https://apps.apple.com/ca/app/scoresensei-disc-golf/id6758869856" class="nav-cta">Get the app</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero steps-hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                Form analysis in your pocket
+            </div>
+            <h1 class="hero-title">Instant coaching on <span class="gradient-text">every throw</span></h1>
+            <p class="hero-subtitle">No coach, no launch monitor, no guesswork. Just your phone.</p>
+        </div>
+
+        <!-- 3-step strip -->
+        <div class="steps-strip">
+            <div class="step-item">
+                <div class="step-badge">1</div>
+                <div class="step-name">Record</div>
+                <div class="step-phone">
+                    <div class="phone-glow"></div>
+                    <img src="../assets/screenshots/v2/form-analysis-record.png" alt="Recording a disc golf throw in FormSensei">
+                </div>
+                <p class="step-caption">Prop up your phone and throw</p>
+            </div>
+
+            <div class="step-arrow">
+                <svg class="arrow-right" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                <svg class="arrow-down" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="5 12 12 19 19 12"/></svg>
+            </div>
+
+            <div class="step-item">
+                <div class="step-badge">2</div>
+                <div class="step-name">Analyze</div>
+                <div class="step-phone">
+                    <div class="phone-glow"></div>
+                    <img src="../assets/screenshots/v2/kalan-knee-angle.png" alt="AI-mapped knee angle annotation on a throw">
+                </div>
+                <p class="step-caption">AI maps your mechanics in seconds</p>
+            </div>
+
+            <div class="step-arrow">
+                <svg class="arrow-right" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                <svg class="arrow-down" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="5 12 12 19 19 12"/></svg>
+            </div>
+
+            <div class="step-item">
+                <div class="step-badge">3</div>
+                <div class="step-name">Fix</div>
+                <div class="step-phone">
+                    <div class="phone-glow"></div>
+                    <img src="../assets/screenshots/form-observations.png" alt="Specific coaching cues and observations">
+                </div>
+                <p class="step-caption">Get specific cues on what to fix first</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Store buttons -->
+    <section class="steps-download">
+        <div class="download-buttons">
+            <a href="https://apps.apple.com/ca/app/scoresensei-disc-golf/id6758869856" class="store-btn app-store">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                </svg>
+                <div class="store-btn-text">
+                    <span class="store-btn-small">Download on</span>
+                    <span class="store-btn-large">App Store</span>
+                </div>
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=com.joevanderveenllc.scoresensei" class="store-btn google-play">
+                <img src="../assets/images/google-play-logo.svg" alt="Google Play" width="28" height="28">
+                <div class="store-btn-text">
+                    <span class="store-btn-small">Get it on</span>
+                    <span class="store-btn-large">Google Play</span>
+                </div>
+            </a>
+        </div>
+        <p class="download-note">Free to download</p>
+    </section>
+
+    <!-- Social proof -->
+    <section class="quotes-section">
+        <div class="section-header">
+            <span class="section-tag">Social proof</span>
+            <h2 class="section-title">What players are saying</h2>
+        </div>
+        <div class="quotes-grid">
+            <div class="glass-card quote-card">
+                <span class="quote-mark">&ldquo;</span>
+                <p class="quote-text">[Real DM quote goes here]</p>
+                <p class="quote-author">&mdash; [player first name]</p>
+            </div>
+            <div class="glass-card quote-card">
+                <span class="quote-mark">&ldquo;</span>
+                <p class="quote-text">[Real DM quote goes here]</p>
+                <p class="quote-author">&mdash; [player first name]</p>
+            </div>
+            <div class="glass-card quote-card">
+                <span class="quote-mark">&ldquo;</span>
+                <p class="quote-text">[Real DM quote goes here]</p>
+                <p class="quote-author">&mdash; [player first name]</p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

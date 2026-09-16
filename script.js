@@ -61,7 +61,7 @@ storeButtons.forEach(button => {
 });
 
 // Log analytics (placeholder - replace with actual analytics)
-console.log('ScoreSensei website loaded');
+console.log('FormSensei website loaded');
 
 // Prevent default click on store buttons (since they're placeholders)
 document.querySelectorAll('.store-button, .store-button-hero').forEach(button => {

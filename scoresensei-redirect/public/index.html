@@ -1,0 +1,1645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BD8J2BPQ0X"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-BD8J2BPQ0X');
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest('a[href*="apps.apple.com"], a[href*="play.google.com"]');
+        if (!a) return;
+        var isApple = a.href.indexOf('apps.apple.com') !== -1;
+        gtag('event', isApple ? 'app_store_click' : 'play_store_click', {
+          store: isApple ? 'app_store' : 'play_store',
+          link_url: a.href
+        });
+      });
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScoreSensei - See the story behind every throw</title>
+    <meta name="description" content="ScoreSensei delivers pro-level form analysis and deep round insights that help disc golfers actually improve.">
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+    <link rel="apple-touch-icon" href="assets/images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles-new.css?v=29">
+</head>
+<body id="top">
+    <!-- Gradient Mesh Background -->
+    <div class="gradient-bg">
+        <div class="gradient-sphere sphere-1"></div>
+        <div class="gradient-sphere sphere-2"></div>
+        <div class="gradient-sphere sphere-3"></div>
+        <div class="noise-overlay"></div>
+    </div>
+
+
+    <!-- Mode Toggle Button (only visible on localhost) -->
+    <button id="modeToggle" class="mode-toggle" onclick="toggleMode()" style="display: none;">
+        <span id="currentModeLabel">Default</span>
+        <span class="mode-toggle-arrow">→</span>
+    </button>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="#top" class="nav-logo">
+                <img src="assets/images/logo.png" alt="ScoreSensei" class="nav-logo-img">
+                <span class="nav-logo-text">ScoreSensei</span>
+            </a>
+            <div class="nav-links mode-default mode-form-focus mode-proskeleton">
+                <a href="#analysis" class="nav-link">Form Analysis</a>
+                <a href="#rounds" class="nav-link">Round Analysis</a>
+                <a href="#download" class="nav-link">Download</a>
+            </div>
+            <div class="nav-links mode-sensei-info" style="display: none;">
+                <a href="#player-profile" class="nav-link">Player Profile</a>
+                <a href="#analysis" class="nav-link">Form Analysis</a>
+                <a href="#rounds" class="nav-link">Round Analysis</a>
+                <a href="#download" class="nav-link">Download</a>
+            </div>
+            <div class="nav-auth">
+                <a href="/login" class="nav-signin">Sign in</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <!-- Default Mode Content -->
+            <div class="mode-default">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    Pro-Level Form & Round Analysis
+                </div>
+                <h1 class="hero-title">
+                    See the story behind
+                    <span class="gradient-text">every throw</span>
+                </h1>
+                <p class="hero-subtitle">
+                    The only app with real biomechanical form analysis. Deep round insights.
+                    Brutally honest feedback. Built for players who actually want to improve.
+                </p>
+            </div>
+            <!-- Form Analysis Focus Mode Content -->
+            <div class="mode-form-focus" style="display: none;">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    Live Form Coaching
+                </div>
+                <h1 class="hero-title">
+                    Instant feedback on
+                    <span class="gradient-text">every throw</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Pick a skill to work on, hit record, and throw. Get real-time coaching cues
+                    focused on exactly what you're trying to fix—no stopping, no reviewing, just reps and results.
+                </p>
+            </div>
+            <!-- Instant Form Analysis Mode Content -->
+            <div class="mode-proskeleton" style="display: none;">
+                <h1 class="hero-title">
+                    Instant feedback on
+                    <span class="gradient-text">every throw</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Record your throw and get immediate coaching cues. See how your mechanics compare
+                    to optimal pro form—visual overlays and actionable feedback help you fix what matters most.
+                </p>
+            </div>
+            <!-- Sensei Info Mode Content -->
+            <div class="mode-sensei-info" style="display: none;">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    Player Profile & Skill Analysis
+                </div>
+                <h1 class="hero-title">
+                    Know your game
+                    <span class="gradient-text">inside out</span>
+                </h1>
+                <p class="hero-subtitle">
+                    A skill profile that evolves with every round. See your strengths,
+                    find your weaknesses, and track how your game changes over time—alongside
+                    pro-level form analysis and deep round insights.
+                </p>
+            </div>
+            <div class="hero-cta">
+                <a href="https://apps.apple.com/ca/app/scoresensei-disc-golf/id6758869856" class="store-btn app-store">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                    </svg>
+                    <div class="store-btn-text">
+                        <span class="store-btn-small">Download on</span>
+                        <span class="store-btn-large">App Store</span>
+                    </div>
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.joevanderveenllc.scoresensei" class="store-btn google-play">
+                    <img src="assets/images/google-play-logo.svg" alt="Google Play" width="28" height="28">
+                    <div class="store-btn-text">
+                        <span class="store-btn-small">Get it on</span>
+                        <span class="store-btn-large">Google Play</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-phone hero-phone-main">
+                <div class="phone-glow"></div>
+                <img src="assets/screenshots/v2/kalan-loaded-comparison.png" alt="Form Analysis">
+            </div>
+            <div class="hero-phone hero-phone-secondary">
+                <img src="assets/screenshots/hero-main.png" alt="ScoreSensei App">
+            </div>
+        </div>
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <span>Scroll to explore</span>
+            <div class="scroll-arrow">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 5v14M5 12l7 7 7-7"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Player Profile Section (Sensei Info Mode) -->
+    <section id="player-profile" class="analysis-section mode-sensei-info" style="display: none;">
+        <div class="analysis-container">
+            <div class="analysis-content" data-aos="fade-right">
+                <span class="section-tag sensei-tag">Player Profile</span>
+                <h2 class="section-title">Your skills, <span class="gradient-text">visualized</span></h2>
+                <p class="analysis-desc">
+                    A detailed skill profile built from your rounds. Concentric skill rings show your
+                    Backhand, Forehand, Putting, Distance, and Accuracy at a glance, while detailed
+                    skill bars break down exactly where you stand across every category.
+                </p>
+                <ul class="analysis-features">
+                    <li>
+                        <span class="check-icon">&#10003;</span>
+                        <span>Overall skill score (0-100) with proficiency tier</span>
+                    </li>
+                    <li>
+                        <span class="check-icon">&#10003;</span>
+                        <span>Skill breakdown across 5+ categories</span>
+                    </li>
+                    <li>
+                        <span class="check-icon">&#10003;</span>
+                        <span>Player archetype detection</span>
+                    </li>
+                    <li>
+                        <span class="check-icon">&#10003;</span>
+                        <span>Track skill evolution round over round</span>
+                    </li>
+                </ul>
+                <a href="#download" class="btn btn-primary">
+                    See Your Profile
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="analysis-visual" data-aos="fade-left">
+                <div class="analysis-phone-showcase">
+                    <div class="phone-glow"></div>
+                    <img src="assets/screenshots/v2/player-profile-card.svg" alt="Player Profile with Skill Rings" class="analysis-screenshot">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skill Breakdown Showcase (Sensei Info Mode) -->
+    <section class="analysis-showcase mode-sensei-info" style="display: none;">
+        <div class="section-header">
+            <span class="section-tag sensei-tag">Skill Breakdown</span>
+            <h2 class="section-title">Every skill, <span class="gradient-text">measured</span></h2>
+            <p class="section-subtitle">See exactly where you're strong and where to focus your practice</p>
+        </div>
+        <div class="showcase-grid">
+            <div class="showcase-item" data-aos="fade-up">
+                <div class="showcase-phone">
+                    <img src="assets/screenshots/v2/skill-rings-overview.svg" alt="Skill Rings">
+                </div>
+                <div class="showcase-label">
+                    <h3>Your Skill Rings</h3>
+                    <p>Concentric rings visualize Backhand, Forehand, Putting, Distance, and Accuracy at a glance</p>
+                </div>
+            </div>
+            <div class="showcase-item" data-aos="fade-up" data-aos-delay="100">
+                <div class="showcase-phone">
+                    <img src="assets/screenshots/v2/skill-bars-detail.svg" alt="Skill Bars">
+                </div>
+                <div class="showcase-label">
+                    <h3>Skill Bars</h3>
+                    <p>Each skill scored 0-100 with progress bars showing exactly where you stand</p>
+                </div>
+            </div>
+            <div class="showcase-item" data-aos="fade-up" data-aos-delay="200">
+                <div class="showcase-phone">
+                    <img src="assets/screenshots/v2/proficiency-tier.svg" alt="Proficiency Tier">
+                </div>
+                <div class="showcase-label">
+                    <h3>Proficiency Tier</h3>
+                    <p>From Developing to Elite — see your tier and track what it takes to level up</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overall Stats Section (Sensei Info Mode) -->
+    <section class="stats-overview-section mode-sensei-info" style="display: none;">
+        <div class="section-header">
+            <span class="section-tag sensei-tag">Overall Stats</span>
+            <h2 class="section-title">Your numbers, <span class="gradient-text">no sugarcoating</span></h2>
+            <p class="section-subtitle">Aggregated stats across all your rounds — the full picture</p>
+        </div>
+        <div class="stats-cards-row">
+            <div class="stats-preview-card glass-card" data-aos="fade-right">
+                <div class="stats-card-header">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="20" x2="18" y2="10"/>
+                        <line x1="12" y1="20" x2="12" y2="4"/>
+                        <line x1="6" y1="20" x2="6" y2="14"/>
+                    </svg>
+                    <h3>Overall Stats</h3>
+                </div>
+                <div class="stats-card-body">
+                    <div class="stat-item">
+                        <span class="stat-label">Avg vs Par</span>
+                        <span class="stat-value stat-green">-2.4</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Best Round</span>
+                        <span class="stat-value">-7</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Rounds Played</span>
+                        <span class="stat-value">42</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Total Throws</span>
+                        <span class="stat-value">2,814</span>
+                    </div>
+                </div>
+                <div class="stats-card-footer">
+                    <img src="assets/screenshots/v2/overall-stats-card.svg" alt="Overall Stats" class="stats-card-preview-img">
+                </div>
+            </div>
+            <div class="stats-preview-card glass-card" data-aos="fade-left">
+                <div class="stats-card-header">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                    <h3>Disc Bag Insights</h3>
+                </div>
+                <div class="stats-card-body">
+                    <div class="stat-item">
+                        <span class="stat-label">Discs Tracked</span>
+                        <span class="stat-value">12</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Most Used</span>
+                        <span class="stat-value stat-highlight">Buzzz</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Best Performer</span>
+                        <span class="stat-value stat-highlight">Destroyer</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Throws Logged</span>
+                        <span class="stat-value">1,247</span>
+                    </div>
+                </div>
+                <div class="stats-card-footer">
+                    <img src="assets/screenshots/v2/disc-bag-card.svg" alt="Disc Bag" class="stats-card-preview-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Form Analysis Deep Dive -->
+    <section id="analysis" class="analysis-section">
+        <div class="analysis-container">
+            <div class="analysis-content" data-aos="fade-right">
+                <span class="section-tag">Form Analysis</span>
+                <h2 class="section-title">See what you've been missing</h2>
+                <p class="analysis-desc">
+                    Advanced motion tracking captures your entire body with precision accuracy, analyzing
+                    every millisecond of your throw. Compare your form side-by-side with optimal pro form
+                    and get actionable coaching tips.
+                </p>
+                <ul class="analysis-features">
+                    <li>
+                        <span class="check-icon">✓</span>
+                        <span>Skeletal motion tracking</span>
+                    </li>
+                    <li>
+                        <span class="check-icon">✓</span>
+                        <span>Elite form comparison</span>
+                    </li>
+                    <li>
+                        <span class="check-icon">✓</span>
+                        <span>Timing & tempo analysis</span>
+                    </li>
+                    <li>
+                        <span class="check-icon">✓</span>
+                        <span>Personalized drill suggestions</span>
+                    </li>
+                </ul>
+                <a href="#download" class="btn btn-primary">
+                    Try Form Analysis
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="analysis-visual" data-aos="fade-left">
+                <div class="analysis-phone-showcase">
+                    <div class="phone-glow"></div>
+                    <img src="assets/screenshots/v2/trent-loaded-comparison.png" alt="Form Analysis" class="analysis-screenshot">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Before/After Comparison -->
+    <section class="comparison-section">
+        <div class="section-header">
+            <span class="section-tag">See the Difference</span>
+            <h2 class="section-title">Your throw vs <span class="gradient-text">optimal form</span></h2>
+        </div>
+        <div class="comparison-container">
+            <div class="comparison-card amateur" data-aos="fade-right">
+                <div class="comparison-label">Your Form</div>
+                <div class="comparison-visual">
+                    <div class="form-indicator bad">
+                        <svg viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="70"/>
+                        </svg>
+                        <span>72%</span>
+                    </div>
+                </div>
+                <div class="comparison-issues">
+                    <span class="issue">Poor back knee angle</span>
+                    <span class="issue">Late extension timing</span>
+                    <span class="issue">Excess drift</span>
+                </div>
+            </div>
+            <div class="comparison-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </div>
+            <div class="comparison-card pro" data-aos="fade-left">
+                <div class="comparison-label">Optimal Form</div>
+                <div class="comparison-visual">
+                    <div class="form-indicator good">
+                        <svg viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="45" stroke-dasharray="283" stroke-dashoffset="15"/>
+                        </svg>
+                        <span>95%</span>
+                    </div>
+                </div>
+                <div class="comparison-fixes">
+                    <span class="fix">Optimal knee angle</span>
+                    <span class="fix">Good timing</span>
+                    <span class="fix">Quick arm twitch</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Analysis Showcase -->
+    <section class="analysis-showcase">
+        <div class="section-header">
+            <span class="section-tag">Precision Analysis</span>
+            <h2 class="section-title">Every detail, <span class="gradient-text">measured</span></h2>
+            <p class="section-subtitle">Frame-by-frame annotations show exactly what's happening in your throw</p>
+        </div>
+        <div class="showcase-grid">
+            <div class="showcase-item" data-aos="fade-up">
+                <div class="showcase-phone">
+                    <img src="assets/screenshots/v2/joe-analysis-score.png" alt="Form Score">
+                </div>
+                <div class="showcase-label">
+                    <h3>Get Your Form Graded</h3>
+                    <p>Detailed scoring and analysis of your throwing mechanics</p>
+                </div>
+            </div>
+            <div class="showcase-item" data-aos="fade-up" data-aos-delay="100">
+                <div class="showcase-phone">
+                    <img src="assets/screenshots/v2/kalan-knee-angle.png" alt="Back Knee Annotation">
+                </div>
+                <div class="showcase-label">
+                    <h3>Back Knee Analysis</h3>
+                    <p>Precise angle measurements at key checkpoints</p>
+                </div>
+            </div>
+            <div class="showcase-item" data-aos="fade-up" data-aos-delay="200">
+                <div class="showcase-phone">
+                    <img src="assets/screenshots/v2/trent-powered-rotation.png" alt="Powered Rotation">
+                </div>
+                <div class="showcase-label">
+                    <h3>Powered Rotation</h3>
+                    <p>Core rotation mechanics and power generation analysis</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="section-header mode-default">
+            <span class="section-tag">Features</span>
+            <h2 class="section-title">Everything you need to <span class="gradient-text">level up</span></h2>
+            <p class="section-subtitle">Powerful tools designed for disc golfers who want to improve</p>
+        </div>
+        <div class="section-header mode-form-focus" style="display: none;">
+            <span class="section-tag">Live Form Analysis</span>
+            <h2 class="section-title">Coach yourself in <span class="gradient-text">real-time</span></h2>
+            <p class="section-subtitle">Keep the camera rolling and get instant feedback on every throw</p>
+        </div>
+        <div class="section-header mode-proskeleton" style="display: none;">
+            <span class="section-tag">Instant Form Analysis</span>
+            <h2 class="section-title">Get coached on <span class="gradient-text">every throw</span></h2>
+            <p class="section-subtitle">Record a throw and get instant feedback on your form</p>
+        </div>
+        <div class="section-header mode-sensei-info" style="display: none;">
+            <span class="section-tag sensei-tag">Features</span>
+            <h2 class="section-title">Everything you need to <span class="gradient-text">level up</span></h2>
+            <p class="section-subtitle">Skill profiling, form analysis, round insights, and more</p>
+        </div>
+
+        <!-- Form Focus Mode: Featured Card -->
+        <div class="mode-form-focus" style="display: none;">
+            <div class="featured-card glass-card" data-aos="fade-up">
+                <div class="featured-icon" style="--accent: #9b59b6;">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="23 7 16 12 23 17 23 7"/>
+                        <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+                    </svg>
+                </div>
+                <div class="featured-content">
+                    <h3 class="featured-title">Continuous Field Session Coaching</h3>
+                    <p class="featured-desc">
+                        Keep the camera rolling during your entire practice session. Every throw gets analyzed in real-time—the
+                        moment your disc leaves your hand, you see the breakdown on screen and hear exactly what to fix.
+                        Visual overlays and voice coaching work together so you never have to stop and review footage.
+                        Just throw, listen, adjust, repeat.
+                    </p>
+                    <div class="featured-tags">
+                        <span class="feature-tag">Real-time</span>
+                        <span class="feature-tag">Visual + Voice</span>
+                        <span class="feature-tag">Continuous</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="features-grid mode-form-focus" style="display: none;">
+            <div class="feature-card glass-card" data-aos="fade-up">
+                <div class="feature-icon" style="--accent: #5B7EFF;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">See It, Hear It, Fix It</h3>
+                <p class="feature-desc">On-screen highlights show where your form broke down while spoken cues tell you exactly how to correct it—right after each throw.</p>
+                <div class="feature-tag">Real-time</div>
+            </div>
+
+            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-icon" style="--accent: #4ECDC4;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                        <polyline points="22 4 12 14.01 9 11.01"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Form Checkpoints</h3>
+                <p class="feature-desc">Track the critical moments: reach-back position, power pocket, release point, and follow-through timing.</p>
+                <div class="feature-tag">Precision</div>
+            </div>
+
+            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-icon" style="--accent: #B8E986;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="20" x2="18" y2="10"/>
+                        <line x1="12" y1="20" x2="12" y2="4"/>
+                        <line x1="6" y1="20" x2="6" y2="14"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Progress Tracking</h3>
+                <p class="feature-desc">See your form scores improve over time. Identify which corrections are sticking and where you're backsliding.</p>
+                <div class="feature-tag">Analytics</div>
+            </div>
+
+            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="feature-icon" style="--accent: #FF6B6B;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"/>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                        <line x1="8" y1="11" x2="14" y2="11"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Pro Comparison</h3>
+                <p class="feature-desc">See exactly how your mechanics differ from touring pros. Know where you're losing power or accuracy.</p>
+                <div class="feature-tag">Side-by-side</div>
+            </div>
+
+            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="feature-icon" style="--accent: #9b59b6;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                        <path d="M2 17l10 5 10-5"/>
+                        <path d="M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Skill Focus Mode</h3>
+                <p class="feature-desc">Pick one thing to work on—rounding, timing, footwork—and every rep gets scored on that specific skill.</p>
+                <div class="feature-tag">Targeted</div>
+            </div>
+
+            <div class="feature-card glass-card secondary-feature" data-aos="fade-up" data-aos-delay="500">
+                <div class="feature-icon" style="--accent: #e67e22;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                        <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                        <line x1="12" y1="19" x2="12" y2="23"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Round Tracking</h3>
+                <p class="feature-desc">Voice-scored rounds with deep stats and round stories when you're on the course.</p>
+                <div class="feature-tag">Also included</div>
+            </div>
+        </div>
+
+        <!-- Instant Form Analysis Mode: Featured Card -->
+        <div class="mode-proskeleton" style="display: none;">
+            <div class="featured-card glass-card proskeleton-card" data-aos="fade-up">
+                <div class="featured-icon" style="--accent: #FF6B6B;">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="23 7 16 12 23 17 23 7"/>
+                        <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+                    </svg>
+                </div>
+                <div class="featured-content">
+                    <h3 class="featured-title proskeleton-title">Instant Field Session Coaching</h3>
+                    <p class="featured-desc">
+                        Record each throw during your practice session and get a full biomechanical breakdown. Visual
+                        overlays show your form compared to optimal pro mechanics with clear feedback on what to fix.
+                        Capture, analyze, adjust, repeat.
+                    </p>
+                    <div class="featured-tags">
+                        <span class="feature-tag proskeleton-tag">Instant</span>
+                        <span class="feature-tag proskeleton-tag">Visual Overlays</span>
+                        <span class="feature-tag proskeleton-tag">Pro Comparison</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="features-grid mode-proskeleton" style="display: none;">
+            <div class="feature-card glass-card" data-aos="fade-up">
+                <div class="feature-icon" style="--accent: #5B7EFF;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">See It, Understand It, Fix It</h3>
+                <p class="feature-desc">On-screen highlights show exactly where your form broke down with clear feedback on how to correct it.</p>
+                <div class="feature-tag">Instant</div>
+            </div>
+
+            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-icon" style="--accent: #4ECDC4;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                        <polyline points="22 4 12 14.01 9 11.01"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Form Checkpoints</h3>
+                <p class="feature-desc">Track the critical moments: reach-back position, power pocket, release point, and follow-through timing.</p>
+                <div class="feature-tag">Precision</div>
+            </div>
+
+            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-icon" style="--accent: #B8E986;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="20" x2="18" y2="10"/>
+                        <line x1="12" y1="20" x2="12" y2="4"/>
+                        <line x1="6" y1="20" x2="6" y2="14"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Progress Tracking</h3>
+                <p class="feature-desc">See your form scores improve over time. Identify which corrections are sticking and where you're backsliding.</p>
+                <div class="feature-tag">Analytics</div>
+            </div>
+
+            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="feature-icon" style="--accent: #FF6B6B;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="5" r="3"/>
+                        <line x1="12" y1="8" x2="12" y2="16"/>
+                        <line x1="8" y1="12" x2="16" y2="12"/>
+                        <line x1="12" y1="16" x2="8" y2="22"/>
+                        <line x1="12" y1="16" x2="16" y2="22"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Pro Form Comparison</h3>
+                <p class="feature-desc">See exactly how your mechanics differ from optimal pro form—an aggregate model built from the best players' techniques.</p>
+                <div class="feature-tag">Side-by-side</div>
+            </div>
+
+            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="feature-icon" style="--accent: #9b59b6;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Actionable Coaching</h3>
+                <p class="feature-desc">Not just numbers—personalized drill suggestions and corrections based on the specific ways your form differs from optimal.</p>
+                <div class="feature-tag">Coaching</div>
+            </div>
+
+            <div class="feature-card glass-card secondary-feature" data-aos="fade-up" data-aos-delay="500">
+                <div class="feature-icon" style="--accent: #e67e22;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Round Tracking</h3>
+                <p class="feature-desc">Track your rounds with deep stats and round stories when you're on the course.</p>
+                <div class="feature-tag">Also included</div>
+            </div>
+        </div>
+
+        <div class="features-grid mode-default">
+            <div class="feature-card glass-card" data-aos="fade-up">
+                <div class="feature-icon" style="--accent: #4ECDC4;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                        <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                        <line x1="12" y1="19" x2="12" y2="23"/>
+                        <line x1="8" y1="23" x2="16" y2="23"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Voice Scoring</h3>
+                <p class="feature-desc">Record rounds hands-free. Just speak your scores and focus on your game, not the scorecard.</p>
+                <div class="feature-tag">Hands-free</div>
+            </div>
+
+            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-icon" style="--accent: #5B7EFF;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <circle cx="12" cy="12" r="6"/>
+                        <circle cx="12" cy="12" r="2"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Deep Round Insights</h3>
+                <p class="feature-desc">Stats you won't find anywhere else—mistake tracking, landing zones, shot shapes, C1X putting, and more.</p>
+                <div class="feature-tag">Analytics</div>
+            </div>
+
+            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-icon" style="--accent: #B8E986;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Round Stories</h3>
+                <p class="feature-desc">Detailed narratives of your rounds. Relive key moments, turning points, and clutch putts like never before.</p>
+                <div class="feature-tag">Storytelling</div>
+            </div>
+
+            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="feature-icon" style="--accent: #FF6B6B;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        <path d="M12 8v4M12 16h.01"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">The Judge</h3>
+                <p class="feature-desc">Get hilariously roasted after every round. Perfect for sharing with friends or posting to socials.</p>
+                <div class="feature-tag">Viral Content</div>
+            </div>
+
+            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="feature-icon" style="--accent: #9b59b6;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="23 7 16 12 23 17 23 7"/>
+                        <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Form Analysis</h3>
+                <p class="feature-desc">Upload throwing videos for frame-by-frame biomechanical analysis. See exactly what the pros do differently.</p>
+                <div class="feature-tag">Pro-Level</div>
+            </div>
+
+            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="500">
+                <div class="feature-icon" style="--accent: #e67e22;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="20" x2="18" y2="10"/>
+                        <line x1="12" y1="20" x2="12" y2="4"/>
+                        <line x1="6" y1="20" x2="6" y2="14"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Shot Patterns</h3>
+                <p class="feature-desc">Discover your throwing tendencies. Identify strengths, weaknesses, and opportunities to gain strokes.</p>
+                <div class="feature-tag">Insights</div>
+            </div>
+        </div><!-- End mode-default features-grid -->
+
+        <div class="features-grid mode-sensei-info" style="display: none;">
+            <div class="feature-card glass-card" data-aos="fade-up">
+                <div class="feature-icon" style="--accent: #60A5FA;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <circle cx="12" cy="12" r="6"/>
+                        <circle cx="12" cy="12" r="2"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Player Profile</h3>
+                <p class="feature-desc">Skill scoring across Backhand, Forehand, Putting, and more. See your proficiency tier and track how your game evolves.</p>
+                <div class="feature-tag sensei-feature-tag">Skill Profile</div>
+            </div>
+
+            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-icon" style="--accent: #34D399;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="20" x2="18" y2="10"/>
+                        <line x1="12" y1="20" x2="12" y2="4"/>
+                        <line x1="6" y1="20" x2="6" y2="14"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Overall Stats</h3>
+                <p class="feature-desc">Average score vs par, best rounds, birdie rates, OB counts — aggregated across every round you play.</p>
+                <div class="feature-tag sensei-feature-tag">Analytics</div>
+            </div>
+
+            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-icon" style="--accent: #A78BFA;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Disc Bag Insights</h3>
+                <p class="feature-desc">See which discs are performing and which are holding you back. Per-disc stats powered by your round data.</p>
+                <div class="feature-tag sensei-feature-tag">Data-Driven</div>
+            </div>
+
+            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="feature-icon" style="--accent: #9b59b6;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="23 7 16 12 23 17 23 7"/>
+                        <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Form Analysis</h3>
+                <p class="feature-desc">Frame-by-frame biomechanical analysis. Compare your form side-by-side with optimal pro mechanics.</p>
+                <div class="feature-tag sensei-feature-tag">Pro-Level</div>
+            </div>
+
+            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="feature-icon" style="--accent: #4ECDC4;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                        <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                        <line x1="12" y1="19" x2="12" y2="23"/>
+                        <line x1="8" y1="23" x2="16" y2="23"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Voice Scoring</h3>
+                <p class="feature-desc">Record rounds hands-free. Just speak your scores and focus on your game, not the scorecard.</p>
+                <div class="feature-tag sensei-feature-tag">Hands-free</div>
+            </div>
+
+            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="500">
+                <div class="feature-icon" style="--accent: #FBBF24;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Round Stories</h3>
+                <p class="feature-desc">Detailed narratives of your rounds. Relive key moments, turning points, and clutch putts like never before.</p>
+                <div class="feature-tag sensei-feature-tag">Storytelling</div>
+            </div>
+        </div><!-- End mode-sensei-info features-grid -->
+    </section>
+
+    <!-- Player Profile Section (Instant Form Mode - toggle via SHOW_PROFILE_IN_INSTANT_FORM) -->
+    <section class="analysis-section mode-proskeleton profile-in-instant-form" style="display: none;">
+        <div class="analysis-container">
+            <div class="analysis-content" data-aos="fade-right">
+                <span class="section-tag">Player Profile</span>
+                <h2 class="section-title">Your skills, <span class="gradient-text">visualized</span></h2>
+                <p class="analysis-desc">
+                    A detailed skill profile built from your rounds. Concentric skill rings show your
+                    Backhand, Forehand, Putting, Distance, and Accuracy at a glance, while detailed
+                    skill bars break down exactly where you stand across every category.
+                </p>
+                <ul class="analysis-features">
+                    <li>
+                        <span class="check-icon">&#10003;</span>
+                        <span>Overall skill score (0-100) with proficiency tier</span>
+                    </li>
+                    <li>
+                        <span class="check-icon">&#10003;</span>
+                        <span>Skill breakdown across 5+ categories</span>
+                    </li>
+                    <li>
+                        <span class="check-icon">&#10003;</span>
+                        <span>Player archetype detection</span>
+                    </li>
+                    <li>
+                        <span class="check-icon">&#10003;</span>
+                        <span>Track skill evolution round over round</span>
+                    </li>
+                </ul>
+                <a href="#download" class="btn btn-primary">
+                    See Your Profile
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="analysis-visual" data-aos="fade-left">
+                <div class="analysis-phone-showcase">
+                    <div class="phone-glow"></div>
+                    <!-- TODO: Replace with actual screenshot -->
+                    <div class="screenshot-placeholder" style="width: 280px; height: 500px; background: linear-gradient(135deg, rgba(96,165,250,0.15), rgba(37,99,235,0.15)); border: 2px dashed rgba(96,165,250,0.4); border-radius: 24px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 14px; text-align: center; padding: 20px;">Player Profile<br>Screenshot</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skill Breakdown Showcase (Instant Form Mode - toggle via SHOW_PROFILE_IN_INSTANT_FORM) -->
+    <section class="analysis-showcase mode-proskeleton profile-in-instant-form" style="display: none;">
+        <div class="section-header">
+            <span class="section-tag">Skill Breakdown</span>
+            <h2 class="section-title">Every skill, <span class="gradient-text">measured</span></h2>
+            <p class="section-subtitle">See exactly where you're strong and where to focus your practice</p>
+        </div>
+        <div class="showcase-grid">
+            <div class="showcase-item" data-aos="fade-up">
+                <div class="showcase-phone">
+                    <!-- TODO: Replace with actual screenshot -->
+                    <div class="screenshot-placeholder" style="width: 220px; height: 400px; background: linear-gradient(135deg, rgba(96,165,250,0.15), rgba(37,99,235,0.15)); border: 2px dashed rgba(96,165,250,0.4); border-radius: 24px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 14px; text-align: center; padding: 20px;">Skill Rings<br>Screenshot</div>
+                </div>
+                <div class="showcase-label">
+                    <h3>Your Skill Rings</h3>
+                    <p>Concentric rings visualize Backhand, Forehand, Putting, Distance, and Accuracy at a glance</p>
+                </div>
+            </div>
+            <div class="showcase-item" data-aos="fade-up" data-aos-delay="100">
+                <div class="showcase-phone">
+                    <!-- TODO: Replace with actual screenshot -->
+                    <div class="screenshot-placeholder" style="width: 220px; height: 400px; background: linear-gradient(135deg, rgba(96,165,250,0.15), rgba(37,99,235,0.15)); border: 2px dashed rgba(96,165,250,0.4); border-radius: 24px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 14px; text-align: center; padding: 20px;">Skill Bars<br>Screenshot</div>
+                </div>
+                <div class="showcase-label">
+                    <h3>Skill Bars</h3>
+                    <p>Each skill scored 0-100 with progress bars showing exactly where you stand</p>
+                </div>
+            </div>
+            <div class="showcase-item" data-aos="fade-up" data-aos-delay="200">
+                <div class="showcase-phone">
+                    <!-- TODO: Replace with actual screenshot -->
+                    <div class="screenshot-placeholder" style="width: 220px; height: 400px; background: linear-gradient(135deg, rgba(96,165,250,0.15), rgba(37,99,235,0.15)); border: 2px dashed rgba(96,165,250,0.4); border-radius: 24px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 14px; text-align: center; padding: 20px;">Proficiency Tier<br>Screenshot</div>
+                </div>
+                <div class="showcase-label">
+                    <h3>Proficiency Tier</h3>
+                    <p>From Developing to Elite — see your tier and track what it takes to level up</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Round Analysis Showcase -->
+    <section id="rounds" class="round-showcase">
+        <div class="section-header mode-default mode-form-focus mode-proskeleton">
+            <span class="section-tag">Round Analysis</span>
+            <h2 class="section-title">Every round, <span class="gradient-text">dissected</span></h2>
+            <p class="section-subtitle">Deep insights into your driving, putting, and the story of how it all unfolded</p>
+        </div>
+        <div class="section-header mode-sensei-info" style="display: none;">
+            <span class="section-tag sensei-tag">Round Analysis</span>
+            <h2 class="section-title">Your rounds <span class="gradient-text">fuel your profile</span></h2>
+            <p class="section-subtitle">Every round you play feeds into your skill profile — driving stats, putting breakdowns, and round stories all shape your evolving player identity</p>
+        </div>
+        <div class="showcase-grid">
+            <div class="showcase-item" data-aos="fade-up">
+                <div class="showcase-phone">
+                    <img src="assets/screenshots/drive-analysis.png" alt="Drive Analysis">
+                </div>
+                <div class="showcase-label">
+                    <h3>Drive Analysis</h3>
+                    <p>Fairway hits, C1 in regulation, OB rate and more</p>
+                </div>
+            </div>
+            <div class="showcase-item" data-aos="fade-up" data-aos-delay="100">
+                <div class="showcase-phone">
+                    <img src="assets/screenshots/putt-analysis.png" alt="Putt Analysis">
+                </div>
+                <div class="showcase-label">
+                    <h3>Putt Analysis</h3>
+                    <p>C1, C1X, and C2 percentages broken down</p>
+                </div>
+            </div>
+            <div class="showcase-item" data-aos="fade-up" data-aos-delay="200">
+                <div class="showcase-phone">
+                    <img src="assets/screenshots/round-story.png" alt="Round Story">
+                </div>
+                <div class="showcase-label">
+                    <h3>Round Story</h3>
+                    <p>The narrative of your highs, lows, and clutch moments</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Judge & Glaze Section -->
+    <section class="roast-glaze-section">
+        <div class="section-header">
+            <span class="section-tag">Share-Worthy Content</span>
+            <h2 class="section-title">Get <span class="gradient-text-red">roasted</span> or <span class="gradient-text">glazed</span></h2>
+            <p class="section-subtitle">Every round ends with viral content for your Instagram story</p>
+        </div>
+
+        <!-- Result Cards -->
+        <div class="result-examples">
+            <div class="result-card roast-result" data-aos="fade-right">
+                <div class="card-glow-border"></div>
+                <div class="result-header roast-header">
+                    <span class="result-icon">🔥</span>
+                    <span class="result-label">THE ROAST</span>
+                </div>
+                <div class="result-content">
+                    <p class="roast-text">"Shot +8 at your home course? That's not a round, that's a cry for help. Your C1 putting was 45%—a coin flip has better odds. The only consistent thing about your game is finding every tree on the course."</p>
+                </div>
+                <div class="result-footer">
+                    <span class="share-hint">Perfect for the group chat</span>
+                </div>
+            </div>
+
+            <div class="result-card glaze-result" data-aos="fade-left">
+                <div class="card-glow-border"></div>
+                <div class="result-header glaze-header">
+                    <span class="result-icon">🍩</span>
+                    <span class="result-label">THE GLAZE</span>
+                </div>
+                <div class="result-content">
+                    <p class="glaze-text">"What an absolutely LEGENDARY performance today! Your drives were painting lines like Picasso with that 85% fairway hit rate. C1 putting at 92%? Ice cold. You didn't just play disc golf—you put on a MASTERCLASS."</p>
+                </div>
+                <div class="result-footer">
+                    <span class="share-hint">Hype yourself up</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Screenshots Carousel -->
+    <section id="action" class="screenshots-section">
+        <div class="section-header">
+            <span class="section-tag">App Preview</span>
+            <h2 class="section-title">See ScoreSensei in action</h2>
+        </div>
+        <div class="screenshots-carousel">
+            <div class="carousel-track">
+                <div class="carousel-slide">
+                    <img src="assets/screenshots/v2/kalan-loaded-comparison.png" alt="Form Comparison">
+                </div>
+                <div class="carousel-slide">
+                    <img src="assets/screenshots/v2/trent-loaded-comparison.png" alt="Form Analysis">
+                </div>
+                <div class="carousel-slide">
+                    <img src="assets/screenshots/the-judge.png" alt="The Judge">
+                </div>
+                <div class="carousel-slide">
+                    <img src="assets/screenshots/putt-analysis.png" alt="Putt Analysis">
+                </div>
+                <div class="carousel-slide">
+                    <img src="assets/screenshots/round-story.png" alt="Round Story">
+                </div>
+                <div class="carousel-slide">
+                    <img src="assets/screenshots/drive-analysis.png" alt="Drive Analysis">
+                </div>
+                <div class="carousel-slide">
+                    <img src="assets/screenshots/skills_assessment.png" alt="Skills Assessment">
+                </div>
+                <div class="carousel-slide">
+                    <img src="assets/screenshots/mental-game.png" alt="Mental Game">
+                </div>
+                <div class="carousel-slide">
+                    <img src="assets/screenshots/top-discs.png" alt="Top Discs">
+                </div>
+                <div class="carousel-slide">
+                    <img src="assets/screenshots/hole-throws-panel.png" alt="Hole Throws">
+                </div>
+                <div class="carousel-slide">
+                    <img src="assets/screenshots/v2/player-profile-card.svg" alt="Player Profile">
+                </div>
+                <div class="carousel-slide">
+                    <img src="assets/screenshots/v2/overall-stats-card.svg" alt="Overall Stats">
+                </div>
+                <!-- Duplicate for infinite scroll -->
+                <div class="carousel-slide">
+                    <img src="assets/screenshots/v2/kalan-loaded-comparison.png" alt="Form Comparison">
+                </div>
+                <div class="carousel-slide">
+                    <img src="assets/screenshots/v2/trent-loaded-comparison.png" alt="Form Analysis">
+                </div>
+                <div class="carousel-slide">
+                    <img src="assets/screenshots/the-judge.png" alt="The Judge">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download CTA Section -->
+    <section id="download" class="download-section">
+        <div class="download-container">
+            <div class="download-content" data-aos="fade-up">
+                <h2 class="download-title mode-default">Ready to transform your game?</h2>
+                <h2 class="download-title mode-form-focus" style="display: none;">Your next field session just got smarter</h2>
+                <h2 class="download-title mode-proskeleton" style="display: none;">Your next field session just got smarter</h2>
+                <h2 class="download-title mode-sensei-info" style="display: none;">Ready to see your true skill level?</h2>
+                <p class="download-subtitle mode-default">Join thousands of disc golfers who are already improving with ScoreSensei</p>
+                <p class="download-subtitle mode-form-focus" style="display: none;">Set up your phone, hit record, and get coached on every throw</p>
+                <p class="download-subtitle mode-proskeleton" style="display: none;">Record your throws, get instant feedback, and see how your form compares to optimal pro mechanics</p>
+                <p class="download-subtitle mode-sensei-info" style="display: none;">Build your skill profile, track your progress, and get the insights you need to actually improve</p>
+                <div class="download-buttons">
+                    <a href="https://apps.apple.com/ca/app/scoresensei-disc-golf/id6758869856" class="store-btn app-store">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                        </svg>
+                        <div class="store-btn-text">
+                            <span class="store-btn-small">Download on</span>
+                            <span class="store-btn-large">App Store</span>
+                        </div>
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.joevanderveenllc.scoresensei" class="store-btn google-play">
+                        <img src="assets/images/google-play-logo.svg" alt="Google Play" width="32" height="32">
+                        <div class="store-btn-text">
+                            <span class="store-btn-small">Get it on</span>
+                            <span class="store-btn-large">Google Play</span>
+                        </div>
+                    </a>
+                </div>
+                <p class="download-note">Available now on iOS and Android.</p>
+            </div>
+            <div class="download-visual">
+                <div class="download-phone">
+                    <div class="phone-glow"></div>
+                    <img src="assets/screenshots/v2/form-analysis-record.png" alt="Download ScoreSensei">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="assets/images/logo.png" alt="ScoreSensei" class="footer-logo">
+                <span class="footer-name">ScoreSensei</span>
+                <p class="footer-tagline">See the story behind every throw</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Product</h4>
+                    <a href="#features">Features</a>
+                    <a href="#analysis">Form Analysis</a>
+                    <a href="#download">Download</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <a href="#">About</a>
+                    <a href="/support">Support</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 ScoreSensei. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- In-app browser escape hint (shown when the App Store handoff is blocked) -->
+    <div id="inAppHint">
+        <div class="in-app-hint-card">
+            <p class="in-app-hint-title">Instagram's browser can't open the App&nbsp;Store</p>
+            <p>Tap the <strong>&bull;&bull;&bull;</strong> menu in the top-right corner and choose <strong>&ldquo;Open in external browser&rdquo;</strong>, then tap Download again.</p>
+            <button id="inAppHintClose">Got it</button>
+        </div>
+    </div>
+    <style>
+        #inAppHint {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background: rgba(0, 0, 0, 0.65);
+        }
+        .in-app-hint-card {
+            max-width: 360px;
+            background: #14141c;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 20px;
+            padding: 28px 24px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 15px;
+            line-height: 1.5;
+        }
+        .in-app-hint-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            margin: 0 0 12px;
+        }
+        .in-app-hint-card p {
+            margin: 0 0 16px;
+        }
+        #inAppHintClose {
+            border: none;
+            border-radius: 12px;
+            padding: 12px 32px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #fff;
+            background: linear-gradient(135deg, #4ECDC4, #44CF9C);
+            cursor: pointer;
+        }
+    </style>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="firebase-config.js?v=2"></script>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // In-app browsers (Instagram/Facebook/Messenger) can't hand off
+        // apps.apple.com links to the App Store (Apple redirects them to the
+        // itms-appss:// scheme, which the WebView blocks), so taps appear to
+        // do nothing. On tap: try the itms-apps:// scheme; if we're still in
+        // the page after a moment, show "open in external browser" steps.
+        (function () {
+            const ua = navigator.userAgent || '';
+            const isInAppBrowser = /Instagram|FBAN|FBAV|FB_IAB|Line\/|Snapchat/i.test(ua);
+            const isIOS = /iPhone|iPad|iPod/i.test(ua);
+            if (!isInAppBrowser || !isIOS) return;
+
+            const hint = document.getElementById('inAppHint');
+            // Hide the hint if the handoff succeeds (page gets backgrounded)
+            // so it isn't left showing when the user returns.
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden && hint) hint.style.display = 'none';
+            });
+
+            document.querySelectorAll('a.app-store').forEach(a => {
+                a.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (hint) hint.style.display = 'flex';
+                    window.location.href = a.href.replace(/^https:\/\//, 'itms-apps://');
+                });
+            });
+
+            const closeBtn = document.getElementById('inAppHintClose');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', () => {
+                    hint.style.display = 'none';
+                });
+            }
+        })();
+
+        // Navbar background on scroll
+        const nav = document.querySelector('.nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('nav-scrolled');
+            } else {
+                nav.classList.remove('nav-scrolled');
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('aos-animate');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('[data-aos]').forEach(el => observer.observe(el));
+
+        // Parallax effect for hero visual
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const heroVisual = document.querySelector('.hero-visual');
+            if (heroVisual && scrollY < 800) {
+                heroVisual.style.transform = `translateY(${scrollY * 0.1}px)`;
+            }
+        });
+
+        
+        // Logout handler
+        async function handleLogout() {
+            if (confirm('Are you sure you want to sign out?')) {
+                try {
+                    await signOut();
+                } catch (error) {
+                    console.error('Logout error:', error);
+                    alert('Error signing out. Please try again.');
+                }
+            }
+        }
+
+
+        // 3D tilt effect on feature cards
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+            });
+        });
+
+        // Typewriter effect for hero title
+        const heroTitle = document.querySelector('.hero-title');
+        if (heroTitle) {
+            const text = heroTitle.innerHTML;
+            heroTitle.style.opacity = '1';
+        }
+
+        // Feature flags
+        const SHOW_PROFILE_IN_INSTANT_FORM = false; // Toggle player profile sections in Instant Form mode
+
+        // Mode Toggle - cycle through four modes: default, form-focus, instant-form, sensei-info
+        // Modes: 0 = default, 1 = form-focus, 2 = instant-form, 3 = sensei-info
+        const INITIAL_MODE = 2;
+
+        let currentMode = INITIAL_MODE;
+        const MODE_NAMES = ['Default', 'Form Focus', 'Instant Form', 'Sensei Info'];
+        const MODE_COLORS = [
+            'linear-gradient(135deg, #5B7EFF, #4834d4)',   // Default - blue
+            'linear-gradient(135deg, #9b59b6, #8e44ad)',   // Form Focus - purple
+            'linear-gradient(135deg, #FF6B6B, #e74c3c)',   // Instant Form - coral
+            'linear-gradient(135deg, #60A5FA, #2563EB)'    // Sensei Info - blue gradient
+        ];
+
+        // Show toggle button only on localhost for testing
+        const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+        if (isLocalhost) {
+            document.getElementById('modeToggle').style.display = 'flex';
+        }
+
+        function applyMode(mode) {
+            const defaultElements = document.querySelectorAll('.mode-default');
+            const formFocusElements = document.querySelectorAll('.mode-form-focus');
+            const proskeletonElements = document.querySelectorAll('.mode-proskeleton');
+            const senseiInfoElements = document.querySelectorAll('.mode-sensei-info');
+            const currentModeLabel = document.getElementById('currentModeLabel');
+            const modeToggle = document.getElementById('modeToggle');
+
+            // Hide all mode elements first
+            defaultElements.forEach(el => el.style.display = 'none');
+            formFocusElements.forEach(el => el.style.display = 'none');
+            proskeletonElements.forEach(el => el.style.display = 'none');
+            senseiInfoElements.forEach(el => el.style.display = 'none');
+
+            // Show elements for current mode
+            const modeMap = [defaultElements, formFocusElements, proskeletonElements, senseiInfoElements];
+            const elementsToShow = modeMap[mode] || defaultElements;
+
+            elementsToShow.forEach(el => {
+                if (el.classList.contains('features-grid')) {
+                    el.style.display = 'grid';
+                } else if (el.classList.contains('nav-links')) {
+                    // Clear inline style so the stylesheet controls display
+                    // (mobile media query hides nav links at <=900px)
+                    el.style.display = '';
+                } else if (el.classList.contains('stats-cards-row')) {
+                    el.style.display = 'flex';
+                } else {
+                    el.style.display = 'block';
+                }
+            });
+
+            // Hide profile-in-instant-form sections if flag is off
+            if (!SHOW_PROFILE_IN_INSTANT_FORM) {
+                document.querySelectorAll('.profile-in-instant-form').forEach(el => el.style.display = 'none');
+            }
+
+            // Update button to show current mode
+            if (currentModeLabel) currentModeLabel.textContent = MODE_NAMES[mode];
+            if (modeToggle) modeToggle.style.background = MODE_COLORS[mode];
+        }
+
+        // Apply initial mode
+        document.addEventListener('DOMContentLoaded', () => {
+            applyMode(INITIAL_MODE);
+        });
+
+        function toggleMode() {
+            currentMode = (currentMode + 1) % 4;
+            applyMode(currentMode);
+        }
+
+    </script>
+
+    <style>
+        /* Mode Toggle Button */
+        .mode-toggle {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 1000;
+            padding: 12px 20px;
+            border-radius: 50px;
+            border: none;
+            background: linear-gradient(135deg, #4ECDC4, #44CF9C);
+            color: white;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .mode-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
+        }
+
+        .mode-toggle:active {
+            transform: translateY(0);
+        }
+
+        .mode-toggle-arrow {
+            opacity: 0.7;
+            font-size: 14px;
+        }
+
+        /* Featured Card for Form Focus Mode */
+        .featured-card {
+            display: flex;
+            gap: 32px;
+            padding: 40px;
+            margin-bottom: 32px;
+            background: rgba(155, 89, 182, 0.08);
+            border: 1px solid rgba(155, 89, 182, 0.3);
+            border-radius: 24px;
+            max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .featured-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(155, 89, 182, 0.2), rgba(91, 126, 255, 0.2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .featured-icon svg {
+            stroke: #9b59b6;
+        }
+
+        .featured-content {
+            flex: 1;
+        }
+
+        .featured-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #9b59b6, #5B7EFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .featured-desc {
+            font-size: 16px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 16px;
+        }
+
+        .featured-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .featured-tags .feature-tag {
+            background: rgba(155, 89, 182, 0.2);
+            border: 1px solid rgba(155, 89, 182, 0.4);
+        }
+
+        /* Secondary feature styling */
+        .secondary-feature {
+            opacity: 0.85;
+        }
+
+        /* ProSkeleton Mode Styles */
+        .proskeleton-card {
+            background: rgba(255, 107, 107, 0.08);
+            border: 1px solid rgba(255, 107, 107, 0.3);
+        }
+
+        .proskeleton-card .featured-icon {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.2), rgba(231, 76, 60, 0.2));
+        }
+
+        .proskeleton-card .featured-icon svg {
+            stroke: #FF6B6B;
+        }
+
+        .proskeleton-title {
+            background: linear-gradient(135deg, #FF6B6B, #e74c3c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .proskeleton-tag {
+            background: rgba(255, 107, 107, 0.2);
+            border: 1px solid rgba(255, 107, 107, 0.4);
+        }
+
+        /* Sensei Info Mode Styles */
+        .sensei-tag {
+            background: rgba(96, 165, 250, 0.15);
+            border-color: rgba(96, 165, 250, 0.4);
+            color: #60A5FA;
+        }
+
+        .sensei-feature-tag {
+            background: rgba(96, 165, 250, 0.15);
+            border: 1px solid rgba(96, 165, 250, 0.3);
+            color: #60A5FA;
+        }
+
+        /* Stats Overview Section */
+        .stats-overview-section {
+            padding: 100px 5% 60px;
+        }
+
+        .stats-cards-row {
+            display: flex;
+            gap: 24px;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .stats-preview-card {
+            flex: 1;
+            padding: 28px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .stats-card-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .stats-card-header svg {
+            color: #60A5FA;
+        }
+
+        .stats-card-header h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .stats-card-body {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .stat-value {
+            font-size: 16px;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .stat-green {
+            color: #34D399;
+        }
+
+        .stat-highlight {
+            color: #60A5FA;
+            font-size: 14px;
+        }
+
+        .stats-card-footer {
+            margin-top: 16px;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .stats-card-preview-img {
+            width: 100%;
+            border-radius: 12px;
+            opacity: 0.85;
+        }
+
+        @media (max-width: 768px) {
+            .featured-card {
+                flex-direction: column;
+                padding: 24px;
+                gap: 20px;
+            }
+
+            .featured-icon {
+                width: 60px;
+                height: 60px;
+            }
+
+            .featured-title {
+                font-size: 20px;
+            }
+
+            .mode-toggle {
+                bottom: 16px;
+                right: 16px;
+                padding: 10px 16px;
+                font-size: 12px;
+            }
+
+            .stats-cards-row {
+                flex-direction: column;
+            }
+        }
+    </style>
+</body>
+</html>

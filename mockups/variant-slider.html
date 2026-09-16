@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FormSensei — Mockup B: Comparison slider</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles-new.css">
+    <style>
+        /* ---- Mockup navigation pill ---- */
+        .mockup-pill {
+            position: fixed;
+            top: 84px;
+            left: 20px;
+            z-index: 1100;
+            background: rgba(10, 10, 15, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-glass);
+            border-radius: 100px;
+            padding: 8px 16px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        .mockup-pill a {
+            color: var(--accent-teal);
+            text-decoration: none;
+        }
+        .mockup-pill a:hover { text-decoration: underline; }
+
+        /* ---- Hero layout: centered single column ---- */
+        .hero-center {
+            min-height: auto;
+            flex-direction: column;
+            justify-content: flex-start;
+            text-align: center;
+            padding: 140px 24px 60px;
+            gap: 0;
+        }
+        .hero-center .hero-content {
+            max-width: 720px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .hero-center .hero-subtitle {
+            max-width: 560px;
+            margin-bottom: 48px;
+        }
+
+        /* ---- Comparison slider ---- */
+        .compare-wrap {
+            position: relative;
+            width: 360px;
+            max-width: 90vw;
+            border-radius: 32px;
+            border: 2px solid var(--border-glass);
+            overflow: hidden;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: pan-y;
+            animation: fadeInUp 0.6s ease 0.3s forwards;
+            opacity: 0;
+        }
+        .compare-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 420px;
+            height: 420px;
+            background: radial-gradient(circle, rgba(78, 205, 196, 0.22) 0%, transparent 70%);
+            filter: blur(50px);
+            z-index: -1;
+            pointer-events: none;
+        }
+        .compare-stage { position: relative; }
+        .compare-img {
+            display: block;
+            width: 100%;
+            height: auto;
+            pointer-events: none;
+        }
+        .compare-img-top {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            clip-path: inset(0 50% 0 0);
+            will-change: clip-path;
+        }
+        .compare-divider {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 2px;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 12px rgba(78, 205, 196, 0.6);
+            transform: translateX(-50%);
+            pointer-events: none;
+            will-change: left;
+        }
+        .compare-handle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            border: 2px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45), 0 0 20px rgba(78, 205, 196, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            color: #0a0a0f;
+            font-size: 12px;
+            font-weight: 800;
+            pointer-events: none;
+            will-change: left;
+        }
+        .compare-range {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            opacity: 0;
+            cursor: ew-resize;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        .compare-range::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 60px;
+            height: 100%;
+        }
+        .compare-range::-moz-range-thumb {
+            width: 60px;
+            height: 100%;
+            border: none;
+        }
+        .compare-label {
+            position: absolute;
+            top: 16px;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            padding: 6px 14px;
+            border-radius: 100px;
+            color: #ffffff;
+            pointer-events: none;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+        }
+        .compare-label-you {
+            left: 16px;
+            background: linear-gradient(135deg, #FF6B6B 0%, #ee5a5a 100%);
+        }
+        .compare-label-pro {
+            right: 16px;
+            background: linear-gradient(135deg, #4ECDC4 0%, #3db8b0 100%);
+        }
+        .compare-caption {
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-muted);
+            animation: fadeInUp 0.6s ease 0.4s forwards;
+            opacity: 0;
+        }
+        .compare-store-btns {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 36px;
+            animation: fadeInUp 0.6s ease 0.5s forwards;
+            opacity: 0;
+        }
+
+        /* ---- Social proof strip ---- */
+        .social-proof {
+            padding: 80px 24px 120px;
+            max-width: var(--container-width);
+            margin: 0 auto;
+        }
+        .social-proof-title {
+            text-align: center;
+            font-size: clamp(24px, 3vw, 32px);
+            font-weight: 700;
+            margin-bottom: 40px;
+        }
+        .quote-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .quote-card {
+            padding: 28px;
+        }
+        .quote-mark {
+            font-size: 32px;
+            font-weight: 800;
+            line-height: 1;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+            margin-bottom: 12px;
+        }
+        .quote-text {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-style: italic;
+            margin-bottom: 16px;
+        }
+        .quote-author {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 768px) {
+            .compare-wrap { width: 320px; }
+            .mockup-pill { top: 74px; left: 12px; font-size: 12px; }
+            .hero-center { padding: 110px 20px 40px; }
+            .hero-center .hero-badge { display: inline-flex; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Gradient background -->
+    <div class="gradient-bg">
+        <div class="gradient-sphere sphere-1"></div>
+        <div class="gradient-sphere sphere-2"></div>
+        <div class="gradient-sphere sphere-3"></div>
+        <div class="noise-overlay"></div>
+    </div>
+
+    <!-- Mockup pill -->
+    <div class="mockup-pill">Mockup B — Comparison slider · <a href="index.html">all variants</a></div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="#top" class="nav-logo">
+                <img src="../assets/images/logo.png" alt="FormSensei" class="nav-logo-img">
+                <span class="nav-logo-text">FormSensei</span>
+            </a>
+            <div class="nav-auth">
+                <a href="#download" class="nav-cta">Get the app</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero hero-center" id="top">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                Your throw vs pro form
+            </div>
+            <h1 class="hero-title">See exactly what <span class="gradient-text">the pros</span> do differently</h1>
+            <p class="hero-subtitle">Drag to compare. FormSensei overlays your mechanics against optimal pro form and tells you what to fix first.</p>
+
+            <!-- Comparison slider -->
+            <div class="compare-wrap" id="compareWrap">
+                <div class="compare-glow"></div>
+                <div class="compare-stage">
+                    <img class="compare-img" src="../assets/screenshots/v2/trent-powered-rotation.png" alt="Pro powered rotation position">
+                    <img class="compare-img compare-img-top" id="compareTop" src="../assets/screenshots/v2/joe-powered-rotation.png" alt="Your powered rotation position">
+                    <div class="compare-divider" id="compareDivider"></div>
+                    <div class="compare-handle" id="compareHandle"><span>&#9668;</span><span>&#9658;</span></div>
+                    <span class="compare-label compare-label-you">YOU</span>
+                    <span class="compare-label compare-label-pro">PRO</span>
+                    <input type="range" class="compare-range" id="compareRange" min="0" max="100" value="50" step="0.1" aria-label="Drag to compare your throw with pro form">
+                </div>
+            </div>
+            <p class="compare-caption">Powered rotation — the position where pros generate their distance</p>
+
+            <!-- Store buttons -->
+            <div class="compare-store-btns" id="download">
+                <a href="https://apps.apple.com/ca/app/scoresensei-disc-golf/id6758869856" class="store-btn app-store">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                    </svg>
+                    <div class="store-btn-text">
+                        <span class="store-btn-small">Download on</span>
+                        <span class="store-btn-large">App Store</span>
+                    </div>
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.joevanderveenllc.scoresensei" class="store-btn google-play">
+                    <img src="../assets/images/google-play-logo.svg" alt="Google Play" width="28" height="28">
+                    <div class="store-btn-text">
+                        <span class="store-btn-small">Get it on</span>
+                        <span class="store-btn-large">Google Play</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social proof -->
+    <section class="social-proof">
+        <h2 class="social-proof-title">What players are saying</h2>
+        <div class="quote-grid">
+            <div class="glass-card quote-card">
+                <span class="quote-mark">&ldquo;</span>
+                <p class="quote-text">[Real DM quote goes here]</p>
+                <p class="quote-author">— [player first name]</p>
+            </div>
+            <div class="glass-card quote-card">
+                <span class="quote-mark">&ldquo;</span>
+                <p class="quote-text">[Real DM quote goes here]</p>
+                <p class="quote-author">— [player first name]</p>
+            </div>
+            <div class="glass-card quote-card">
+                <span class="quote-mark">&ldquo;</span>
+                <p class="quote-text">[Real DM quote goes here]</p>
+                <p class="quote-author">— [player first name]</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        (function () {
+            var range = document.getElementById('compareRange');
+            var topImg = document.getElementById('compareTop');
+            var divider = document.getElementById('compareDivider');
+            var handle = document.getElementById('compareHandle');
+            var wrap = document.getElementById('compareWrap');
+
+            function setPosition(pct) {
+                pct = Math.max(0, Math.min(100, pct));
+                topImg.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
+                divider.style.left = pct + '%';
+                handle.style.left = pct + '%';
+            }
+
+            range.addEventListener('input', function () {
+                setPosition(parseFloat(range.value));
+            });
+
+            // Direct pointer/touch drag anywhere on the stage (the transparent
+            // range input handles most of this, but touch on iOS can miss).
+            function pointFromEvent(e) {
+                var rect = wrap.getBoundingClientRect();
+                var clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                return ((clientX - rect.left) / rect.width) * 100;
+            }
+
+            var dragging = false;
+            wrap.addEventListener('pointerdown', function (e) {
+                dragging = true;
+                var pct = pointFromEvent(e);
+                range.value = pct;
+                setPosition(pct);
+            });
+            window.addEventListener('pointermove', function (e) {
+                if (!dragging) return;
+                var pct = pointFromEvent(e);
+                range.value = pct;
+                setPosition(pct);
+            });
+            window.addEventListener('pointerup', function () { dragging = false; });
+            window.addEventListener('pointercancel', function () { dragging = false; });
+
+            setPosition(50);
+
+            // Nav scrolled state (matches main site behavior)
+            var nav = document.querySelector('.nav');
+            window.addEventListener('scroll', function () {
+                nav.classList.toggle('nav-scrolled', window.scrollY > 40);
+            }, { passive: true });
+        })();
+    </script>
+</body>
+</html>

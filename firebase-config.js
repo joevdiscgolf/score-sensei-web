@@ -4,7 +4,7 @@
 // 2. Click the gear icon → Project settings
 // 3. Scroll down to "Your apps" section
 // 4. Click "Add app" → Web (</>) icon
-// 5. Register app name: "ScoreSensei Web"
+// 5. Register app name: "FormSensei Web"
 // 6. Copy the firebaseConfig object and replace the config below
 
 const firebaseConfig = {

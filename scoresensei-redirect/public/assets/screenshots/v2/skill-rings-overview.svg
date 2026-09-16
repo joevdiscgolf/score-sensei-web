@@ -1,0 +1,20 @@
+<svg width="400" height="780" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="780" rx="24" fill="#0a0e1a"/>
+  <circle cx="200" cy="350" r="130" fill="none" stroke="#34D399" stroke-width="14" opacity="0.8"/>
+  <circle cx="200" cy="350" r="105" fill="none" stroke="#FBBF24" stroke-width="14" opacity="0.8"/>
+  <circle cx="200" cy="350" r="80" fill="none" stroke="#A78BFA" stroke-width="14" opacity="0.8"/>
+  <circle cx="200" cy="350" r="55" fill="none" stroke="#60A5FA" stroke-width="14" opacity="0.8"/>
+  <circle cx="200" cy="350" r="30" fill="none" stroke="#F472B6" stroke-width="14" opacity="0.8"/>
+  <text x="200" y="360" text-anchor="middle" fill="white" font-size="40" font-weight="bold" font-family="Inter,sans-serif">74</text>
+  <text x="200" y="395" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="16" font-family="Inter,sans-serif">Skilled</text>
+  <circle cx="120" cy="560" r="8" fill="#34D399"/>
+  <text x="138" y="565" fill="rgba(255,255,255,0.6)" font-size="12" font-family="Inter,sans-serif">Backhand</text>
+  <circle cx="230" cy="560" r="8" fill="#FBBF24"/>
+  <text x="248" y="565" fill="rgba(255,255,255,0.6)" font-size="12" font-family="Inter,sans-serif">Forehand</text>
+  <circle cx="120" cy="590" r="8" fill="#A78BFA"/>
+  <text x="138" y="595" fill="rgba(255,255,255,0.6)" font-size="12" font-family="Inter,sans-serif">Putting</text>
+  <circle cx="230" cy="590" r="8" fill="#60A5FA"/>
+  <text x="248" y="595" fill="rgba(255,255,255,0.6)" font-size="12" font-family="Inter,sans-serif">Distance</text>
+  <text x="200" y="170" text-anchor="middle" fill="white" font-size="18" font-weight="600" font-family="Inter,sans-serif">Skill Rings</text>
+  <text x="200" y="195" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-size="12" font-family="Inter,sans-serif">PLACEHOLDER - Replace with screenshot</text>
+</svg>

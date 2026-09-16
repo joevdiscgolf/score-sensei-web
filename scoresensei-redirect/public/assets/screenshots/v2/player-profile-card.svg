@@ -1,0 +1,33 @@
+<svg width="400" height="780" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0F2356"/>
+      <stop offset="100%" style="stop-color:#2563EB"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="780" rx="24" fill="url(#bg)"/>
+  <circle cx="130" cy="340" r="90" fill="none" stroke="#34D399" stroke-width="10" opacity="0.7"/>
+  <circle cx="130" cy="340" r="70" fill="none" stroke="#FBBF24" stroke-width="10" opacity="0.7"/>
+  <circle cx="130" cy="340" r="50" fill="none" stroke="#A78BFA" stroke-width="10" opacity="0.7"/>
+  <circle cx="130" cy="340" r="30" fill="none" stroke="#60A5FA" stroke-width="10" opacity="0.7"/>
+  <text x="130" y="348" text-anchor="middle" fill="white" font-size="28" font-weight="bold" font-family="Inter,sans-serif">74</text>
+  <text x="130" y="375" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="13" font-family="Inter,sans-serif">Skilled</text>
+  <text x="270" y="270" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="15" font-weight="600" font-family="Inter,sans-serif">The Driver</text>
+  <rect x="230" y="300" width="140" height="10" rx="5" fill="rgba(255,255,255,0.1)"/>
+  <rect x="230" y="300" width="105" height="10" rx="5" fill="#34D399"/>
+  <text x="230" y="294" fill="rgba(255,255,255,0.5)" font-size="10" font-family="Inter,sans-serif">Backhand 75</text>
+  <rect x="230" y="335" width="140" height="10" rx="5" fill="rgba(255,255,255,0.1)"/>
+  <rect x="230" y="335" width="84" height="10" rx="5" fill="#FBBF24"/>
+  <text x="230" y="329" fill="rgba(255,255,255,0.5)" font-size="10" font-family="Inter,sans-serif">Forehand 60</text>
+  <rect x="230" y="370" width="140" height="10" rx="5" fill="rgba(255,255,255,0.1)"/>
+  <rect x="230" y="370" width="112" height="10" rx="5" fill="#A78BFA"/>
+  <text x="230" y="364" fill="rgba(255,255,255,0.5)" font-size="10" font-family="Inter,sans-serif">Putting 80</text>
+  <rect x="230" y="405" width="140" height="10" rx="5" fill="rgba(255,255,255,0.1)"/>
+  <rect x="230" y="405" width="91" height="10" rx="5" fill="#60A5FA"/>
+  <text x="230" y="399" fill="rgba(255,255,255,0.5)" font-size="10" font-family="Inter,sans-serif">Distance 65</text>
+  <rect x="230" y="440" width="140" height="10" rx="5" fill="rgba(255,255,255,0.1)"/>
+  <rect x="230" y="440" width="98" height="10" rx="5" fill="#F472B6"/>
+  <text x="230" y="434" fill="rgba(255,255,255,0.5)" font-size="10" font-family="Inter,sans-serif">Accuracy 70</text>
+  <text x="200" y="180" text-anchor="middle" fill="white" font-size="18" font-weight="600" font-family="Inter,sans-serif">Player Profile</text>
+  <text x="200" y="205" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-size="12" font-family="Inter,sans-serif">PLACEHOLDER - Replace with screenshot</text>
+</svg>

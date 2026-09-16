@@ -19,8 +19,8 @@
       });
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ScoreSensei - See the story behind every throw</title>
-    <meta name="description" content="ScoreSensei delivers pro-level form analysis and deep round insights that help disc golfers actually improve.">
+    <title>FormSensei - See the story behind every throw</title>
+    <meta name="description" content="FormSensei delivers pro-level form analysis and deep round insights that help disc golfers actually improve.">
     <link rel="icon" type="image/png" href="assets/images/logo.png">
     <link rel="apple-touch-icon" href="assets/images/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -48,8 +48,8 @@
     <nav class="nav">
         <div class="nav-container">
             <a href="#top" class="nav-logo">
-                <img src="assets/images/logo.png" alt="ScoreSensei" class="nav-logo-img">
-                <span class="nav-logo-text">ScoreSensei</span>
+                <img src="assets/images/logo.png" alt="FormSensei" class="nav-logo-img">
+                <span class="nav-logo-text">FormSensei</span>
             </a>
             <div class="nav-links mode-default mode-form-focus mode-proskeleton">
                 <a href="#analysis" class="nav-link">Form Analysis</a>
@@ -64,6 +64,7 @@
             </div>
             <div class="nav-auth">
                 <a href="/login" class="nav-signin">Sign in</a>
+                <a href="#download" class="nav-cta">Get the app</a>
             </div>
         </div>
     </nav>
@@ -150,10 +151,15 @@
         <div class="hero-visual">
             <div class="hero-phone hero-phone-main">
                 <div class="phone-glow"></div>
-                <img src="assets/screenshots/v2/kalan-loaded-comparison.png" alt="Form Analysis">
+                <img src="assets/screenshots/v2/kalan-loaded-comparison.png" alt="Your throw compared to optimal pro form">
             </div>
-            <div class="hero-phone hero-phone-secondary">
-                <img src="assets/screenshots/hero-main.png" alt="ScoreSensei App">
+            <!-- Form-first modes: pair the comparison with a form result, no round tracking -->
+            <div class="hero-phone hero-phone-secondary mode-form-focus mode-proskeleton">
+                <img src="assets/screenshots/v2/joe-analysis-score.png" alt="Instant form analysis score and coaching cues">
+            </div>
+            <!-- Default (balanced) mode keeps the round overview -->
+            <div class="hero-phone hero-phone-secondary mode-default" style="display: none;">
+                <img src="assets/screenshots/hero-main.png" alt="FormSensei app">
             </div>
         </div>
         <!-- Scroll Indicator -->
@@ -1013,7 +1019,7 @@
     <section id="action" class="screenshots-section">
         <div class="section-header">
             <span class="section-tag">App Preview</span>
-            <h2 class="section-title">See ScoreSensei in action</h2>
+            <h2 class="section-title">See FormSensei in action</h2>
         </div>
         <div class="screenshots-carousel">
             <div class="carousel-track">
@@ -1075,7 +1081,7 @@
                 <h2 class="download-title mode-form-focus" style="display: none;">Your next field session just got smarter</h2>
                 <h2 class="download-title mode-proskeleton" style="display: none;">Your next field session just got smarter</h2>
                 <h2 class="download-title mode-sensei-info" style="display: none;">Ready to see your true skill level?</h2>
-                <p class="download-subtitle mode-default">Join thousands of disc golfers who are already improving with ScoreSensei</p>
+                <p class="download-subtitle mode-default">Join thousands of disc golfers who are already improving with FormSensei</p>
                 <p class="download-subtitle mode-form-focus" style="display: none;">Set up your phone, hit record, and get coached on every throw</p>
                 <p class="download-subtitle mode-proskeleton" style="display: none;">Record your throws, get instant feedback, and see how your form compares to optimal pro mechanics</p>
                 <p class="download-subtitle mode-sensei-info" style="display: none;">Build your skill profile, track your progress, and get the insights you need to actually improve</p>
@@ -1102,7 +1108,7 @@
             <div class="download-visual">
                 <div class="download-phone">
                     <div class="phone-glow"></div>
-                    <img src="assets/screenshots/v2/form-analysis-record.png" alt="Download ScoreSensei">
+                    <img src="assets/screenshots/v2/form-analysis-record.png" alt="Download FormSensei">
                 </div>
             </div>
         </div>
@@ -1112,8 +1118,8 @@
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-brand">
-                <img src="assets/images/logo.png" alt="ScoreSensei" class="footer-logo">
-                <span class="footer-name">ScoreSensei</span>
+                <img src="assets/images/logo.png" alt="FormSensei" class="footer-logo">
+                <span class="footer-name">FormSensei</span>
                 <p class="footer-tagline">See the story behind every throw</p>
             </div>
             <div class="footer-links">
@@ -1136,9 +1142,25 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 ScoreSensei. All rights reserved.</p>
+            <p>&copy; 2026 FormSensei. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Sticky mobile download bar -->
+    <div id="stickyDownload">
+        <div class="sticky-download-copy">
+            <span class="sticky-download-title">Get FormSensei</span>
+            <span class="sticky-download-sub">Free to download</span>
+        </div>
+        <div class="sticky-download-btns">
+            <a href="https://apps.apple.com/ca/app/scoresensei-disc-golf/id6758869856" class="sticky-store-btn" aria-label="Download on the App Store">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=com.joevanderveenllc.scoresensei" class="sticky-store-btn" aria-label="Get it on Google Play">
+                <img src="assets/images/google-play-logo.svg" alt="" width="22" height="22">
+            </a>
+        </div>
+    </div>
 
     <!-- In-app browser escape hint (shown when the App Store handoff is blocked) -->
     <div id="inAppHint">

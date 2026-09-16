@@ -11,7 +11,8 @@
       "deploy.sh",
       "*.md",
       "package.json",
-      "vercel.json"
+      "vercel.json",
+      "scoresensei-redirect/**"
     ],
     "redirects": [
       {
