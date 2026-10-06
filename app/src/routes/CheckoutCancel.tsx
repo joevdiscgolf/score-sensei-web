@@ -49,7 +49,7 @@ export function CheckoutCancel() {
           </div>
 
           <p className="help-text">
-            Questions? <a href="mailto:support@scoresensei.app">Contact support</a>
+            Questions? <a href="mailto:support@formsensei.app">Contact support</a>
           </p>
 
           <p className="web-fallback">
