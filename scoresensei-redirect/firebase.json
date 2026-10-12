@@ -7,17 +7,22 @@
     "redirects": [
       {
         "source": "/ig",
-        "destination": "/?utm_source=instagram&utm_medium=bio&utm_campaign=ig_bio",
+        "destination": "https://formsensei.app/?utm_source=instagram&utm_medium=bio&utm_campaign=ig_bio",
         "type": 301
       },
       {
         "source": "/yt",
-        "destination": "/?utm_source=youtube&utm_medium=description&utm_campaign=yt_description",
+        "destination": "https://formsensei.app/?utm_source=youtube&utm_medium=description&utm_campaign=yt_description",
         "type": 301
       },
       {
         "source": "/coacht",
-        "destination": "/?utm_source=coacht&utm_medium=partner&utm_campaign=coacht",
+        "destination": "https://formsensei.app/?utm_source=coacht&utm_medium=partner&utm_campaign=coacht",
+        "type": 301
+      },
+      {
+        "regex": "^/(?P<path>.*)$",
+        "destination": "https://formsensei.app/:path",
         "type": 301
       }
     ]
