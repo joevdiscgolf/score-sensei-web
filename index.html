@@ -1672,14 +1672,12 @@ const POSE = {"fps":60.423,"conn":[["pelvis","right_hip"],["right_hip","right_kn
         })();
 
         // Navbar background on scroll
+        // Solid bar almost immediately: on phones the hero headline sits right
+        // under the nav and was sliding behind the transparent bar.
         const nav = document.querySelector('.nav');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                nav.classList.add('nav-scrolled');
-            } else {
-                nav.classList.remove('nav-scrolled');
-            }
-        });
+        const updateNav = () => nav.classList.toggle('nav-scrolled', window.scrollY > 8);
+        window.addEventListener('scroll', updateNav, { passive: true });
+        updateNav();
 
         // Intersection Observer for animations
         const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
