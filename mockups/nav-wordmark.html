@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nav wordmark mockups</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:ital,wght@1,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --glass: rgba(255,255,255,0.05);
+    --border: rgba(255,255,255,0.1);
+    --text: #fff;
+    --text2: rgba(255,255,255,0.7);
+    --muted: rgba(255,255,255,0.5);
+    --grad: linear-gradient(135deg, #4ECDC4 0%, #5B7EFF 100%);
+    /* App icon blues from color_helpers.dart */
+    --ink-top: #353B48; --ink-bottom: #1B1F28;
+    --blue-top: #2849AB; --blue-bottom: #1738A1;
+    --swoosh-bright: #4E6BBD; --swoosh-mid: #2849AB; --swoosh-deep: #1738A1;
+    --tint: #E8ECF7;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #121218; color: var(--text); font-family: Inter, -apple-system, sans-serif; padding: 40px 24px 80px; }
+  h1 { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
+  .lead { color: var(--text2); font-size: 14px; margin-bottom: 36px; max-width: 720px; line-height: 1.5; }
+  h2 { font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 44px 0 10px; }
+  .note { color: var(--text2); font-size: 13px; margin-bottom: 12px; line-height: 1.5; max-width: 720px; }
+
+  /* Fake nav matching styles-new.css */
+  .nav { background: var(--bg); padding: 20px 40px; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 10px; }
+  .nav.scrolled { background: rgba(10,10,15,0.8); border-bottom: 1px solid var(--border); padding: 15px 40px; backdrop-filter: blur(20px); background-image: radial-gradient(circle at 30% 50%, rgba(78,205,196,.12), transparent 60%), radial-gradient(circle at 80% 30%, rgba(91,126,255,.14), transparent 50%); }
+  .nav-container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-link { color: var(--text2); text-decoration: none; font-weight: 500; font-size: 15px; }
+  .nav-cta { background: var(--grad); color: #0a0a0f; text-decoration: none; font-weight: 700; padding: 12px 28px; border-radius: 100px; font-size: 15px; }
+  .phone .nav-links { display: none; }
+  .phone { max-width: 390px; }
+  .phone .nav { padding: 16px 20px; }
+  .phone .nav-cta { padding: 10px 18px; font-size: 13px; }
+
+  /* Logo lockup */
+  .logo { display: inline-flex; align-items: center; gap: 4px; text-decoration: none; flex-shrink: 0; }
+  .logo-icon { height: 34px; width: auto; }
+  .phone .logo-icon { height: 28px; }
+  .word { position: relative; display: inline-flex; line-height: 1; }
+  .word span { font-family: Montserrat, sans-serif; font-weight: 800; font-style: italic; font-size: 26px; letter-spacing: -0.025em; line-height: 1; padding-right: .06em; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .phone .word span { font-size: 21px; }
+  .word .swoosh { position: absolute; left: 8%; width: 78%; top: 100%; height: .24em; font-size: 26px; margin-top: .02em; }
+  .phone .word .swoosh { font-size: 21px; }
+
+  /* CURRENT */
+  .cur { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
+  .cur img { width: 40px; height: 40px; }
+  .cur span { font-size: 24px; font-weight: 700; background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; font-family: Inter, sans-serif; }
+
+  /* A: faithful dark port. Form = light ink, Sensei = lifted icon blue, swoosh */
+  .vA .form   { background-image: linear-gradient(180deg, #FFFFFF 0%, #C9CFDC 100%); }
+  .vA .sensei { background-image: linear-gradient(180deg, #6D8CF0 0%, #3B5BDB 100%); }
+
+  /* B: brighter, more saturated blue so it pops on black; swoosh same */
+  .vB .form   { background-image: linear-gradient(180deg, #FFFFFF 0%, #D6DBE8 100%); }
+  .vB .sensei { background-image: linear-gradient(180deg, #8AA3FF 0%, #4E6BBD 100%); }
+
+  /* C: Sensei in the site's teal→blue accent, keeps the Montserrat italic + swoosh */
+  .vC .form   { background-image: linear-gradient(180deg, #FFFFFF 0%, #C9CFDC 100%); }
+  .vC .sensei { background-image: linear-gradient(135deg, #4ECDC4 0%, #5B7EFF 100%); }
+
+  /* D: exact app lockup on a light chip (identical to the app bar) */
+  .vD { background: var(--tint); border-radius: 100px; padding: 6px 16px 8px 8px; }
+  .vD .form   { background-image: linear-gradient(180deg, var(--ink-top), var(--ink-bottom)); }
+  .vD .sensei { background-image: linear-gradient(180deg, var(--blue-top), var(--blue-bottom)); }
+
+  .grid { display: grid; grid-template-columns: 1fr; gap: 28px; }
+  .pair { display: grid; grid-template-columns: 1fr 390px; gap: 16px; align-items: start; }
+  @media (max-width: 900px) { .pair { grid-template-columns: 1fr; } }
+  .big { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 36px; display: flex; gap: 48px; align-items: center; flex-wrap: wrap; }
+  .big .word span { font-size: 56px; }
+  .big .word .swoosh { font-size: 56px; }
+  .big .logo-icon { height: 72px; }
+  .big.light { background: #F4F5F7; }
+
+  /* Layout variants: full-bleed strips using the hero's gutter formula */
+  .strip { background:#0a0a0f; border:1px solid var(--border); border-radius:12px; overflow:hidden; margin-bottom:12px; }
+  .strip .bar { padding:20px max(56px, calc((100vw - 1560px)/2 + 56px)); display:grid; align-items:center; gap:24px; }
+  .strip .bar.l1 { grid-template-columns:1fr auto 1fr; }
+  .strip .bar.l1 .nav-links { justify-self:center; }
+  .strip .bar.l1 .nav-cta { justify-self:end; }
+  .strip .bar.l2 { grid-template-columns:1fr auto; }
+  .strip .bar.l2 .nav-links { justify-self:end; }
+  .strip .bar.l3 { grid-template-columns:1fr auto 1fr; }
+  .strip .bar.l3 .nav-links { justify-self:center; }
+  .strip .bar.l3 .nav-links .nav-link:last-child { color:#fff; font-weight:600; }
+  .strip .herostub { padding:28px max(56px, calc((100vw - 1560px)/2 + 56px)) 0; display:flex; justify-content:space-between; align-items:flex-end; position:relative; }
+  .strip .herostub::before, .strip .herostub::after { content:''; position:absolute; top:-80px; bottom:0; width:1px; background:rgba(78,205,196,.35); }
+  .strip .herostub::before { left:max(56px, calc((100vw - 1560px)/2 + 56px)); }
+  .strip .herostub::after { right:max(56px, calc((100vw - 1560px)/2 + 56px)); }
+  .strip .giant { font-family:Anton, Impact, sans-serif; text-transform:uppercase; font-size:72px; line-height:.9; letter-spacing:.01em; color:#fff; }
+  .strip .score { text-align:center; color:rgba(255,255,255,.6); font-size:11px; letter-spacing:.2em; font-weight:600; }
+  .strip .score b { display:block; font-family:Anton, Impact, sans-serif; font-size:48px; background:var(--grad); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; letter-spacing:0; }
+</style>
+</head>
+<body>
+<h1>Nav wordmark: match the app bar</h1>
+<p class="lead">The app bar draws "FormSensei" in Montserrat ExtraBold Italic, two tones (ink + icon blue), with a tapered blue swoosh. These variants port that lockup to the dark site. Blues are lifted a step so they clear the black background. Variant D is the untouched app lockup on its light chip for comparison.</p>
+
+<h2>Current (for reference)</h2>
+<div class="nav"><div class="nav-container">
+  <a class="cur" href="#"><img src="../assets/images/logo.png" alt=""><span>FormSensei</span></a>
+  <div class="nav-links"><a class="nav-link">Form Analysis</a><a class="nav-link">Round Analysis</a><a class="nav-link">Download</a></div>
+  <a class="nav-cta" href="#">Get the app</a>
+</div></div>
+
+<div class="grid">
+
+<div>
+<h2>A. Faithful dark port (recommended)</h2>
+<p class="note">Same lockup as the app. "Form" flips from dark ink to white-to-silver so it reads on black. "Sensei" keeps the icon blue, lifted one step. Swoosh unchanged.</p>
+<div class="pair">
+  <div class="nav vA"><div class="nav-container">
+    <a class="logo" href="#"><img class="logo-icon" src="app_icon_trimmed.png" alt=""><span class="word"><span class="form">Form</span><span class="sensei">Sensei</span><svg class="swoosh" viewBox="0 0 100 20" preserveAspectRatio="none"><defs><linearGradient id="sw" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#4E6BBD" stop-opacity="0"/><stop offset=".1" stop-color="#4E6BBD"/><stop offset=".55" stop-color="#2849AB"/><stop offset=".94" stop-color="#1738A1"/><stop offset="1" stop-color="#1738A1" stop-opacity=".15"/></linearGradient></defs><path fill="url(#sw)" d="M0 20 C22 11 55 3.5 100 0.5 C58 9.5 26 17 0 20 Z"/></svg></span></a>
+    <div class="nav-links"><a class="nav-link">Form Analysis</a><a class="nav-link">Round Analysis</a><a class="nav-link">Download</a></div>
+    <a class="nav-cta" href="#">Get the app</a>
+  </div></div>
+  <div class="phone"><div class="nav vA scrolled"><div class="nav-container">
+    <a class="logo" href="#"><img class="logo-icon" src="app_icon_trimmed.png" alt=""><span class="word"><span class="form">Form</span><span class="sensei">Sensei</span><svg class="swoosh" viewBox="0 0 100 20" preserveAspectRatio="none"><path fill="url(#sw)" d="M0 20 C22 11 55 3.5 100 0.5 C58 9.5 26 17 0 20 Z"/></svg></span></a>
+    <a class="nav-cta" href="#">Get the app</a>
+  </div></div></div>
+</div>
+</div>
+
+<div>
+<h2>B. Brighter blue</h2>
+<p class="note">Same as A but "Sensei" pushed to a lighter periwinkle. Highest contrast on dark, drifts a little from the icon's navy.</p>
+<div class="pair">
+  <div class="nav vB"><div class="nav-container">
+    <a class="logo" href="#"><img class="logo-icon" src="app_icon_trimmed.png" alt=""><span class="word"><span class="form">Form</span><span class="sensei">Sensei</span><svg class="swoosh" viewBox="0 0 100 20" preserveAspectRatio="none"><path fill="url(#sw)" d="M0 20 C22 11 55 3.5 100 0.5 C58 9.5 26 17 0 20 Z"/></svg></span></a>
+    <div class="nav-links"><a class="nav-link">Form Analysis</a><a class="nav-link">Round Analysis</a><a class="nav-link">Download</a></div>
+    <a class="nav-cta" href="#">Get the app</a>
+  </div></div>
+  <div class="phone"><div class="nav vB scrolled"><div class="nav-container">
+    <a class="logo" href="#"><img class="logo-icon" src="app_icon_trimmed.png" alt=""><span class="word"><span class="form">Form</span><span class="sensei">Sensei</span><svg class="swoosh" viewBox="0 0 100 20" preserveAspectRatio="none"><path fill="url(#sw)" d="M0 20 C22 11 55 3.5 100 0.5 C58 9.5 26 17 0 20 Z"/></svg></span></a>
+    <a class="nav-cta" href="#">Get the app</a>
+  </div></div></div>
+</div>
+</div>
+
+<div>
+<h2>C. Site accent gradient on "Sensei"</h2>
+<p class="note">Keeps the app's type, split, and swoosh, but "Sensei" uses the site's teal-to-blue gradient so the nav ties into the CTA button. Least consistent with the app icon's blue.</p>
+<div class="pair">
+  <div class="nav vC"><div class="nav-container">
+    <a class="logo" href="#"><img class="logo-icon" src="app_icon_trimmed.png" alt=""><span class="word"><span class="form">Form</span><span class="sensei">Sensei</span><svg class="swoosh" viewBox="0 0 100 20" preserveAspectRatio="none"><path fill="url(#sw)" d="M0 20 C22 11 55 3.5 100 0.5 C58 9.5 26 17 0 20 Z"/></svg></span></a>
+    <div class="nav-links"><a class="nav-link">Form Analysis</a><a class="nav-link">Round Analysis</a><a class="nav-link">Download</a></div>
+    <a class="nav-cta" href="#">Get the app</a>
+  </div></div>
+  <div class="phone"><div class="nav vC scrolled"><div class="nav-container">
+    <a class="logo" href="#"><img class="logo-icon" src="app_icon_trimmed.png" alt=""><span class="word"><span class="form">Form</span><span class="sensei">Sensei</span><svg class="swoosh" viewBox="0 0 100 20" preserveAspectRatio="none"><path fill="url(#sw)" d="M0 20 C22 11 55 3.5 100 0.5 C58 9.5 26 17 0 20 Z"/></svg></span></a>
+    <a class="nav-cta" href="#">Get the app</a>
+  </div></div></div>
+</div>
+</div>
+
+<div>
+<h2>D. Exact app lockup on a light chip</h2>
+<p class="note">Pixel-faithful to the app bar, including the dark ink and navy. Needs a light chip behind it to work on black, which makes the nav busier.</p>
+<div class="pair">
+  <div class="nav"><div class="nav-container">
+    <a class="logo vD" href="#"><img class="logo-icon" src="app_icon_trimmed.png" alt=""><span class="word"><span class="form">Form</span><span class="sensei">Sensei</span><svg class="swoosh" viewBox="0 0 100 20" preserveAspectRatio="none"><path fill="url(#sw)" d="M0 20 C22 11 55 3.5 100 0.5 C58 9.5 26 17 0 20 Z"/></svg></span></a>
+    <div class="nav-links"><a class="nav-link">Form Analysis</a><a class="nav-link">Round Analysis</a><a class="nav-link">Download</a></div>
+    <a class="nav-cta" href="#">Get the app</a>
+  </div></div>
+  <div class="phone"><div class="nav scrolled"><div class="nav-container">
+    <a class="logo vD" href="#"><img class="logo-icon" src="app_icon_trimmed.png" alt=""><span class="word"><span class="form">Form</span><span class="sensei">Sensei</span><svg class="swoosh" viewBox="0 0 100 20" preserveAspectRatio="none"><path fill="url(#sw)" d="M0 20 C22 11 55 3.5 100 0.5 C58 9.5 26 17 0 20 Z"/></svg></span></a>
+    <a class="nav-cta" href="#">Get the app</a>
+  </div></div></div>
+</div>
+</div>
+
+</div>
+
+<h2>Layout 1. Hero gutters, links truly centered, keep "Get the app"</h2>
+<p class="note">Nav uses the same side padding as the hero, so the logo lines up with "THROW." and the button lines up with the score column. Links are centered on the page with a 1fr / auto / 1fr grid instead of space-between.</p>
+<div class="strip vA"><div class="bar l1"><a class="logo" href="#"><img class="logo-icon" src="app_icon_trimmed.png" alt=""><span class="word"><span class="form">Form</span><span class="sensei">Sensei</span><svg class="swoosh" viewBox="0 0 100 20" preserveAspectRatio="none"><path fill="url(#sw)" d="M0 20 C22 11 55 3.5 100 0.5 C58 9.5 26 17 0 20 Z"/></svg></span></a><div class="nav-links"><a class="nav-link">Form Analysis</a><a class="nav-link">Round Analysis</a><a class="nav-link">Download</a></div><a class="nav-cta" href="#">Get the app</a></div><div class="herostub"><div class="giant">Throw.</div><div class="score">SENSEI SCORE<b>96%</b></div></div></div>
+
+<h2>Layout 2. Drop the button, links right (recommended)</h2>
+<p class="note">The hero already has the big CTA, so the nav just needs logo and links. Download stays as the last link. Cleanest, and the logo sits at the hero edge.</p>
+<div class="strip vA"><div class="bar l2"><a class="logo" href="#"><img class="logo-icon" src="app_icon_trimmed.png" alt=""><span class="word"><span class="form">Form</span><span class="sensei">Sensei</span><svg class="swoosh" viewBox="0 0 100 20" preserveAspectRatio="none"><path fill="url(#sw)" d="M0 20 C22 11 55 3.5 100 0.5 C58 9.5 26 17 0 20 Z"/></svg></span></a><div class="nav-links"><a class="nav-link">Form Analysis</a><a class="nav-link">Round Analysis</a><a class="nav-link">Download</a></div></div><div class="herostub"><div class="giant">Throw.</div><div class="score">SENSEI SCORE<b>96%</b></div></div></div>
+
+<h2>Layout 3. Drop the button, links centered, "Download" emphasized</h2>
+<p class="note">Same as 2 but keeps the links in the middle, with Download in white so it still reads as the action.</p>
+<div class="strip vA"><div class="bar l3"><a class="logo" href="#"><img class="logo-icon" src="app_icon_trimmed.png" alt=""><span class="word"><span class="form">Form</span><span class="sensei">Sensei</span><svg class="swoosh" viewBox="0 0 100 20" preserveAspectRatio="none"><path fill="url(#sw)" d="M0 20 C22 11 55 3.5 100 0.5 C58 9.5 26 17 0 20 Z"/></svg></span></a><div class="nav-links"><a class="nav-link">Form Analysis</a><a class="nav-link">Round Analysis</a><a class="nav-link">Download</a></div></div><div class="herostub"><div class="giant">Throw.</div><div class="score">SENSEI SCORE<b>96%</b></div></div></div>
+
+<h2>Large, side by side</h2>
+<p class="note">A, B, C at display size, then the app original on its light background.</p>
+<div class="big">
+  <a class="logo vA"><img class="logo-icon" src="app_icon_trimmed.png" alt=""><span class="word"><span class="form">Form</span><span class="sensei">Sensei</span><svg class="swoosh" viewBox="0 0 100 20" preserveAspectRatio="none"><path fill="url(#sw)" d="M0 20 C22 11 55 3.5 100 0.5 C58 9.5 26 17 0 20 Z"/></svg></span></a>
+  <a class="logo vB"><img class="logo-icon" src="app_icon_trimmed.png" alt=""><span class="word"><span class="form">Form</span><span class="sensei">Sensei</span><svg class="swoosh" viewBox="0 0 100 20" preserveAspectRatio="none"><path fill="url(#sw)" d="M0 20 C22 11 55 3.5 100 0.5 C58 9.5 26 17 0 20 Z"/></svg></span></a>
+  <a class="logo vC"><img class="logo-icon" src="app_icon_trimmed.png" alt=""><span class="word"><span class="form">Form</span><span class="sensei">Sensei</span><svg class="swoosh" viewBox="0 0 100 20" preserveAspectRatio="none"><path fill="url(#sw)" d="M0 20 C22 11 55 3.5 100 0.5 C58 9.5 26 17 0 20 Z"/></svg></span></a>
+</div>
+<div class="big light" style="margin-top:12px">
+  <a class="logo" style="--x:0"><img class="logo-icon" src="app_icon_trimmed.png" alt=""><span class="word"><span class="form" style="background-image:linear-gradient(180deg,#353B48,#1B1F28)">Form</span><span class="sensei" style="background-image:linear-gradient(180deg,#2849AB,#1738A1)">Sensei</span><svg class="swoosh" viewBox="0 0 100 20" preserveAspectRatio="none"><path fill="url(#sw)" d="M0 20 C22 11 55 3.5 100 0.5 C58 9.5 26 17 0 20 Z"/></svg></span></a>
+</div>
+</body>
+</html>

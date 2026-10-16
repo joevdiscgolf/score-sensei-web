@@ -26,7 +26,7 @@
     <link rel="apple-touch-icon" href="assets/images/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:ital,wght@1,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles-new.css?v=29">
 </head>
 <body id="top">
@@ -48,9 +48,23 @@
     <!-- Navigation -->
     <nav class="nav">
         <div class="nav-container">
-            <a href="#top" class="nav-logo">
-                <img src="assets/images/logo.png" alt="FormSensei" class="nav-logo-img">
-                <span class="nav-logo-text">FormSensei</span>
+            <a href="#top" class="nav-logo" aria-label="FormSensei">
+                <img src="assets/images/logo-mark.png" alt="" class="nav-logo-img">
+                <span class="nav-word" aria-hidden="true">
+                    <span class="nav-word-form">Form</span><span class="nav-word-sensei">Sensei</span>
+                    <svg class="nav-word-swoosh" viewBox="0 0 100 20" preserveAspectRatio="none" focusable="false">
+                        <defs>
+                            <linearGradient id="nav-swoosh-grad" x1="0" x2="1" y1="0" y2="0">
+                                <stop offset="0" stop-color="#4E6BBD" stop-opacity="0"/>
+                                <stop offset=".1" stop-color="#4E6BBD"/>
+                                <stop offset=".55" stop-color="#2849AB"/>
+                                <stop offset=".94" stop-color="#1738A1"/>
+                                <stop offset="1" stop-color="#1738A1" stop-opacity=".15"/>
+                            </linearGradient>
+                        </defs>
+                        <path fill="url(#nav-swoosh-grad)" d="M0 20 C22 11 55 3.5 100 0.5 C58 9.5 26 17 0 20 Z"/>
+                    </svg>
+                </span>
             </a>
             <div class="nav-links mode-default mode-form-focus mode-proskeleton">
                 <a href="#analysis" class="nav-link">Form Analysis</a>
@@ -64,7 +78,6 @@
                 <a href="#download" class="nav-link">Download</a>
             </div>
             <div class="nav-auth">
-                <a href="/login" class="nav-signin">Sign in</a>
                 <a href="#download" class="nav-cta">Get the app</a>
             </div>
         </div>
