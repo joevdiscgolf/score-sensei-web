@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.joevanderveenllc.scoresensei",
+      "sha256_cert_fingerprints": [
+        "DC:7A:3A:30:7E:38:38:59:94:5D:D5:B1:A5:D7:35:D6:0F:A5:D7:E2:F9:5E:D2:C9:27:01:61:0F:5B:9A:8F:03",
+        "BC:5D:CE:B7:5D:F5:47:4C:27:08:28:76:00:63:BB:32:94:C5:36:1A:D5:98:B5:C0:34:80:C5:D9:77:A2:03:F6"
+      ]
+    }
+  }
+]
