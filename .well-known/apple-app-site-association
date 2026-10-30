@@ -1,0 +1,21 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": [
+          "QX4Y4F4BBM.com.joevanderveenllc.scoresensei"
+        ],
+        "components": [
+          {
+            "/": "/c/*",
+            "comment": "Putting challenge invites"
+          },
+          {
+            "/": "/f/*",
+            "comment": "Putting friend invites"
+          }
+        ]
+      }
+    ]
+  }
+}

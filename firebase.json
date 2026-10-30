@@ -4,7 +4,17 @@
     "cleanUrls": true,
     "ignore": [
       "firebase.json",
-      "**/.*",
+      ".git/**",
+      ".firebase/**",
+      ".firebaserc",
+      ".gitignore",
+      ".claudeignore",
+      "**/.DS_Store",
+      "**/.claude/**",
+      "**/.netlify/**",
+      "**/.vscode/**",
+      "**/.idea/**",
+      "**/.env*",
       "**/node_modules/**",
       "app/**",
       "dist/**",
@@ -68,6 +78,31 @@
             "value": "max-age=604800"
           }
         ]
+      },
+      {
+        "source": "/.well-known/apple-app-site-association",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "/c/**",
+        "function": {
+          "functionId": "puttChallengeLink",
+          "region": "us-central1"
+        }
+      },
+      {
+        "source": "/f/**",
+        "function": {
+          "functionId": "puttFriendLink",
+          "region": "us-central1"
+        }
       }
     ]
   }
